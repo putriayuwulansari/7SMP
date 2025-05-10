@@ -69,15 +69,15 @@ footer {
 </head>
 <body>
   <header>
-    <h1>Lembar Kerja Siswa</h1>
+    <h1>Lembar Kerja Siswa (LKS)</h1>
     <p>Materi: Bilangan (Pecahan, Desimal, Bilangan Bulat)</p>
   </header>
 
   <div class="identitas">
     <h2>Identitas Siswa</h2>
-    <p>Nama: ..................................................</p>
-    <p>Kelas: ..................................................</p>
-    <p>Tanggal: ..............................................</p>
+    <p>Nama: ............................................................</p>
+    <p>Kelas: ............................................................</p>
+    <p>Tanggal: ........................................................</p>
   </div>
 
   <!-- Soal Pilihan Ganda -->
@@ -241,6 +241,13 @@ footer {
       <strong><p>Jika 3/5 × X = 24 → X = 24 × 5/3 = 40</strong></p>
     </div>
   </div>
+
+  <script>
+    function toggleJawaban(btn) {
+      const jawab = btn.nextElementSibling;
+      jawab.style.display = jawab.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 
   <footer>
     @2025 7 SMP Media Pembelajaran Matematika
