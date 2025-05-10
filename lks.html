@@ -1,126 +1,99 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lembar Kerja Siswa - Bilangan</title>
   <style>
     body {
-      font-family: 'Times New Roman', serif;
+      font-family: 'Times New Roman', sans-serif;
       background-color: #f8cdd6; /* pink soft */
-      color: #000000; /* hitam */
+      color: #000000;
       margin: 0;
-      padding: 20px;
+      padding: 0 20px 50px;
     }
     header {
       background-color: #0d1b2a; /* biru dongker */
       color: white;
-      padding: 20px;
       text-align: center;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-    .container {
-      background-color: white;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 800px;
-      margin: 0 auto;
     }
     h2 {
       color: #0d1b2a;
+      border-bottom: 2px solid #0d1b2a;
+      padding-bottom: 5px;
     }
-    .identitas input {
-      display: block;
-      margin-bottom: 10px;
-      width: 100%;
-      padding: 8px;
-    }
-    .soal {
+    .identitas, .soal {
+      background-color: white;
+      border: 2px solid #0d1b2a;
+      border-radius: 8px;
+      padding: 20px;
       margin: 20px 0;
     }
-    .soal p {
-      font-weight: bold;
+    .soal h3 {
+      color: #0d1b2a;
     }
-    .soal textarea {
-      width: 100%;
-      height: 100px;
+    .pilihan {
+      margin-left: 20px;
     }
-    .btn {
+    .jawaban, .pembahasan {
+      display: none;
+      margin-top: 10px;
+      background-color: #e6f0ff;
+      padding: 10px;
+      border-left: 3px solid #0d1b2a;
+      border-radius: 4px;
+    }
+    button {
       background-color: #0d1b2a;
       color: white;
-      padding: 10px 20px;
       border: none;
+      padding: 8px 12px;
+      margin-top: 10px;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 10px;
     }
-    .btn:hover {
-      background-color: #092035;
-    }
-    .hasil {
-      background-color: #e0f7fa;
-      padding: 10px;
-      margin-top: 10px;
-      display: none;
+    button:hover {
+      background-color: #093053;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Lembar Kerja Siswa</h1>
-    <p>Materi: Bilangan (Pecahan, Desimal, dan Bilangan Bulat)</p>
+    <p>Materi: Bilangan (Pecahan, Desimal, Bilangan Bulat)</p>
   </header>
-  <div class="container">
-    <section class="identitas">
-      <h2>Identitas Siswa</h2>
-      <input type="text" placeholder="Nama Lengkap">
-      <input type="text" placeholder="Kelas">
-      <input type="text" placeholder="Nomor Absen">
-    </section>
 
-    <section class="soal">
-      <h2>Soal Pilihan Ganda</h2>
-      <p>1. Hasil dari 3/4 + 2/4 adalah ...</p>
-      <label><input type="radio" name="q1" value="a"> a. 4/4</label><br>
-      <label><input type="radio" name="q1" value="b"> b. 5/4</label><br>
-      <label><input type="radio" name="q1" value="c"> c. 3/8</label><br>
-      <label><input type="radio" name="q1" value="d"> d. 1/2</label>
+  <div class="identitas">
+    <h2>Identitas Siswa</h2>
+    <p>Nama: ..................................................</p>
+    <p>Kelas: ..................................................</p>
+    <p>Tanggal: ..................................................</p>
+  </div>
 
-      <p>2. Bilangan desimal dari 1/5 adalah ...</p>
-      <label><input type="radio" name="q2" value="a"> a. 0.2</label><br>
-      <label><input type="radio" name="q2" value="b"> b. 0.5</label><br>
-      <label><input type="radio" name="q2" value="c"> c. 0.25</label><br>
-      <label><input type="radio" name="q2" value="d"> d. 0.75</label>
-    </section>
-
-    <section class="soal">
-      <h2>Soal Esai</h2>
-      <p>3. Jelaskan perbedaan antara bilangan pecahan, bilangan desimal, dan bilangan bulat!</p>
-      <textarea></textarea>
-    </section>
-
-    <button class="btn" onclick="cekJawaban()">Cek Jawaban</button>
-    <div class="hasil" id="hasil">
-      <p><strong>Jawaban Benar:</strong></p>
-      <ul>
-        <li>1. b (5/4)</li>
-        <li>2. a (0.2)</li>
-      </ul>
+  <!-- Contoh 1 Soal Pilihan Ganda -->
+  <div class="soal">
+    <h3>Soal Pilihan Ganda 1</h3>
+    <p>1. Hasil dari 3/4 + 2/4 adalah...</p>
+    <div class="pilihan">
+      <label><input type="radio" name="pg1"> a. 4/4</label><br>
+      <label><input type="radio" name="pg1"> b. 5/4</label><br>
+      <label><input type="radio" name="pg1"> c. 3/2</label><br>
+      <label><input type="radio" name="pg1"> d. 1</label>
+    </div>
+    <button onclick="toggleJawaban(this)">Cek Jawaban</button>
+    <div class="jawaban">
+      <strong>Jawaban: b. 5/4</strong>
+      <div class="pembahasan">Karena penyebutnya sama, cukup jumlahkan pembilang: 3+2 = 5 → 5/4</div>
     </div>
   </div>
 
+  <!-- Ulangi div .soal sebanyak yang dibutuhkan untuk 9 soal PG dan 5 esai lainnya -->
+
   <script>
-    function cekJawaban() {
-      const q1 = document.querySelector('input[name="q1"]:checked');
-      const q2 = document.querySelector('input[name="q2"]:checked');
-      let hasil = "<strong>Jawaban Benar:</strong><ul>";
-      hasil += "<li>1. b (5/4)</li>";
-      hasil += "<li>2. a (0.2)</li>";
-      hasil += "</ul>";
-      document.getElementById("hasil").innerHTML = hasil;
-      document.getElementById("hasil").style.display = "block";
+    function toggleJawaban(btn) {
+      const jawab = btn.nextElementSibling;
+      jawab.style.display = jawab.style.display === 'block' ? 'none' : 'block';
     }
   </script>
 </body>
