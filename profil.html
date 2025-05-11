@@ -3,179 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Galeri Foto</title>
-  <style>
-    body {
-      background-color: #f8c8dc; /* soft pink */
-      font-family: times new roman, sans-serif;
-      color: #000000; /* Hitam */
-      margin: 0;
-      padding: 0;
-    }
-
-    header, footer {
-      background-color: #001f3f; /* Biru dongker */
-      color: white;
-      text-align: center;
-      padding: 15px;
-    }
-
-    main {
-      padding: 20px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 2px solid #001f3f; /* biru dongker */
-    }
-
-    th, td {
-      border: 3px solid #001f3f;
-      padding: 10px;
-      text-align: center;
-    }
-
-    th {
-      background-color: #001f3f;
-      color: white;
-    }
-
-    img.preview {
-      width: 150px;
-      height: auto;
-      border-radius: 6px;
-    }
-
-    input[type="file"], input[type="text"] {
-      width: 100%;
-      padding: 5px;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Profil Kelompok Pengembang dan Tim Dosen Pengampu</h1>
-  </header>
-
-  <main>
-    <table>
-      <thead>
-        <tr>
-          <th>Gambar</th>
-          <th>Keterangan</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- 12 baris foto dan keterangannya -->
-        <!-- Setiap baris punya input file & input text -->
-        <!-- JS akan menampilkan preview gambar -->
-        <!-- Index digunakan agar preview tiap file tidak saling tumpang tindih -->
-        <!-- Loop manual untuk 12 baris -->
-        <!-- Bisa otomatis juga pakai JS, tapi disesuaikan permintaan manual -->
-
-        <!-- Baris 1 - 12 -->
-        <!-- Template untuk 1 baris -->
-        <!-- Ulangi 12 kali -->
-        <!-- Menggunakan ID unik per baris -->
-        <!-- ID digunakan untuk menampilkan preview masing-masing -->
-
-        <!-- Mulai baris 1 -->
-        <!-- Gunakan script di bawah untuk tampilkan pratinjau -->
-        <!-- ↓ Baris-baris berikut bisa di-generate ulang jika ingin otomatis -->
-
-        <!-- Gunakan baris template -->
-        <!-- Baris ke-n -->
-        <!-- Ganti angka n dari 1 sampai 12 -->
-        <!-- Preview tampil di bawah file input -->
-
-        <!-- BARIS 1 -->
-        <tr>
-          <td>
-            <img src="wulan.jpg" width="150" alt="Gambar">
-          </td>
-          <td>
-            <input type="Nama: Putri Ayu Wulansari" placeholder="Nama : Putri Ayu Wulansari">
-            <input type="Nama: Putri Ayu Wulansari" placeholder="NIM : 240210101118">
-          </td>
-        </tr>
-
-        <!-- BARIS 2 -->
-        <tr>
-          <td>
-            <img src="wulan.jpg" width="300" alt="Gambar">
-          </td>
-          <td>
-            <input type="text" placeholder="Keterangan Foto 2">
-          </td>
-        </tr>
-
-        <!-- Lanjutkan pola yang sama untuk baris 3 sampai 12 -->
-        <!-- BARIS 3 -->
-        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 3)"><br><img id="preview-3" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 3"></td></tr>
-
-        <!-- BARIS 4 -->
-        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 4)"><br><img id="preview-4" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 4"></td></tr>
-
-        <!-- BARIS 5 -->
-        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 5)"><br><img id="preview-5" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 5"></td></tr>
-
-        <!-- BARIS 6 -->
-        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 6)"><br><img id="preview-6" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 6"></td></tr>
-
-        <!-- BARIS 7 -->
-        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 7)"><br><img id="preview-7" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 7"></td></tr>
-
-        <!-- BARIS 8 -->
-        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 8)"><br><img id="preview-8" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 8"></td></tr>
-
-        <!-- BARIS 9 -->
-        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 9)"><br><img id="preview-9" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 9"></td></tr>
-
-        <!-- BARIS 10 -->
-        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 10)"><br><img id="preview-10" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 10"></td></tr>
-
-        <!-- BARIS 11 -->
-        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 11)"><br><img id="preview-11" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 11"></td></tr>
-
-        <!-- BARIS 12 -->
-        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 12)"><br><img id="preview-12" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 12"></td></tr>
-
-      </tbody>
-    </table>
-  </main>
-  
-  <script>
-    function previewFoto(event, index) {
-      const file = event.target.files[0];
-      const img = document.getElementById('preview-' + index);
-
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          img.src = e.target.result;
-          img.style.display = 'block';
-        };
-        reader.readAsDataURL(file);
-      }
-    }
-  </script>
-  
-  <footer>
-    @ 2025 Galeri Foto | Desain oleh Wulan ❤️
-  </footer>
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Galeri Cerita</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #ffffff; /* Putih */
+      font-family: times new roman, sans-serif;
+      background-color: #ffe6ec; /* Soft pink */
       color: #000000; /* Hitam */
     }
 
@@ -195,7 +28,7 @@
     .blok-foto {
       display: flex;
       align-items: flex-start;
-      background-color: #ffe6ec; /* Soft pink */
+      background-color: #ffffff; /* Putih */
       border-left: 5px solid #0a1f44;
       border-radius: 10px;
       padding: 20px;
@@ -247,8 +80,7 @@
     <!-- Contoh 3 blok, bisa ditambah -->
     <div class="blok-foto">
      <img src="wulan.jpg" width="150" alt="Gambar">
-      <div class="deskripsi">
-      </div>
+      <div class="Putri Ayu Wulansari Cantik">
     </div>
 
     <div class="blok-foto">
@@ -269,7 +101,7 @@
   </main>
 
   <footer>
-    &copy; 2025 Galeri Cerita. Warna tema: biru dongker, soft pink, putih, dan hitam.
+     @ 2025 Galeri Foto | Desain oleh Wulan ❤️
   </footer>
 
   <script>
@@ -286,9 +118,5 @@
       }
     }
   </script>
-</body>
-</html>
-
-
 </body>
 </html>
