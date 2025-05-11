@@ -7,64 +7,165 @@
   <style>
     body {
       background-color: #ffffff; /* Putih */
-      font-family: Arial, sans-serif;
+      font-family: times new roman, sans-serif;
       color: #000000; /* Hitam */
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
     }
 
-    header {
-      background-color: #001f3f; /* Biru dongker */
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    main {
-      flex: 1;
-      padding: 20px;
-    }
-
-    input[type="file"] {
-      margin-bottom: 20px;
-    }
-
-    .foto-tabel {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 30px;
-      border: 2px solid #f8c8dc; /* Soft pink */
-    }
-
-    .foto-tabel th, .foto-tabel td {
-      border: 1px solid #f8c8dc; /* Soft pink */
-      padding: 10px;
-      text-align: center;
-    }
-
-    .foto-tabel th {
-      background-color: #001f3f; /* Biru dongker */
-      color: white;
-    }
-
-    img.preview {
-      width: 200px;
-      height: auto;
-      border-radius: 8px;
-    }
-
-    footer {
+    header, footer {
       background-color: #001f3f; /* Biru dongker */
       color: white;
       text-align: center;
       padding: 15px;
-      font-size: 14px;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid #f8c8dc; /* Soft pink */
+    }
+
+    th, td {
+      border: 1px solid #f8c8dc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #001f3f;
+      color: white;
+    }
+
+    img.preview {
+      width: 150px;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    input[type="file"], input[type="text"] {
+      width: 100%;
+      padding: 5px;
     }
   </style>
 </head>
+<body>
+  <header>
+    <h1>Profil Kelompok Pengembang dan Tim Dosen Pengampu</h1>
+  </header>
+
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 12 baris foto dan keterangannya -->
+        <!-- Setiap baris punya input file & input text -->
+        <!-- JS akan menampilkan preview gambar -->
+        <!-- Index digunakan agar preview tiap file tidak saling tumpang tindih -->
+        <!-- Loop manual untuk 12 baris -->
+        <!-- Bisa otomatis juga pakai JS, tapi disesuaikan permintaan manual -->
+
+        <!-- Baris 1 - 12 -->
+        <!-- Template untuk 1 baris -->
+        <!-- Ulangi 12 kali -->
+        <!-- Menggunakan ID unik per baris -->
+        <!-- ID digunakan untuk menampilkan preview masing-masing -->
+
+        <!-- Mulai baris 1 -->
+        <!-- Gunakan script di bawah untuk tampilkan pratinjau -->
+        <!-- ↓ Baris-baris berikut bisa di-generate ulang jika ingin otomatis -->
+
+        <!-- Gunakan baris template -->
+        <!-- Baris ke-n -->
+        <!-- Ganti angka n dari 1 sampai 12 -->
+        <!-- Preview tampil di bawah file input -->
+
+        <!-- BARIS 1 -->
+        <tr>
+          <td>
+            <img src="wulan.jpg" width="300" alt="Gambar">
+          </td>
+          <td>
+            <input type="Nama: Putri Ayu Wulansari" placeholder="Keterangan Foto 1">
+          </td>
+        </tr>
+
+        <!-- BARIS 2 -->
+        <tr>
+          <td>
+            <img src="wulan.jpg" width="300" alt="Gambar">
+          </td>
+          <td>
+            <input type="text" placeholder="Keterangan Foto 2">
+          </td>
+        </tr>
+
+        <!-- Lanjutkan pola yang sama untuk baris 3 sampai 12 -->
+        <!-- BARIS 3 -->
+        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 3)"><br><img id="preview-3" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 3"></td></tr>
+
+        <!-- BARIS 4 -->
+        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 4)"><br><img id="preview-4" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 4"></td></tr>
+
+        <!-- BARIS 5 -->
+        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 5)"><br><img id="preview-5" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 5"></td></tr>
+
+        <!-- BARIS 6 -->
+        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 6)"><br><img id="preview-6" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 6"></td></tr>
+
+        <!-- BARIS 7 -->
+        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 7)"><br><img id="preview-7" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 7"></td></tr>
+
+        <!-- BARIS 8 -->
+        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 8)"><br><img id="preview-8" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 8"></td></tr>
+
+        <!-- BARIS 9 -->
+        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 9)"><br><img id="preview-9" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 9"></td></tr>
+
+        <!-- BARIS 10 -->
+        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 10)"><br><img id="preview-10" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 10"></td></tr>
+
+        <!-- BARIS 11 -->
+        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 11)"><br><img id="preview-11" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 11"></td></tr>
+
+        <!-- BARIS 12 -->
+        <tr><td><input type="file" accept="image/*" onchange="previewFoto(event, 12)"><br><img id="preview-12" class="preview" style="display: none;"></td><td><input type="text" placeholder="Keterangan Foto 12"></td></tr>
+
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    &copy; 2025 Galeri 12 Foto | Nuansa biru dongker, putih, hitam, dan soft pink
+  </footer>
+
+  <script>
+    function previewFoto(event, index) {
+      const file = event.target.files[0];
+      const img = document.getElementById('preview-' + index);
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          img.src = e.target.result;
+          img.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+</body>
+</html>
+
 <body>
   <header>
     <h1>Profile Anggota Kelompok Pengembang dan Tim Dosen Pengampu</h1>
