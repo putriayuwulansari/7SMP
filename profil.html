@@ -165,5 +165,130 @@
     @ 2025 Galeri Foto | Desain oleh Wulan ❤️
   </footer>
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galeri Cerita</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff; /* Putih */
+      color: #000000; /* Hitam */
+    }
+
+    header, footer {
+      background-color: #0a1f44; /* Biru dongker */
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    main {
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .blok-foto {
+      display: flex;
+      align-items: flex-start;
+      background-color: #ffe6ec; /* Soft pink */
+      border-left: 5px solid #0a1f44;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .blok-foto:hover {
+      transform: scale(1.01);
+    }
+
+    .blok-foto img {
+      width: 200px;
+      height: auto;
+      border-radius: 8px;
+      margin-right: 20px;
+      object-fit: cover;
+      border: 2px solid #0a1f44;
+    }
+
+    .blok-foto input[type="file"] {
+      margin-bottom: 12px;
+    }
+
+    .blok-foto .deskripsi {
+      flex: 1;
+    }
+
+    .blok-foto .deskripsi textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #0a1f44;
+      border-radius: 6px;
+      resize: vertical;
+      background-color: #ffffff;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Galeri Cerita</h1>
+    <p>Koleksi foto dengan nuansa biru dongker, putih, hitam, dan soft pink</p>
+  </header>
+
+  <main>
+    <!-- Contoh 3 blok, bisa ditambah -->
+    <div class="blok-foto">
+     <img src="wulan.jpg" width="150" alt="Gambar">
+      <div class="deskripsi">
+      </div>
+    </div>
+
+    <div class="blok-foto">
+      <img id="preview-2" src="#" alt="Foto 2" style="display: none;">
+      <div class="deskripsi">
+        <input type="file" accept="image/*" onchange="previewFoto(event, 2)">
+        <textarea rows="3" placeholder="Tulis deskripsi untuk foto ini..."></textarea>
+      </div>
+    </div>
+
+    <div class="blok-foto">
+      <img id="preview-3" src="#" alt="Foto 3" style="display: none;">
+      <div class="deskripsi">
+        <input type="file" accept="image/*" onchange="previewFoto(event, 3)">
+        <textarea rows="3" placeholder="Tulis deskripsi untuk foto ini..."></textarea>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Galeri Cerita. Warna tema: biru dongker, soft pink, putih, dan hitam.
+  </footer>
+
+  <script>
+    function previewFoto(event, index) {
+      const file = event.target.files[0];
+      const preview = document.getElementById('preview-' + index);
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+</body>
+</html>
+
+
 </body>
 </html>
