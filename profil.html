@@ -71,46 +71,12 @@
   </header>
 
   <main>
-    <input type="wulan.jpg" accept="image/*" multiple onchange="tampilkanFoto(event)">
-    <div id="tabel-container"></div>
+    <img src="wulan.jpg" width="300" alt="Gambar">
   </main>
 
   <footer>
     @ 2025 Galeri Foto | Desain oleh Wulan ❤️
   </footer>
 
-  <script>
-    function tampilkanFoto(event) {
-      const files = event.target.files;
-      const container = document.getElementById('tabel-container');
-      container.innerHTML = ''; // kosongkan kontainer sebelumnya
-
-      Array.from(files).forEach((file, index) => {
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-          const tabel = document.createElement('table');
-          tabel.className = 'foto-tabel';
-
-          tabel.innerHTML = `
-            <tr>
-              <th colspan="2">Foto ${index + 1}</th>
-            </tr>
-            <tr>
-              <td><img src="${e.target.result}" class="preview" alt="Foto ${index + 1}"></td>
-              <td>
-                <label for="caption-${index}">Keterangan:</label><br>
-                <input type="text" id="caption-${index}" name="caption-${index}" style="width: 100%; padding: 5px;">
-              </td>
-            </tr>
-          `;
-
-          container.appendChild(tabel);
-        };
-
-        reader.readAsDataURL(file);
-      });
-    }
-  </script>
 </body>
 </html>
