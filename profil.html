@@ -1,27 +1,116 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Profil Kelompok</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Galeri Foto</title>
   <style>
     body {
-      font-family: times new roman;
+      background-color: #ffffff; /* Putih */
+      font-family: Arial, sans-serif;
+      color: #000000; /* Hitam */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #001f3f; /* Biru dongker */
+      color: white;
+      padding: 20px;
       text-align: center;
+    }
+
+    main {
+      flex: 1;
       padding: 20px;
     }
-    .fraction-image {
+
+    input[type="file"] {
+      margin-bottom: 20px;
+    }
+
+    .foto-tabel {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      border: 2px solid #f8c8dc; /* Soft pink */
+    }
+
+    .foto-tabel th, .foto-tabel td {
+      border: 1px solid #f8c8dc; /* Soft pink */
+      padding: 10px;
+      text-align: center;
+    }
+
+    .foto-tabel th {
+      background-color: #001f3f; /* Biru dongker */
+      color: white;
+    }
+
+    img.preview {
       width: 200px;
-      margin: 10px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    footer {
+      background-color: #001f3f; /* Biru dongker */
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <h1>Profil Anggota Kelompok</h1>
+  <header>
+    <h1>Profile Anggota Kelompok Pengembang dan Tim Dosen Pengampu</h1>
+  </header>
 
-  <div>
-    <h2>Putri Ayu Wulansari (240210101118)</h2>
-    <img src="wulan.jpg" alt="Putri Ayu Wulansari">
-  </div>
+  <main>
+    <input type="wulan.jpg" accept="image/*" multiple onchange="tampilkanFoto(event)">
+    <div id="tabel-container"></div>
+  </main>
 
+  <footer>
+    @ 2025 Galeri Foto | Desain oleh Wulan ❤️
+  </footer>
+
+  <script>
+    function tampilkanFoto(event) {
+      const files = event.target.files;
+      const container = document.getElementById('tabel-container');
+      container.innerHTML = ''; // kosongkan kontainer sebelumnya
+
+      Array.from(files).forEach((file, index) => {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          const tabel = document.createElement('table');
+          tabel.className = 'foto-tabel';
+
+          tabel.innerHTML = `
+            <tr>
+              <th colspan="2">Foto ${index + 1}</th>
+            </tr>
+            <tr>
+              <td><img src="${e.target.result}" class="preview" alt="Foto ${index + 1}"></td>
+              <td>
+                <label for="caption-${index}">Keterangan:</label><br>
+                <input type="text" id="caption-${index}" name="caption-${index}" style="width: 100%; padding: 5px;">
+              </td>
+            </tr>
+          `;
+
+          container.appendChild(tabel);
+        };
+
+        reader.readAsDataURL(file);
+      });
+    }
+  </script>
 </body>
 </html>
