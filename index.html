@@ -12,6 +12,20 @@
         margin: 0;
         padding: 0;
     }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 10px 20px;
+    }
+    .judul-header {
+      flex: 1;
+      text-align: center;
+    }
+    .logo-header {
+      height: 50px; /* atur ukuran sesuai kebutuhan */
+    }
     header {
         background-color: #0d1b2a; /* biru dongker */
         color: #ffffff; /* putih */
@@ -82,8 +96,14 @@
 <body>
 
 <header>
-    <h1>Media Pembelajaran Matematika Kelas 7 SMP</h1>
-    <p>Materi: Bilangan (Pecahan, Desimal, dan Bilangan Bulat)</p>
+  <div class="header-container">
+    <img src="logo1.png" alt="Logo Kiri" class="logo-header">
+    <div class="judul-header">
+      <h1>Profil Anggota Kelompok Pengembang</h1>
+      <p>Program Studi Pendidikan Matematika</p>
+    </div>
+    <img src="logo2.png" alt="Logo Kanan" class="logo-header">
+  </div>
 </header>
 
 <nav>
@@ -96,7 +116,8 @@
     <div class="content">
         <h2>Bilangan Pecahan</h2>
         <hr>
-        <p><strong>Pengertian:</strong> Bilangan pecahan adalah bilangan yang berbentuk a/b, di mana a adalah pembilang (angka di atas) dan b adalah penyebut (angka di bawah). Pecahan bisa dibagi menjadi dua jenis:</p>
+        <p><strong>Pengertian:</strong> Bilangan pecahan adalah bilangan yang berbentuk a/b, di mana a adalah pembilang (angka di atas) dan b adalah penyebut (angka di bawah).</p>
+                              </strong> Pecahan bisa dibagi menjadi dua jenis:</p>
                               </strong> Pecahan biasa: Contoh: 3/4, 7/2</p>
                               </strong> Pecahan campuran: Gabungan antara bilangan bulat dan pecahan, misalnya 2 1/2 atau 5 3/4</p>
         <p><strong>Operasi Pada Bilangan Pecahan:</p>
@@ -116,7 +137,8 @@
     <div class="content">
         <h2>Bilangan Desimal</h2>
         <hr>
-        <p><strong>Pengertian:</strong> Bilangan desimal adalah bilangan yang memiliki koma (titik desimal), contohnya 0.5, 3.75, atau -1.2. Bilangan desimal dapat dikaitkan dengan pecahan, seperti:</p>
+        <p><strong>Pengertian:</strong> Bilangan desimal adalah bilangan yang memiliki koma (titik desimal), contohnya 0.5, 3.75, atau -1.2.</p>
+                              </strong> Bilangan desimal dapat dikaitkan dengan pecahan, seperti:</p>
                               </strong> 0.5 = 1/2</p>
                               </strong> 0.75 = 3/4</p>
                               </strong> 0.25 = 1/4</p>
