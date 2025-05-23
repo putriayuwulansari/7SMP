@@ -13,38 +13,39 @@
         padding: 0;
     }
     .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 10px 20px;
-    }
-    .judul-header {
-      flex: 1;
-      text-align: center;
-    }
-    .logo-header {
-      height: 100px;
-    }
-    header {
-        background-color: #0d1b2a; /* biru dongker */
-        color: #ffffff; /* putih */
-        padding: 20px;
-        text-align: center;
-    }
-    @media (max-width: 600px) {
-      .header-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-      .logo-header {
-        margin: 10px 0;
-    }
-      .judul-header {
-        order: -1; /* supaya teks tampil di atas logo */
-    }
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+}
+
+.judul-header {
+  flex: 1;
+  text-align: center;
+}
+
+.logo-header {
+  height: 50px;
+  max-width: 70px;
+}
+
+/* RESPONSIF UNTUK HP */
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo-header {
+    margin: 10px 0;
+  }
+
+  .judul-header {
+    order: -1; /* supaya teks tampil di atas logo */
+  }
+}
     nav {
         background-color: #ffffff; /* putih */
         padding: 10px;
