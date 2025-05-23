@@ -31,6 +31,18 @@
         color: #ffffff; /* putih */
         padding: 20px;
         text-align: center;
+    @media (max-width: 600px) {
+      .header-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+      .logo-header {
+        margin: 10px 0;
+    }
+      .judul-header {
+        order: -1; /* supaya teks tampil di atas logo */
+    }
     }
     nav {
         background-color: #ffffff; /* putih */
