@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sembunyikan Tulisan</title>
+  <style>
+    #konten {
+      padding: 15px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 10px;
+      display: none; /* Mulai tersembunyi */
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #0a1f44;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #173e86;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Contoh Sembunyikan / Tampilkan Tulisan</h2>
+
+  <button onclick="toggleKonten()">Tampilkan / Sembunyikan</button>
+
+  <div id="konten">
+    <p>Ini adalah tulisan yang bisa disembunyikan atau ditampilkan menggunakan JavaScript.</p>
+  </div>
+
+  <script>
+    function toggleKonten() {
+      const konten = document.getElementById('konten');
+      if (konten.style.display === 'none') {
+        konten.style.display = 'block';
+      } else {
+        konten.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>
