@@ -383,6 +383,13 @@
     </div>
 </section>
 
+  <script>
+    function toggleKonten(btn) {
+      const konten = btn.nextElementSibling;
+      konten.style.display = konten.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+    
 <section>
     <div class="video-container">
         <h1>Video Pembelajaran</h1>
@@ -419,17 +426,6 @@
     </div>
 </section>
 
-<script>
-    function toggleKonten() {
-      const konten = document.getElementById('konten');
-      if (konten.style.display === 'none') {
-        konten.style.display = 'block';
-      } else {
-        konten.style.display = 'none';
-      }
-    }
-  </script>
-    
 <footer>
     <p>@2025 7 SMP Media Pembelajaran Matematika</p>
 </footer>
