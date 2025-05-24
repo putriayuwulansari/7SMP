@@ -384,9 +384,13 @@
 </section>
 
   <script>
-    function toggleKonten(btn) {
-      const konten = btn.nextElementSibling;
-      konten.style.display = konten.style.display === 'block' ? 'none' : 'block';
+    function toggleKonten() {
+      const konten = document.getElementById('konten');
+      if (konten.style.display === 'none') {
+        konten.style.display = 'block';
+      } else {
+        konten.style.display = 'none';
+      }
     }
   </script>
     
