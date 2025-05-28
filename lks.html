@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lembar Kerja Siswa</title>
+    <title>Kuis</title>
     <style>
 body {
         font-family: 'Times New Roman', sans-serif;
@@ -23,7 +23,7 @@ body {
       border-bottom: 2px solid #0d1b2a;
       padding-bottom: 5px;
     }
-    .identitas, .soal {
+    .soal {
       background-color: white;
       border: 2px solid #0d1b2a;
       border-radius: 8px;
@@ -75,21 +75,6 @@ body {
       background-color: #f8d7da;
       color: #721c24;
     }
-    /* Skor di akhir */
-    .scoreboard {
-      margin: 40px auto 0;
-      padding: 10px;
-      width: 200px;
-      border: 2px solid #28a745;
-      background-color: #e9f7ef;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      color: #155724;
-      display: none;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
     button {
       margin-top: 10px;
       padding: 8px 16px;
@@ -114,18 +99,9 @@ body {
 </head>
 <body>
   <header>
-    <h1>Lembar Kerja Siswa (LKS)</h1>
+    <h1>Kuis Interaktif</h1>
     <p>Materi: Bilangan (Pecahan, Desimal, Bilangan Bulat)</p>
   </header>
-
-<div>
-  <div class="identitas">
-    <h2>Identitas Siswa</h2>
-    <p>Nama: <input type="text" name="nama" /></p>
-    <p>Kelas: <input type="text" name="kelas" /></p>
-    <p>Tanggal: <input type="text" name="tanggal" /></p>
-  </div>
-</div>
       
   <!-- Soal Pilihan Ganda -->
     
@@ -289,37 +265,26 @@ body {
     </div>
   </div>
 
- <!-- Skor akhir -->
-  <div class="scoreboard" id="skor"></div>
-
   <script>
-    let total = 10; // total jumlah soal
-    let benar = 0;
-
     function cekJawaban(button) {
       const soal = button.closest(".soal");
       const kunci = soal.getAttribute("data-jawaban");
       const inputs = soal.querySelectorAll("input[type=radio]");
       const jawabanDiv = soal.querySelector(".jawaban");
-
       let jawabanDipilih = null;
       inputs.forEach(input => {
         const label = input.parentElement;
         label.classList.remove("benar", "salah");
-
         if (input.checked) {
           jawabanDipilih = input;
         }
       });
-
       if (!jawabanDipilih) {
         alert("Silakan pilih jawaban terlebih dahulu!");
         return;
       }
-
       const nilai = jawabanDipilih.value;
       const label = jawabanDipilih.parentElement;
-
       if (nilai === kunci) {
         label.classList.add("benar");
         soal.setAttribute("data-terjawab", "true");
@@ -327,7 +292,6 @@ body {
         button.disabled = true;
         jawabanDiv.style.display = "block";
         benar++;
-
      if (document.querySelectorAll('.soal[data-terjawab="false"]').length === 0) {
         const skorBox = document.getElementById("skor");
         skorBox.innerText = `Skor Anda: ${benar} / ${total}`;
@@ -337,7 +301,6 @@ body {
         if (document.querySelectorAll('.soal[data-terjawab="false"]').length === 0) {
           document.getElementById("skor").innerText = `Skor Anda: ${benar} / ${total}`;
         }
-
       } else {
         label.classList.add("salah");
         jawabanDipilih.checked = false; // reset jawaban salah
