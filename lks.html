@@ -44,6 +44,14 @@ body {
       border-left: 3px solid #0d1b2a;
       border-radius: 4px;
     }
+    .correct {
+      color: blue;
+      font-weight: bold;
+    }
+    .incorrect {
+      color: red;
+      font-weight: bold;
+    }
     button {
       background-color: #0d1b2a;
       color: white;
@@ -86,10 +94,10 @@ body {
     <p><strong>Soal Pilihan Ganda 1</strong></p>
     <p>1. Hasil dari 3/4 + 2/4 adalah...</p>
     <div class="pilihan">
-      <label><input type="radio" name="pg1"> a. 4/4</label><br>
-      <label><input type="radio" name="pg1"> b. 5/4</label><br>
-      <label><input type="radio" name="pg1"> c. 3/2</label><br>
-      <label><input type="radio" name="pg1"> d. 1</label>
+      <label><input type="radio" name="pg1" data-correct="false"> a. 4/4</label><br>
+      <label><input type="radio" name="pg1" data-correct="true"> b. 5/4</label><br>
+      <label><input type="radio" name="pg1" data-correct="false"> c. 3/2</label><br>
+      <label><input type="radio" name="pg1" data-correct="false"> d. 1</label>
     </div>
     <button onclick="toggleJawaban(this)">Cek Jawaban</button>
     <div class="jawaban">
@@ -102,10 +110,10 @@ body {
     <p><strong>Soal Pilihan Ganda 2</strong></p>
     <p>2. Hasil dari 0.75 + 0.5 adalah...</p>
     <div class="pilihan">
-      <label><input type="radio" name="pg2"> a. 1.00</label><br>
-      <label><input type="radio" name="pg2"> b. 1.15</label><br>
-      <label><input type="radio" name="pg2"> c. 1.25</label><br>
-      <label><input type="radio" name="pg2"> d. 1.30</label>
+      <label><input type="radio" name="pg2" data-correct="false"> a. 1.00</label><br>
+      <label><input type="radio" name="pg2" data-correct="false"> b. 1.15</label><br>
+      <label><input type="radio" name="pg2" data-correct="true"> c. 1.25</label><br>
+      <label><input type="radio" name="pg2" data-correct="false"> d. 1.30</label>
     </div>
     <button onclick="toggleJawaban(this)">Cek Jawaban</button>
     <div class="jawaban">
@@ -118,10 +126,10 @@ body {
     <p><strong>Soal Pilihan Ganda 3</strong></p>
     <p>3. Bilangan bulat dari -5 hingga 3 berjumlah...</p>
     <div class="pilihan">
-      <label><input type="radio" name="pg3"> a. 7</label><br>
-      <label><input type="radio" name="pg3"> b. 8</label><br>
-      <label><input type="radio" name="pg3"> c. 9</label><br>
-      <label><input type="radio" name="pg3"> d. 10</label>
+      <label><input type="radio" name="pg3" data-correct="false"> a. 7</label><br>
+      <label><input type="radio" name="pg3" data-correct="false"> b. 8</label><br>
+      <label><input type="radio" name="pg3" data-correct="true"> c. 9</label><br>
+      <label><input type="radio" name="pg3" data-correct="false"> d. 10</label>
     </div>
     <button onclick="toggleJawaban(this)">Cek Jawaban</button>
     <div class="jawaban">
@@ -134,10 +142,10 @@ body {
     <p><strong>Soal Pilihan Ganda 4</strong></p>
     <p>4. Hasil dari 2/5 × 3/4 adalah...</p>
     <div class="pilihan">
-      <label><input type="radio" name="pg4"> a. 6/9</label><br>
-      <label><input type="radio" name="pg4"> b. 5/9</label><br>
-      <label><input type="radio" name="pg4"> c. 6/20</label><br>
-      <label><input type="radio" name="pg4"> d. 3/10</label>
+      <label><input type="radio" name="pg4" data-correct="false"> a. 6/9</label><br>
+      <label><input type="radio" name="pg4" data-correct="false"> b. 5/9</label><br>
+      <label><input type="radio" name="pg4" data-correct="true"> c. 6/20</label><br>
+      <label><input type="radio" name="pg4" data-correct="false"> d. 3/10</label>
     </div>
     <button onclick="toggleJawaban(this)">Cek Jawaban</button>
     <div class="jawaban">
@@ -150,10 +158,10 @@ body {
     <p><strong>Soal Pilihan Ganda 5</strong></p>
     <p>5. Bilangan desimal dari 3/10 adalah...</p>
     <div class="pilihan">
-      <label><input type="radio" name="pg5"> a. 0.2</label><br>
-      <label><input type="radio" name="pg5"> b. 0.3</label><br>
-      <label><input type="radio" name="pg5"> c. 0.4</label><br>
-      <label><input type="radio" name="pg5"> d. 0.5</label>
+      <label><input type="radio" name="pg5" data-correct="false"> a. 0.2</label><br>
+      <label><input type="radio" name="pg5" data-correct="true"> b. 0.3</label><br>
+      <label><input type="radio" name="pg5" data-correct="false"> c. 0.4</label><br>
+      <label><input type="radio" name="pg5" data-correct="false"> d. 0.5</label>
     </div>
     <button onclick="toggleJawaban(this)">Cek Jawaban</button>
     <div class="jawaban">
@@ -166,10 +174,10 @@ body {
     <p><strong>Soal Pilihan Ganda 6</strong></p>
     <p>6. 7/2 dalam bentuk desimal adalah...</p>
     <div class="pilihan">
-      <label><input type="radio" name="pg6"> a. 3.2</label><br>
-      <label><input type="radio" name="pg6"> b. 3.5</label><br>
-      <label><input type="radio" name="pg6"> c. 3.7</label><br>
-      <label><input type="radio" name="pg6"> d. 3.8</label>
+      <label><input type="radio" name="pg6" data-correct="false"> a. 3.2</label><br>
+      <label><input type="radio" name="pg6" data-correct="true"> b. 3.5</label><br>
+      <label><input type="radio" name="pg6" data-correct="false"> c. 3.7</label><br>
+      <label><input type="radio" name="pg6" data-correct="false"> d. 3.8</label>
     </div>
     <button onclick="toggleJawaban(this)">Cek Jawaban</button>
     <div class="jawaban">
@@ -182,10 +190,10 @@ body {
     <p><strong>Soal Pilihan Ganda 7</strong></p>
     <p>7. Nilai mutlak dari -8 adalah...</p>
     <div class="pilihan">
-      <label><input type="radio" name="pg7"> a. -8</label><br>
-      <label><input type="radio" name="pg7"> b. 0</label><br>
-      <label><input type="radio" name="pg7"> c. 8</label><br>
-      <label><input type="radio" name="pg7"> d. 1</label>
+      <label><input type="radio" name="pg7" data-correct="false"> a. -8</label><br>
+      <label><input type="radio" name="pg7" data-correct="false"> b. 0</label><br>
+      <label><input type="radio" name="pg7" data-correct="true"> c. 8</label><br>
+      <label><input type="radio" name="pg7" data-correct="false"> d. 1</label>
     </div>
     <button onclick="toggleJawaban(this)">Cek Jawaban</button>
     <div class="jawaban">
@@ -198,10 +206,10 @@ body {
     <p><strong>Soal Pilihan Ganda 8</strong></p>
     <p>8. Bilangan yang termasuk bilangan bulat negatif adalah...</p>
     <div class="pilihan">
-      <label><input type="radio" name="pg8"> a. 2</label><br>
-      <label><input type="radio" name="pg8"> b. -3</label><br>
-      <label><input type="radio" name="pg8"> c. 0</label><br>
-      <label><input type="radio" name="pg8"> d. 3.5</label>
+      <label><input type="radio" name="pg8" data-correct="false"> a. 2</label><br>
+      <label><input type="radio" name="pg8" data-correct="true"> b. -3</label><br>
+      <label><input type="radio" name="pg8" data-correct="false"> c. 0</label><br>
+      <label><input type="radio" name="pg8" data-correct="false"> d. 3.5</label>
     </div>
     <button onclick="toggleJawaban(this)">Cek Jawaban</button>
     <div class="jawaban">
@@ -214,10 +222,10 @@ body {
     <p><strong>Soal Pilihan Ganda 9</strong></p>
     <p>9. Urutan bilangan dari kecil ke besar: 0.6, 1/2, 0.75</p>
     <div class="pilihan">
-      <label><input type="radio" name="pg9"> a. 0.75, 0.6, 1/2</label><br>
-      <label><input type="radio" name="pg9"> b. 1/2, 0.6, 0.75</label><br>
-      <label><input type="radio" name="pg9"> c. 0.6, 1/2, 0.75</label><br>
-      <label><input type="radio" name="pg9"> d. 1/2, 0.75, 0.6</label>
+      <label><input type="radio" name="pg9" data-correct="false"> a. 0.75, 0.6, 1/2</label><br>
+      <label><input type="radio" name="pg9" data-correct="true"> b. 1/2, 0.6, 0.75</label><br>
+      <label><input type="radio" name="pg9" data-correct="false"> c. 0.6, 1/2, 0.75</label><br>
+      <label><input type="radio" name="pg9" data-correct="false"> d. 1/2, 0.75, 0.6</label>
     </div>
     <button onclick="toggleJawaban(this)">Cek Jawaban</button>
     <div class="jawaban">
@@ -230,10 +238,10 @@ body {
     <p><strong>Soal Pilihan Ganda 10</strong></p>
     <p>10. Jika 3/5 dari suatu bilangan adalah 24, maka bilangan itu adalah...</p>
     <div class="pilihan">
-      <label><input type="radio" name="pg10"> a. 30</label><br>
-      <label><input type="radio" name="pg10"> b. 36</label><br>
-      <label><input type="radio" name="pg10"> c. 40</label><br>
-      <label><input type="radio" name="pg10"> d. 45</label>
+      <label><input type="radio" name="pg10" data-correct="false"> a. 30</label><br>
+      <label><input type="radio" name="pg10" data-correct="false"> b. 36</label><br>
+      <label><input type="radio" name="pg10" data-correct="true"> c. 40</label><br>
+      <label><input type="radio" name="pg10" data-correct="false"> d. 45</label>
     </div>
     <button onclick="toggleJawaban(this)">Cek Jawaban</button>
     <div class="jawaban">
@@ -248,6 +256,30 @@ body {
       jawab.style.display = jawab.style.display === 'block' ? 'none' : 'block';
     }
   </script>
+
+<script>
+  // Menambahkan feedback warna setelah siswa memilih jawaban
+  document.querySelectorAll('.pilihan').forEach(function(pilihan) {
+    pilihan.querySelectorAll('input[type="radio"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        const groupName = this.name;
+        const radios = document.querySelectorAll(`input[name="${groupName}"]`);
+        
+        radios.forEach(r => {
+          const label = r.parentElement;
+          label.classList.remove('correct', 'incorrect');
+        });
+
+        const label = this.parentElement;
+        if (this.dataset.correct === "true") {
+          label.classList.add('correct');
+        } else {
+          label.classList.add('incorrect');
+        }
+      });
+    });
+  });
+</script>
 
   <div class="soal">
     <h2>Soal Esai</h2>
@@ -302,29 +334,6 @@ body {
       </div>
     </div>
   </div>
-
-  <script>
-    function toggleJawaban(btn) {
-      const soalDiv = btn.parentElement;
-      const selected = soalDiv.querySelector('input[type="radio"]:checked');
-      const kunciJawaban = soalDiv.querySelector(".jawaban p").textContent.trim().replace("Jawaban: ", "");
-
-      if (selected) {
-        const pilihanText = selected.parentElement.textContent.trim();
-        if (pilihanText === kunciJawaban) {
-          alert("Jawaban Anda BENAR!");
-        } else {
-          alert("Jawaban Anda SALAH. Jawaban benar adalah: " + kunciJawaban);
-        }
-      } else {
-        alert("Silakan pilih salah satu jawaban terlebih dahulu.");
-        return;
-      }
-
-      const jawab = soalDiv.querySelector('.jawaban');
-      jawab.style.display = jawab.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
 
   <footer>
     @2025 7 SMP Media Pembelajaran Matematika
