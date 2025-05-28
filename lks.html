@@ -44,14 +44,51 @@ body {
       border-left: 3px solid #0d1b2a;
       border-radius: 4px;
     }
+    .soal {
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+    }
+    .pilihan label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .pilihan input[type="radio"] {
+      margin-right: 10px;
+    }
+    .jawaban {
+      display: none;
+      margin-top: 10px;
+    }
+    .benar {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    .salah {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    .scoreboard {
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
     button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
       background-color: #0d1b2a;
       color: white;
-      border: none;
-      padding: 8px 12px;
-      margin-top: 10px;
-      border-radius: 5px;
       cursor: pointer;
+      transition: 0.3s;
     }
     button:hover {
       background-color: #093053;
@@ -82,9 +119,26 @@ body {
       
   <!-- Soal Pilihan Ganda -->
 
-  <div class="soal">
+  <div class="soal" data-jawaban="b">
     <p><strong>Soal Pilihan Ganda 1</strong></p>
     <p>1. Hasil dari 3/4 + 2/4 adalah...</p>
+    <div class="pilihan">
+      <label><input type="radio" name="pg1" value="a"> a. 4/4</label>
+      <label><input type="radio" name="pg1" value="b"> b. 5/4</label>
+      <label><input type="radio" name="pg1" value="c"> c. 3/2</label>
+      <label><input type="radio" name="pg1" value="d"> d. 1</label>
+    </div>
+    <button onclick="cekJawaban(this)">Cek Jawaban</button>
+    <div class="jawaban">
+      <p><strong>Jawaban: b. 5/4</strong></p>
+      <p><strong>Karena penyebutnya sama, cukup jumlahkan pembilang: 3+2 = 5 → 5/4</strong></p>
+    </div>
+  </div>
+  <div class="scoreboard" id="skor"></div>
+
+  <div class="soal" data-jawaban="b">
+    <p><strong>Soal Pilihan Ganda 1</strong></p>
+    <p>Hasil dari 3/4 + 2/4 adalah...</p>
     <div class="pilihan">
       <label><input type="radio" name="pg1"> a. 4/4</label><br>
       <label><input type="radio" name="pg1"> b. 5/4</label><br>
@@ -97,8 +151,9 @@ body {
       <strong><p>Karena penyebutnya sama, cukup jumlahkan pembilang: 3+2 = 5 → 5/4</strong></p>
     </div>
   </div>
+  <div class="scoreboard" id="skor"></div>
 
-  <div class="soal">
+  <div class="soal" data-jawaban="c">
     <p><strong>Soal Pilihan Ganda 2</strong></p>
     <p>2. Hasil dari 0.75 + 0.5 adalah...</p>
     <div class="pilihan">
@@ -113,8 +168,9 @@ body {
       <strong><p>0.75 + 0.5 = 1.25</strong></p>
     </div>
   </div>
+  <div class="scoreboard" id="skor"></div>
 
-  <div class="soal">
+  <div class="soal" data-jawaban="c">
     <p><strong>Soal Pilihan Ganda 3</strong></p>
     <p>3. Bilangan bulat dari -5 hingga 3 berjumlah...</p>
     <div class="pilihan">
@@ -129,8 +185,9 @@ body {
       <strong><p>Bilangan: -5, -4, -3, -2, -1, 0, 1, 2, 3 → Total 9 bilangan</strong></p>
     </div>
   </div>
+  <div class="scoreboard" id="skor"></div>
 
-  <div class="soal">
+  <div class="soal" data-jawaban="c">
     <p><strong>Soal Pilihan Ganda 4</strong></p>
     <p>4. Hasil dari 2/5 × 3/4 adalah...</p>
     <div class="pilihan">
@@ -145,8 +202,9 @@ body {
       <strong><p>2/5 × 3/4 = (2×3)/(5×4) = 6/20</strong></p>
     </div>
   </div>
+  <div class="scoreboard" id="skor"></div>
 
-  <div class="soal">
+  <div class="soal" data-jawaban="b">
     <p><strong>Soal Pilihan Ganda 5</strong></p>
     <p>5. Bilangan desimal dari 3/10 adalah...</p>
     <div class="pilihan">
@@ -161,8 +219,9 @@ body {
       <strong><p>3 dibagi 10 = 0.3</strong></p>
     </div>
   </div>
+  <div class="scoreboard" id="skor"></div>
 
-  <div class="soal">
+  <div class="soal" data-jawaban="b">
     <p><strong>Soal Pilihan Ganda 6</strong></p>
     <p>6. 7/2 dalam bentuk desimal adalah...</p>
     <div class="pilihan">
@@ -177,8 +236,9 @@ body {
       <strong><p>7 dibagi 2 = 3.5</strong></p>
     </div>
   </div>
+  <div class="scoreboard" id="skor"></div>
 
-  <div class="soal">
+  <div class="soal" data-jawaban="c">
     <p><strong>Soal Pilihan Ganda 7</strong></p>
     <p>7. Nilai mutlak dari -8 adalah...</p>
     <div class="pilihan">
@@ -193,8 +253,9 @@ body {
       <strong><p>Nilai mutlak dari -8 adalah 8</strong></p>
     </div>
   </div>
+  <div class="scoreboard" id="skor"></div>
 
-  <div class="soal">
+  <div class="soal" data-jawaban="b">
     <p><strong>Soal Pilihan Ganda 8</strong></p>
     <p>8. Bilangan yang termasuk bilangan bulat negatif adalah...</p>
     <div class="pilihan">
@@ -209,8 +270,9 @@ body {
       <strong><p>-3 adalah bilangan bulat dan bernilai negatif</strong></p>
     </div>
   </div>
+  <div class="scoreboard" id="skor"></div>
 
-  <div class="soal">
+  <div class="soal" data-jawaban="b">
     <p><strong>Soal Pilihan Ganda 9</strong></p>
     <p>9. Urutan bilangan dari kecil ke besar: 0.6, 1/2, 0.75</p>
     <div class="pilihan">
@@ -225,8 +287,9 @@ body {
       <strong><p>1/2 = 0.5, urutan dari kecil: 0.5, 0.6, 0.75</strong></p>
     </div>
   </div>
+  <div class="scoreboard" id="skor"></div>
 
-  <div class="soal">
+  <div class="soal" data-jawaban="c">
     <p><strong>Soal Pilihan Ganda 10</strong></p>
     <p>10. Jika 3/5 dari suatu bilangan adalah 24, maka bilangan itu adalah...</p>
     <div class="pilihan">
@@ -241,11 +304,40 @@ body {
       <strong><p>Jika 3/5 × X = 24 → X = 24 × 5/3 = 40</strong></p>
     </div>
   </div>
+  <div class="scoreboard" id="skor"></div>
 
-  <script>
-    function toggleJawaban(btn) {
-      const jawab = btn.nextElementSibling;
-      jawab.style.display = jawab.style.display === 'block' ? 'none' : 'block';
+<script>
+    let total = 1; // jumlah total soal
+    let benar = 0;
+    function cekJawaban(button) {
+      const soal = button.closest(".soal");
+      const jawabanBenar = soal.getAttribute("data-jawaban");
+      const inputs = soal.querySelectorAll("input[type=radio]");
+      const jawabanDiv = soal.querySelector(".jawaban");
+      let dipilih = false;
+      inputs.forEach(input => {
+        input.disabled = true;
+        if (input.checked) {
+          dipilih = true;
+          const label = input.parentElement;
+          if (input.value === jawabanBenar) {
+            label.classList.add("benar");
+            benar++;
+          } else {
+            label.classList.add("salah");
+          }
+        }
+      });
+      if (!dipilih) {
+        alert("Silakan pilih jawaban terlebih dahulu!");
+        return;
+      }
+      jawabanDiv.style.display = "block";
+      button.disabled = true;
+      if (document.querySelectorAll("button:enabled").length === 0) {
+        // Semua soal sudah dijawab
+        document.getElementById("skor").innerText = `Skor Anda: ${benar} / ${total}`;
+      }
     }
   </script>
 
