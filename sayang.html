@@ -1,214 +1,133 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kuis Interaktif dengan Pembahasan</title>
+  <meta charset="UTF-8">
+  <title>Soal Interaktif</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #f0faff, #fff);
-      margin: 0;
+      font-family: Arial, sans-serif;
       padding: 20px;
     }
 
-    .quiz-box {
-      max-width: 800px;
-      margin: auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-
-    h1 {
-      text-align: center;
-      color: #0077b6;
-    }
-
-    .question-block {
+    .soal {
       margin-bottom: 30px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #ddd;
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
     }
 
-    .question-block h3 {
-      margin-bottom: 10px;
-    }
-
-    .option {
+    .pilihan label {
       display: block;
-      background: #f1f1f1;
       margin: 5px 0;
-      padding: 10px;
-      border-radius: 8px;
       cursor: pointer;
-      border: 2px solid transparent;
+      transition: background-color 0.3s ease;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .pilihan input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .jawaban {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .benar {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .salah {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .scoreboard {
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
       transition: 0.3s;
     }
 
-    .option.selected {
-      background-color: #d0f0fd;
-      border-color: #0077b6;
-    }
-
-    .option.correct {
-      background-color: #c8e6c9;
-      border-color: #2e7d32;
-      color: #2e7d32;
-    }
-
-    .option.incorrect {
-      background-color: #ffcdd2;
-      border-color: #c62828;
-      color: #c62828;
-    }
-
-    .option:hover {
-      background-color: #e0f7fa;
-    }
-
-    #submitBtn {
-      display: block;
-      margin: 30px auto 10px;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      background-color: #0077b6;
-      color: white;
-    }
-
-    #submitBtn:hover {
-      background-color: #005f8a;
-    }
-
-    #scoreBoard {
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      color: #00796b;
-      margin-top: 20px;
-    }
-
-    .explanation {
-      background: #f9f9f9;
-      padding: 10px;
-      margin-top: 10px;
-      border-left: 5px solid #0077b6;
-      border-radius: 8px;
-      font-size: 15px;
+    button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
 
-<div class="quiz-box">
-  <h1>Kuis Interaktif</h1>
+  <div class="soal" data-jawaban="b">
+    <p><strong>Soal Pilihan Ganda 1</strong></p>
+    <p>1. Hasil dari 3/4 + 2/4 adalah...</p>
+    <div class="pilihan">
+      <label><input type="radio" name="pg1" value="a"> a. 4/4</label>
+      <label><input type="radio" name="pg1" value="b"> b. 5/4</label>
+      <label><input type="radio" name="pg1" value="c"> c. 3/2</label>
+      <label><input type="radio" name="pg1" value="d"> d. 1</label>
+    </div>
+    <button onclick="cekJawaban(this)">Cek Jawaban</button>
+    <div class="jawaban">
+      <p><strong>Jawaban: b. 5/4</strong></p>
+      <p><strong>Karena penyebutnya sama, cukup jumlahkan pembilang: 3+2 = 5 → 5/4</strong></p>
+    </div>
+  </div>
 
-  <div id="quiz"></div>
+  <div class="scoreboard" id="skor"></div>
 
-  <button id="submitBtn" onclick="submitQuiz()">Kirim Jawaban</button>
-  <div id="scoreBoard"></div>
-</div>
+  <script>
+    let total = 1; // jumlah total soal
+    let benar = 0;
 
-<script>
-  const questions = [
-    {
-      question: "1. Hasil dari 5 × 3 + 2 adalah ...",
-      options: ["15", "17", "21", "20"],
-      answer: 1,
-      explanation: "5 × 3 = 15, lalu 15 + 2 = 17. Jadi jawabannya adalah 17."
-    },
-    {
-      question: "2. Akar kuadrat dari 144 adalah ...",
-      options: ["12", "14", "16", "18"],
-      answer: 0,
-      explanation: "12 × 12 = 144, jadi akar kuadrat dari 144 adalah 12."
-    },
-    {
-      question: "3. Jika hari ini Senin, maka 3 hari lagi adalah ...",
-      options: ["Kamis", "Rabu", "Jumat", "Selasa"],
-      answer: 0,
-      explanation: "Senin → Selasa (1), Rabu (2), Kamis (3). Jadi jawabannya Kamis."
-    }
-  ];
+    function cekJawaban(button) {
+      const soal = button.closest(".soal");
+      const jawabanBenar = soal.getAttribute("data-jawaban");
+      const inputs = soal.querySelectorAll("input[type=radio]");
+      const jawabanDiv = soal.querySelector(".jawaban");
 
-  let userAnswers = Array(questions.length).fill(null);
+      let dipilih = false;
 
-  function renderQuiz() {
-    const quizContainer = document.getElementById("quiz");
-    quizContainer.innerHTML = "";
-
-    questions.forEach((q, index) => {
-      const block = document.createElement("div");
-      block.classList.add("question-block");
-
-      const qTitle = document.createElement("h3");
-      qTitle.innerText = q.question;
-      block.appendChild(qTitle);
-
-      q.options.forEach((opt, i) => {
-        const optDiv = document.createElement("div");
-        optDiv.classList.add("option");
-        optDiv.innerText = opt;
-
-        optDiv.onclick = () => {
-          userAnswers[index] = i;
-          const allOptions = block.querySelectorAll(".option");
-          allOptions.forEach(o => o.classList.remove("selected"));
-          optDiv.classList.add("selected");
-        };
-
-        block.appendChild(optDiv);
-      });
-
-      const explanation = document.createElement("div");
-      explanation.classList.add("explanation");
-      explanation.style.display = "none";
-      explanation.id = `explanation-${index}`;
-      explanation.innerText = q.explanation;
-
-      block.appendChild(explanation);
-      quizContainer.appendChild(block);
-    });
-  }
-
-  function submitQuiz() {
-    if (userAnswers.includes(null)) {
-      alert("Silakan jawab semua soal terlebih dahulu.");
-      return;
-    }
-
-    let score = 0;
-    const quizBlocks = document.querySelectorAll(".question-block");
-
-    questions.forEach((q, i) => {
-      const block = quizBlocks[i];
-      const options = block.querySelectorAll(".option");
-
-      options.forEach((opt, j) => {
-        opt.classList.remove("selected");
-        if (j === q.answer) {
-          opt.classList.add("correct");
-        } else if (userAnswers[i] === j) {
-          opt.classList.add("incorrect");
+      inputs.forEach(input => {
+        input.disabled = true;
+        if (input.checked) {
+          dipilih = true;
+          const label = input.parentElement;
+          if (input.value === jawabanBenar) {
+            label.classList.add("benar");
+            benar++;
+          } else {
+            label.classList.add("salah");
+          }
         }
       });
 
-      if (userAnswers[i] === q.answer) score += 10;
+      if (!dipilih) {
+        alert("Silakan pilih jawaban terlebih dahulu!");
+        return;
+      }
 
-      const explanationDiv = document.getElementById(`explanation-${i}`);
-      explanationDiv.style.display = "block";
-    });
+      jawabanDiv.style.display = "block";
+      button.disabled = true;
 
-    document.getElementById("scoreBoard").innerText = `Skor Anda: ${score} / ${questions.length * 10}`;
-    document.getElementById("submitBtn").style.display = "none";
-  }
-
-  renderQuiz();
-</script>
+      if (document.querySelectorAll("button:enabled").length === 0) {
+        // Semua soal sudah dijawab
+        document.getElementById("skor").innerText = `Skor Anda: ${benar} / ${total}`;
+      }
+    }
+  </script>
 
 </body>
 </html>
