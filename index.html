@@ -66,7 +66,19 @@
         max-width: 60%;
         height: auto;
         border-radius: 8px;
-        border: 3px solid #0d1b2a; /* bingkai biru dongker */
+        border: 3px solid #0d1b2a;
+        display: block;
+        margin: 0 auto;
+    }
+    .toggle-button {
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        background-color: #0d1b2a;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
     }
     .video-container {
         text-align: center;
@@ -152,9 +164,9 @@
             <p><strong>a). Bilangan bulat positif (Bilangan Asli):</strong> Bilangan bulat positif atau bisa disebut sebagai bilangan asli, adalah himpunan bilangan bulat yang bernilai positif. Bilangan asli dilambangkan dengan N yang memiliki kepanjangan <i>Natural Numbers</i>. Contoh: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, …, dst.</p>
             <p><strong>b). Bilangan bulat negatif:</strong> Bilangan bulat negatif adalah himpunan bilangan bulat yang bernilai negatif. Contoh: …, -5, -4, -3, -2, -1.</p>
             <p><strong>c). Bilangan bulat nol:</strong> Bilangan nol adalah bilangan yang berarti kosong. Bilangan ini hanya terdiri dari satu bilangan, yaitu 0 (nol).</p>
-        <div class="image-container">
-        <button onclick="toggleImage('gambar1')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 1" src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/pembagian%20bilangan%20bulat%20pada%20garis%20bilangan.png" alt="Pembagian Bilangan Bulat pada Garis Bilangan">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/pembagian%20bilangan%20bulat%20pada%20garis%20bilangan.png" alt="Pembagian Bilangan Bulat pada Garis Bilangan">
             <p><a href="https://www.ruangguru.com/blog/pengertian-dan-contoh-bilangan-bulat">Sumber Gambar</a></p>
         </div>
         </div>
@@ -166,9 +178,9 @@
             <p>a). Jika a lebih besar dari b, maka bisa ditulis a > b</p>
             <p>b). Jika a lebih kecil dari b, maka bisa ditulis a < b</p>
             <p>c). Jika a sama dengan b, maka bisa ditulis a = b</p>
-        <div class="image-container">
-        <button onclick="toggleImage('gambar2')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 2" src="bulat1.png" alt="1">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="bulat1.png" alt="1">
             <p><a href="https://buku.kemdikbud.go.id/katalog/matematika-untuk-smp-kelas-vii">Sumber Gambar</a></p>
         </div>
         </div>
@@ -178,9 +190,9 @@
             <p>Mengurutkan bilangan bulat, berarti menuliskan bilangan bulat tersebut secara urut dari nilai terkecil ke nilai terbesar atau sebaliknya. Pada garis bilangan, semakin ke kanan letak suatu bilangan, maka nilainya akan semakin besar. Sebaliknya, semakin ke kiri letak suatu bilangan, nilainya akan semakin kecil.</p>
             <p>a). Urutan dari nilai terkecil ke nilai terbesar: ..., -5, -2, -3, 0, 2, 4, 6,...</p>
             <p>b). Urutan dari nilai terbesar ke nilai terkecil: ..., 9, , 5, 0, -1, -6, -9,...</p>
-        <div class="image-container">
-        <button onclick="toggleImage('gambar3')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 3" src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/bilangan%20bulat%20positif%20dan%20negatif.png" alt="positif negatif">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/bilangan%20bulat%20positif%20dan%20negatif.png" alt="positif negatif">
             <p><a href="https://www.ruangguru.com/blog/pengertian-dan-contoh-bilangan-bulat">Sumber Gambar</a></p>
         </div>
         </div>
@@ -201,9 +213,9 @@
         <p>-3, 8, 13, -15, 1</p>
         <p><strong>Jawaban:</strong> -15, -3, 1, 8, 13</p>
         <p><strong>Pembahasan:</strong> Untuk memudahkan menjawab soal di atas, kamu harus ingat kalo bilangan positif nilainya selalu lebih besar dari bilangan negatif. Kamu bisa buat garis bilangannya supaya tidak bingung.</p>
-        <div class="image-container">
-        <button onclick="toggleImage('gambar4')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 4" src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/bilangan%20bulat.jpg" alt="garis bilangan">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/bilangan%20bulat.jpg" alt="garis bilangan">
             <p><a href="https://cdn-web.ruangguru.com/landing-pages/assets/hs/bilangan%20bulat.jpg">Sumber Gambar</a></p>
         </div>
         <p>Setelah membuat garis bilangan, kita bisa menandai setiap angka pada soal di garis bilangannya. Lalu tinggal kita urutkan dari angka yang paling kiri. Jadi, urutan bilangan bulat dari yang terkecil ke yang terbesarnya adalah -15, -3, 1, 8, 13.</p>
@@ -219,9 +231,9 @@
         <p><strong>A. Pengertian</strong></p>
             <hr>
             <p>Bentuk desimal adalah suatu bentuk pecahan dengan penyebut khusus, seperti 10<sup>1</sup>, 10<sup>2</sup>, dan seterusnya (10 pangkat bilangan bulat positif). Cara penulisan bentuk desimal menggunakan tanda koma sebagai pemisah antara bilangan bulat dengan pecahan.</p>
-        <div class="image-container">
-        <button onclick="toggleImage('gambar5')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 5" src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/Jenis-Jenis%20Pecahan%20-%20Matematika%207-16-1.jpg" alt="Gambar Bilangan Desimal">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/Jenis-Jenis%20Pecahan%20-%20Matematika%207-16-1.jpg" alt="Gambar Bilangan Desimal">
             <p><a href="https://cdn-web.ruangguru.com/landing-pages/assets/hs/Jenis-Jenis%20Pecahan%20-%20Matematika%207-16-1.jpg">Sumber Gambar</a></p>
         </div>
         </div>
@@ -239,9 +251,9 @@
             <hr>
             <p>Ubah pecahan berikut ke dalam bentuk desimal: <strong><sup>4</sup>&frasl;<sub>7</sub></strong></p>
             <p>Kita bisa menggunakan cara bersusun seperti ini</p>
-        <div class="image-container">
-        <button onclick="toggleImage('gambar6')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 6" src="desimal.jpg" alt="Gambar Bilangan Desimal">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="desimal.jpg" alt="Gambar Bilangan Desimal">
             <p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0dt0Up53Yo7zc0O5PTuzPknpbC7A4EC_eIdsOC0m12GJEEMeYByWxrCZpn_rlyyHgLsSQj4PzpfhV1Q0yhRYGkCCMHnW_sNG2TtYAShpzUdMiM9JmwDijF3fJEvdE5Hr4nHswXlR-YXu3ZjKCgxVZCf7gqC_Yewn9492qZ4gOBKIgkY-SNIpchUXhIA/s16000/4%20per%207%20menjadi%20desimal.webp">Sumber Gambar</a></p>
         </div>
             <p>Jadi, jawabannya adalah 0,57.</p>
@@ -256,9 +268,9 @@
             <p>2. Ubahlah <strong><sup>3</sup>&frasl;<sub>4</sub></strong> kedalam bentuk desimal!</p>
             <p><strong>Jawaban:</strong> 0,75</p>
             <p><strong>Pembahasan:</strong> Kita dapat menggunakan cara bersusun</p>
-        <div class="image-container">
-            <button onclick="toggleImage('gambar7')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 7"  src="https://cdn.grid.id/crop/0x0:0x0/700x0/photo/2020/07/19/2394169984.png" alt="garis bilangan">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="https://cdn.grid.id/crop/0x0:0x0/700x0/photo/2020/07/19/2394169984.png" alt="garis bilangan">
             <p><a href="https://cdn.grid.id/crop/0x0:0x0/700x0/photo/2020/07/19/2394169984.png">Sumber Gambar</a></p>
         </div>
             <p>Sehingga ditemukan jawabannya adalah 0,75.</p>
@@ -274,9 +286,9 @@
         <p><strong>A. Pengertian</strong></p>
             <hr>
             <p>Bilangan pecahan adalah bilangan yang berbentuk <sup>a</sup>&frasl;<sub>b</sub>, di mana a adalah pembilang (angka di atas) dan b adalah penyebut (angka di bawah).</p>
-        <div class="image-container">
-        <button onclick="toggleImage('gambar8')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 8" src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/Jenis-Jenis%20Pecahan%20-%20Matematika%207-03-1.jpg" alt="Ilustrasi Bilangan Pecahan">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/Jenis-Jenis%20Pecahan%20-%20Matematika%207-03-1.jpg" alt="Ilustrasi Bilangan Pecahan">
             <p><a href="https://cdn-web.ruangguru.com/landing-pages/assets/hs/Jenis-Jenis%20Pecahan%20-%20Matematika%207-03-1.jpg">Sumber Gambar</a></p>
         </div>
         </div>
@@ -285,9 +297,9 @@
             <hr>
             <p><strong>a). Pecahan biasa:</strong> <sup>1</sup>&frasl;<sub>2</sub>, <sup>2</sup>&frasl;<sub>3</sub>, <sup>5</sup>&frasl;<sub>8</sub>, <sup>9</sup>&frasl;<sub>4</sub>, <sup>15</sup>&frasl;<sub>6</sub>, dsb.</p>
             <p><strong>b). Pecahan campuran:</strong> 1 <sup>1</sup>&frasl;<sub>2</sub>, 3 <sup>2</sup>&frasl;<sub>5</sub>, 5 <sup>4</sup>&frasl;<sub>9</sub>, 13 <sup>2</sup>&frasl;<sub>3</sub>, 23 <sup>5</sup>&frasl;<sub>8</sub>, dsb.</p>
-        <div class="image-container">
-        <button onclick="toggleImage('gambar9')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 9" src="https://images.twinkl.co.uk/tw1n/image/private/t_630/image_repo/59/ba/id-m-1685548884-kartu-pencocokan-pecahan_ver_1.png" alt="Ilustrasi Bilangan Pecahan">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="https://images.twinkl.co.uk/tw1n/image/private/t_630/image_repo/59/ba/id-m-1685548884-kartu-pencocokan-pecahan_ver_1.png" alt="Ilustrasi Bilangan Pecahan">
             <p><a href="https://images.twinkl.co.uk/tw1n/image/private/t_630/image_repo/59/ba/id-m-1685548884-kartu-pencocokan-pecahan_ver_1.png">Sumber Gambar</a></p>
         </div>
         </div>
@@ -295,15 +307,15 @@
         <p><strong>C. Mengubah Pecahan Biasa ke Pecahan Campuran</strong></p>
             <hr>
             <p>Pembilang dibentuk menjadi kelipatan penyebut, dan ditambahkan sisanya.</p>
-        <div class="image-container">
-        <button onclick="toggleImage('gambar10')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 10" src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/contoh%20bilangan%20desimal%201.jpg" alt="Ilustrasi Bilangan Pecahan">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/contoh%20bilangan%20desimal%201.jpg" alt="Ilustrasi Bilangan Pecahan">
             <p><a href="https://cdn-web.ruangguru.com/landing-pages/assets/hs/contoh%20bilangan%20desimal%201.jpg">Sumber Gambar</a></p>
         </div>
             <p>atau, bisa juga dengan cara pembagian bersusun, seperti ini:</p>
-        <div class="image-container">
-        <button onclick="toggleImage('gambar11')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 11" src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/Rumus%20titipan%20hani-01.png" alt="Ilustrasi Bilangan Pecahan">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/Rumus%20titipan%20hani-01.png" alt="Ilustrasi Bilangan Pecahan">
             <p><a href="https://cdn-web.ruangguru.com/landing-pages/assets/hs/Rumus%20titipan%20hani-01.png">Sumber Gambar</a></p>
         </div>
         </div>
@@ -311,8 +323,9 @@
         <p><strong>D. Mengubah Pecahan Campuran ke Pecahan Biasa</strong></p>
             <hr>
             <p>Pembilang dibentuk dari bilangan bulat pada pecahan campuran yang dikalikan dengan penyebut, lalu ditambahkan pembilang pada pecahan campuran.</p>
-            <div class="image-container">
-            <img src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/contoh%20bilangan%20desimal%202.jpg" alt="Ilustrasi Bilangan Pecahan">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/contoh%20bilangan%20desimal%202.jpg" alt="Ilustrasi Bilangan Pecahan">
             <p><a href="https://cdn-web.ruangguru.com/landing-pages/assets/hs/contoh%20bilangan%20desimal%202.jpg">Sumber Gambar</a></p>
         </div>
         </div>
@@ -320,9 +333,9 @@
         <p><strong>E. Mengubah Bentuk Desimal ke Bentuk Pecahan</strong></p>
             <hr>
             <p>Mengubah penyebut pecahan menjadi 10, 100, 1000, dst sesuai banyaknya angka di belakang koma seperti pada gambar berikut:</p>
-        <div class="image-container">
-        <button onclick="toggleImage('gambar12')">Tampilkan Gambar</button><br><br>
-            <img id="gambar 12" src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/cara%20mengubah%20desimal%20ke%20pecahan%20biasa.png" alt="Ilustrasi Bilangan Pecahan">
+      <div class="image-container">
+        <button class="toggle-button" onclick="toggleImage(this)">Tampilkan Gambar</button>
+        <img src="https://cdn-web.ruangguru.com/landing-pages/assets/hs/cara%20mengubah%20desimal%20ke%20pecahan%20biasa.png" alt="Ilustrasi Bilangan Pecahan">
             <p><a href="https://cdn-web.ruangguru.com/landing-pages/assets/hs/cara%20mengubah%20desimal%20ke%20pecahan%20biasa.png">Sumber Gambar</a></p>
         </div>
         </div>
@@ -376,14 +389,14 @@
 </footer>
 
 <script>
-function toggleImage(id) {
-    const img = document.getElementById(id);
+  function toggleImage(button) {
+    const img = button.nextElementSibling;
     if (img.style.display === "none") {
-        img.style.display = "block";
+      img.style.display = "block";
     } else {
-        img.style.display = "none";
+      img.style.display = "none";
     }
-}
+  }
 </script>
 
 </body>
