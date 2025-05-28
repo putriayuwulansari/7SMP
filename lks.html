@@ -305,7 +305,23 @@ body {
 
   <script>
     function toggleJawaban(btn) {
-      const jawab = btn.nextElementSibling;
+      const soalDiv = btn.parentElement;
+      const selected = soalDiv.querySelector('input[type="radio"]:checked');
+      const kunciJawaban = soalDiv.querySelector(".jawaban p").textContent.trim().replace("Jawaban: ", "");
+
+      if (selected) {
+        const pilihanText = selected.parentElement.textContent.trim();
+        if (pilihanText === kunciJawaban) {
+          alert("Jawaban Anda BENAR!");
+        } else {
+          alert("Jawaban Anda SALAH. Jawaban benar adalah: " + kunciJawaban);
+        }
+      } else {
+        alert("Silakan pilih salah satu jawaban terlebih dahulu.");
+        return;
+      }
+
+      const jawab = soalDiv.querySelector('.jawaban');
       jawab.style.display = jawab.style.display === 'block' ? 'none' : 'block';
     }
   </script>
