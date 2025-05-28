@@ -333,6 +333,12 @@ body {
         jawabanDiv.style.display = "block";
         benar++;
 
+     if (document.querySelectorAll('.soal[data-terjawab="false"]').length === 0) {
+        const skorBox = document.getElementById("skor");
+        skorBox.innerText = `Skor Anda: ${benar} / ${total}`;
+        skorBox.style.display = "block";
+        }
+ // Tampilkan skor jika semua soal sudah benar
         if (document.querySelectorAll('.soal[data-terjawab="false"]').length === 0) {
           document.getElementById("skor").innerText = `Skor Anda: ${benar} / ${total}`;
         }
