@@ -275,9 +275,9 @@ body {
     <p><strong>Soal Pilihan Ganda 10</strong></p>
     <p>Jika 3/5 dari suatu bilangan adalah 24, maka bilangan itu adalah...</p>
     <div class="pilihan">
-      <label><input type="radio" name="pg10" value="a"> a. 30</label><br>
-      <label><input type="radio" name="pg10" value="b"> b. 36</label><br>
-      <label><input type="radio" name="pg10" value="c"> c. 40</label><br>
+      <label><input type="radio" name="pg10" value="a"> a. 30</label>
+      <label><input type="radio" name="pg10" value="b"> b. 36</label>
+      <label><input type="radio" name="pg10" value="c"> c. 40</label>
       <label><input type="radio" name="pg10" value="d"> d. 45</label>
     </div>
     <button onclick="cekJawaban(this)">Cek Jawaban</button>
@@ -343,69 +343,6 @@ body {
     }
   </script>
 
-  <div class="soal">
-    <h2>Soal Esai</h2>
-
-    <div class="esay">
-      <p>1. Jelaskan bagaimana cara menjumlahkan pecahan dengan penyebut berbeda, dan berikan contohnya!</p>
-      <textarea placeholder="Ketik jawaban Anda di sini..."></textarea>
-      <button onclick="toggleJawaban(this)">Cek Jawaban</button>
-      <div class="jawaban">
-        <p><strong>Jawaban:</strong> Samakan penyebut terlebih dahulu, lalu jumlahkan pembilangnya. Contoh: 1/3 + 1/4 = 4/12 + 3/12 = 7/12</p>
-        <p><strong>Pembahasan:</strong> Penyebut berbeda (3 dan 4), KPK adalah 12. Ubah pecahan ke penyebut 12, lalu jumlahkan pembilangnya.</p>
-      </div>
-    </div>
-
-    <div class="esay">
-      <p>2. Konversikan 0,875 ke bentuk pecahan paling sederhana dan jelaskan caranya.</p>
-      <textarea placeholder="Ketik jawaban Anda di sini..."></textarea>
-      <button onclick="toggleJawaban(this)">Cek Jawaban</button>
-      <div class="jawaban">
-        <p><strong>Jawaban:</strong> 0,875 = 7/8</p>
-        <p><strong>Pembahasan:</strong> 0,875 = 875/1000. Sederhanakan dengan membagi pembilang dan penyebut dengan 125: 875 ÷ 125 = 7, 1000 ÷ 125 = 8</p>
-      </div>
-    </div>
-
-    <div class="esay">
-      <p>3. Sebutkan lima bilangan bulat negatif dan nyatakan urutannya dari terbesar ke terkecil.</p>
-      <textarea placeholder="Ketik jawaban Anda di sini..."></textarea>
-      <button onclick="toggleJawaban(this)">Cek Jawaban</button>
-      <div class="jawaban">
-        <p><strong>Jawaban:</strong> -1, -2, -3, -4, -5</p>
-        <p><strong>Pembahasan:</strong> Bilangan bulat negatif semakin kecil jika nilainya makin jauh dari nol. Maka urutan terbesar ke terkecil adalah -1 sampai -5.</p>
-      </div>
-    </div>
-
-    <div class="esay">
-      <p>4. Selesaikan operasi bilangan bulat berikut: (-6) + 4 - (-2) = ?</p>
-      <textarea placeholder="Ketik jawaban Anda di sini..."></textarea>
-      <button onclick="toggleJawaban(this)">Cek Jawaban</button>
-      <div class="jawaban">
-        <p><strong>Jawaban:</strong> 0</p>
-        <p><strong>Pembahasan:</strong> (-6) + 4 = -2; lalu -2 - (-2) = -2 + 2 = 0</p>
-      </div>
-    </div>
-
-    <div class="esay">
-      <p>5. Berikan satu contoh soal konversi dari bilangan desimal ke pecahan dan jawabannya!</p>
-      <textarea placeholder="Ketik jawaban Anda di sini..."></textarea>
-      <button onclick="toggleJawaban(this)">Cek Jawaban</button>
-      <div class="jawaban">
-        <p><strong>Jawaban:</strong> 0,6 = 3/5</p>
-        <p><strong>Pembahasan:</strong> 0,6 = 6/10, disederhanakan dengan membagi 2: 6 ÷ 2 = 3, 10 ÷ 2 = 5</p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function toggleJawaban(btn) {
-      const jawab = btn.nextElementSibling;
-      jawab.style.display = jawab.style.display === 'block' ? 'none' : 'block';
-    }
-  </script>
-
-<div class="scoreboard" id="skor"></div>
-    
   <footer>
     @ 2025 7 SMP Media Pembelajaran Matematika
   </footer>
