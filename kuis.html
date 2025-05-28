@@ -155,7 +155,7 @@ body {
     
   <div class="soal" data-jawaban="c">
     <p><strong>Soal 4</strong></p>
-    <p>Hasil dari <sup>2</sup>&frasl;<sub>5</sub> × <sup>3</sup>&frasl;<sub>5</sub> adalah...</p>
+    <p>Hasil dari <sup>2</sup>&frasl;<sub>5</sub> × <sup>3</sup>&frasl;<sub>4</sub> adalah...</p>
     <div class="pilihan">
       <label><input type="radio" name="pg4" value="a"> a. <sup>6</sup>&frasl;<sub>9</sub></label>
       <label><input type="radio" name="pg4" value="b"> b. <sup>5</sup>&frasl;<sub>9</sub></label>
@@ -250,7 +250,7 @@ body {
   </div>
     
   <div class="soal" data-jawaban="c">
-    <p><strong>Soal Pilihan Ganda 10</strong></p>
+    <p><strong>Soal 10</strong></p>
     <p>Jika <sup>3</sup>&frasl;<sub>5</sub> dari suatu bilangan adalah 24, maka bilangan itu adalah...</p>
     <div class="pilihan">
       <label><input type="radio" name="pg10" value="a"> a. 30</label>
@@ -292,15 +292,6 @@ body {
         button.disabled = true;
         jawabanDiv.style.display = "block";
         benar++;
-     if (document.querySelectorAll('.soal[data-terjawab="false"]').length === 0) {
-        const skorBox = document.getElementById("skor");
-        skorBox.innerText = `Skor Anda: ${benar} / ${total}`;
-        skorBox.style.display = "block";
-        }
- // Tampilkan skor jika semua soal sudah benar
-        if (document.querySelectorAll('.soal[data-terjawab="false"]').length === 0) {
-          document.getElementById("skor").innerText = `Skor Anda: ${benar} / ${total}`;
-        }
       } else {
         label.classList.add("salah");
         jawabanDipilih.checked = false; // reset jawaban salah
