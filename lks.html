@@ -134,7 +134,6 @@ body {
       <p><strong>Karena penyebutnya sama, cukup jumlahkan pembilang: 3+2 = 5 → 5/4</strong></p>
     </div>
   </div>
-  <div class="scoreboard" id="skor"></div>
 
   <div class="soal" data-jawaban="b">
     <p><strong>Soal Pilihan Ganda 1</strong></p>
@@ -151,7 +150,6 @@ body {
       <strong><p>Karena penyebutnya sama, cukup jumlahkan pembilang: 3+2 = 5 → 5/4</strong></p>
     </div>
   </div>
-  <div class="scoreboard" id="skor"></div>
 
   <div class="soal" data-jawaban="c">
     <p><strong>Soal Pilihan Ganda 2</strong></p>
@@ -168,7 +166,6 @@ body {
       <strong><p>0.75 + 0.5 = 1.25</strong></p>
     </div>
   </div>
-  <div class="scoreboard" id="skor"></div>
 
   <div class="soal" data-jawaban="c">
     <p><strong>Soal Pilihan Ganda 3</strong></p>
@@ -185,7 +182,6 @@ body {
       <strong><p>Bilangan: -5, -4, -3, -2, -1, 0, 1, 2, 3 → Total 9 bilangan</strong></p>
     </div>
   </div>
-  <div class="scoreboard" id="skor"></div>
 
   <div class="soal" data-jawaban="c">
     <p><strong>Soal Pilihan Ganda 4</strong></p>
@@ -202,7 +198,6 @@ body {
       <strong><p>2/5 × 3/4 = (2×3)/(5×4) = 6/20</strong></p>
     </div>
   </div>
-  <div class="scoreboard" id="skor"></div>
 
   <div class="soal" data-jawaban="b">
     <p><strong>Soal Pilihan Ganda 5</strong></p>
@@ -219,8 +214,7 @@ body {
       <strong><p>3 dibagi 10 = 0.3</strong></p>
     </div>
   </div>
-  <div class="scoreboard" id="skor"></div>
-
+    
   <div class="soal" data-jawaban="b">
     <p><strong>Soal Pilihan Ganda 6</strong></p>
     <p>6. 7/2 dalam bentuk desimal adalah...</p>
@@ -236,7 +230,6 @@ body {
       <strong><p>7 dibagi 2 = 3.5</strong></p>
     </div>
   </div>
-  <div class="scoreboard" id="skor"></div>
 
   <div class="soal" data-jawaban="c">
     <p><strong>Soal Pilihan Ganda 7</strong></p>
@@ -253,7 +246,6 @@ body {
       <strong><p>Nilai mutlak dari -8 adalah 8</strong></p>
     </div>
   </div>
-  <div class="scoreboard" id="skor"></div>
 
   <div class="soal" data-jawaban="b">
     <p><strong>Soal Pilihan Ganda 8</strong></p>
@@ -270,8 +262,7 @@ body {
       <strong><p>-3 adalah bilangan bulat dan bernilai negatif</strong></p>
     </div>
   </div>
-  <div class="scoreboard" id="skor"></div>
-
+    
   <div class="soal" data-jawaban="b">
     <p><strong>Soal Pilihan Ganda 9</strong></p>
     <p>9. Urutan bilangan dari kecil ke besar: 0.6, 1/2, 0.75</p>
@@ -287,7 +278,6 @@ body {
       <strong><p>1/2 = 0.5, urutan dari kecil: 0.5, 0.6, 0.75</strong></p>
     </div>
   </div>
-  <div class="scoreboard" id="skor"></div>
 
   <div class="soal" data-jawaban="c">
     <p><strong>Soal Pilihan Ganda 10</strong></p>
@@ -306,36 +296,48 @@ body {
   </div>
   <div class="scoreboard" id="skor"></div>
 
-<script>
-    let total = 1; // jumlah total soal
+  <script>
+    let total = 10; // total jumlah soal
     let benar = 0;
+
     function cekJawaban(button) {
       const soal = button.closest(".soal");
-      const jawabanBenar = soal.getAttribute("data-jawaban");
+      const kunci = soal.getAttribute("data-jawaban");
       const inputs = soal.querySelectorAll("input[type=radio]");
       const jawabanDiv = soal.querySelector(".jawaban");
+
       let dipilih = false;
+      let jawabanBenar = false;
+
       inputs.forEach(input => {
         input.disabled = true;
         if (input.checked) {
           dipilih = true;
           const label = input.parentElement;
-          if (input.value === jawabanBenar) {
+          if (input.value === kunci) {
             label.classList.add("benar");
+            jawabanBenar = true;
             benar++;
           } else {
             label.classList.add("salah");
           }
         }
       });
+
       if (!dipilih) {
         alert("Silakan pilih jawaban terlebih dahulu!");
+        inputs.forEach(input => input.disabled = false); // biarkan bisa pilih ulang
         return;
       }
-      jawabanDiv.style.display = "block";
+
+      if (jawabanBenar) {
+        jawabanDiv.style.display = "block";
+      }
+
       button.disabled = true;
+
+      // Tampilkan skor setelah semua soal dijawab
       if (document.querySelectorAll("button:enabled").length === 0) {
-        // Semua soal sudah dijawab
         document.getElementById("skor").innerText = `Skor Anda: ${benar} / ${total}`;
       }
     }
