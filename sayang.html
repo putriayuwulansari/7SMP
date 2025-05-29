@@ -25,12 +25,9 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
-    .jawaban, .penjelasan {
+    .jawaban {
       display: none;
       margin-top: 10px;
-      padding: 10px;
-      background-color: #f0f9ff;
-      border-left: 4px solid #0a1f44;
     }
 
     .benar {
@@ -59,6 +56,18 @@
       color: #0a1f44;
       margin-top: 20px;
     }
+
+    #kunci {
+      display: none;
+      margin-top: 30px;
+      padding: 15px;
+      border-top: 2px solid #ccc;
+      background-color: #f9f9f9;
+    }
+
+    #kunci h3 {
+      color: #0a1f44;
+    }
   </style>
 </head>
 <body>
@@ -76,7 +85,6 @@
       <label><input type="radio" name="soal1" value="d"> d. Topografis</label>
 
       <div class="jawaban" id="jawaban1"></div>
-      <div class="penjelasan" id="penjelasan1">Letak geografis adalah posisi suatu wilayah berdasarkan posisi relatif terhadap wilayah lain, seperti benua dan samudra.</div>
     </div>
 
     <!-- Soal 2 -->
@@ -88,7 +96,6 @@
       <label><input type="radio" name="soal2" value="d"> d. Banyak gunung api aktif</label>
 
       <div class="jawaban" id="jawaban2"></div>
-      <div class="penjelasan" id="penjelasan2">Karena terletak strategis antara dua benua dan samudra, Indonesia menjadi jalur perdagangan internasional penting.</div>
     </div>
 
     <!-- Soal 3 (esai) -->
@@ -97,15 +104,21 @@
       <textarea name="soal3" rows="4" cols="60" placeholder="Tulis jawabanmu di sini..."></textarea>
 
       <div class="jawaban" id="jawaban3"></div>
-      <div class="penjelasan" id="penjelasan3">
-        Karena Indonesia terdiri dari ribuan pulau, banyak suku bangsa, bahasa daerah, dan adat istiadat yang berbeda. Faktor geografis, sejarah, dan interaksi antarsuku memperkaya keberagaman budaya.
-      </div>
     </div>
 
     <button type="button" onclick="cekJawaban()">Submit Jawaban</button>
   </form>
 
   <div id="skor"></div>
+
+  <div id="kunci">
+    <h3>Kunci Jawaban</h3>
+    <ol>
+      <li>c. Geografis</li>
+      <li>c. Menjadi jalur perdagangan internasional</li>
+      <li>(Esai bebas, nilai jika masuk akal dan lengkap)</li>
+    </ol>
+  </div>
 
   <script>
     function cekJawaban() {
@@ -116,7 +129,6 @@
       const j1 = document.getElementById("jawaban1");
       if (jawaban1) {
         j1.style.display = "block";
-        document.getElementById("penjelasan1").style.display = "block";
         if (jawaban1.value === "c") {
           j1.innerHTML = "<span class='benar'>✅ Jawabanmu benar</span>";
           poin += 10;
@@ -130,7 +142,6 @@
       const j2 = document.getElementById("jawaban2");
       if (jawaban2) {
         j2.style.display = "block";
-        document.getElementById("penjelasan2").style.display = "block";
         if (jawaban2.value === "c") {
           j2.innerHTML = "<span class='benar'>✅ Jawabanmu benar</span>";
           poin += 10;
@@ -143,16 +154,18 @@
       const esai = document.querySelector('textarea[name="soal3"]').value.trim();
       const j3 = document.getElementById("jawaban3");
       j3.style.display = "block";
-      document.getElementById("penjelasan3").style.display = "block";
       if (esai.length > 10) {
-        j3.innerHTML = "<span class='benar'>Jawabanmu:</span> " + esai;
+        j3.innerHTML = "<span class='benar'>✅ Jawabanmu dicatat</span>";
         poin += 10;
       } else {
-        j3.innerHTML = "<span class='salah'>Jawabanmu terlalu singkat atau kosong ❌</span>";
+        j3.innerHTML = "<span class='salah'>❌ Jawabanmu terlalu singkat atau kosong</span>";
       }
 
       // Skor
       document.getElementById("skor").innerText = "Total Skor: " + poin + " / 30";
+
+      // Tampilkan kunci
+      document.getElementById("kunci").style.display = "block";
     }
   </script>
 
