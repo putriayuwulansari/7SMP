@@ -202,6 +202,13 @@
 
   <div id="skor"></div>
 
+<div class="soal" id="skor-container">
+  <p><strong>Skor Kuis</strong></p>
+  <hr class="pembatas" />
+  <p id="skor-text">Klik tombol di bawah untuk melihat hasilmu!</p>
+  <button onclick="hitungSkor()">Lihat Skor</button>
+</div>
+
   <script>
   function cekJawaban() {
     let poin = 0;
@@ -220,16 +227,7 @@
     const inputs = document.querySelectorAll("input, textarea, button");
     inputs.forEach(i => i.disabled = true);
   }
-  </script>
 
-<div class="soal" id="skor-container">
-  <p><strong>Skor Kuis</strong></p>
-  <hr class="pembatas" />
-  <p id="skor-text">Klik tombol di bawah untuk melihat hasilmu!</p>
-  <button onclick="hitungSkor()">Lihat Skor</button>
-</div>
-
-<script>
   function cekJawaban(button) {
     const soalDiv = button.parentElement;
     const jawaban = soalDiv.getAttribute('data-jawaban');
