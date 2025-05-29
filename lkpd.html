@@ -225,21 +225,6 @@
     inputs.forEach(i => i.disabled = true);
   }
   function hitungSkor() {
-    const semuaSoal = document.querySelectorAll('.soal');
-    let benar = 0;
-    let total = 0;
-
-    semuaSoal.forEach(soal => {
-      const jawaban = soal.getAttribute('data-jawaban');
-      const radios = soal.querySelectorAll('input[type="radio"]');
-      radios.forEach(r => {
-        if (r.checked && r.value === jawaban) {
-          benar++;
-        }
-      });
-      total++;
-    });
-
     const skorPersen = Math.round((benar / (total - 1)) * 100); // dikurangi 1 karena skor-container juga .soal
     document.getElementById('skor-text').innerHTML = `Jawaban benar: ${benar} dari ${total - 1} soal.<br>Skor kamu: <strong>${skorPersen}%</strong>`;
   }
