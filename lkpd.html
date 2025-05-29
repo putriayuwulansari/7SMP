@@ -294,7 +294,7 @@
 </section>
 
 <section>
-<button type="button" onclick="cekJawaban(event)">Kirim Jawaban</button>
+    <button type="button" onclick="cekJawaban()" id="submitBtn">Submit Jawaban</button>
   </form>
 </section>
     
@@ -308,14 +308,9 @@
 </section>
     
 <script>
-  let totalSkor = 0;
-  let skorSudahDihitung = false;
+function cekJawaban() {
+let poin = 0;
 
-  document.getElementById("kuisForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    cekJawaban();
-  });
-  function cekJawaban() {
     // Logika penilaian
     const soal1 = document.querySelector('input[name="soal1"]:checked');
     const soal2 = document.querySelector('input[name="soal2"]:checked');
