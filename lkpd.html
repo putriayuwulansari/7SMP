@@ -202,6 +202,11 @@
   <hr class="pembatas" />
   <p id="skor-text">Klik tombol di bawah untuk melihat hasilmu!</p>
 <button id="btnSkor" onclick="tampilkanSkor()" style="display: none;">Tampilkan Skor</button>
+    <div id="menuSetelahSkor" style="display: none;">
+  <ul>
+    <li><a href="kuis.html">Kuis</a></li>
+  </ul>
+</div>
 </div>
 </section>
     
@@ -235,6 +240,9 @@
       document.getElementById("skor").innerText = "Total Skor: " + totalSkor + " / 30";
       document.getElementById("skor").style.display = "block";
       document.getElementById("btnSkor").disabled = true;
+    
+    // Tampilkan menu setelah skor
+    document.getElementById("menuSetelahSkor").style.display = "block";
     } else {
       alert("Silakan periksa jawaban dulu!");
     }
