@@ -157,6 +157,8 @@
   </div>
 </section>
 
+
+<form id="kuisForm">
     <!-- Soal 1 -->
 <section>
   <div class="content">
@@ -306,6 +308,7 @@
 </div>
 </div>
 </section>
+</form>
     
 <script>
   let totalSkor = 0;
@@ -324,11 +327,11 @@
     const soal8 = document.querySelector('input[name="soal8"]:checked');
     const soal9 = document.querySelector('input[name="soal9"]:checked');
     const soal10 = document.querySelector('input[name="soal10"]:checked');
-    const soal11 = document.querySelector('textarea[name="soal11"]:checked');
-    const soal12 = document.querySelector('textarea[name="soal12"]:checked');
-    const soal13 = document.querySelector('textarea[name="soal13"]:checked');
-    const soal14 = document.querySelector('textarea[name="soal14"]:checked');
-    const soal15 = document.querySelector('textarea[name="soal15"]:checked');
+    const soal11 = document.querySelector('textarea[name="soal11"].value.trim();
+    const soal12 = document.querySelector('textarea[name="soal12"].value.trim();
+    const soal13 = document.querySelector('textarea[name="soal13"].value.trim();
+    const soal14 = document.querySelector('textarea[name="soal14"].value.trim();
+    const soal15 = document.querySelector('textarea[name="soal15"].value.trim();
 
     if (soal1 && soal1.value === "c") totalSkor += 5;
     if (soal2 && soal2.value === "b") totalSkor += 5;
@@ -339,12 +342,12 @@
     if (soal7 && soal7.value === "a") totalSkor += 5;
     if (soal8 && soal8.value === "d") totalSkor += 5;
     if (soal9 && soal9.value === "a") totalSkor += 5;
-    if (soal10 && soal10.value === "a") totalSkor += 10;
-    if (soal11 && soal11.value === "1") totalSkor += 10;
-    if (soal12 && soal12.value === "2") totalSkor += 10;
-    if (soal13 && soal13.value === "3") totalSkor += 10;
-    if (soal14 && soal14.value === "4") totalSkor += 10;
-    if (soal15 && soal15.value === "5") totalSkor += 10;
+    if (soal10 && soal10.value === "a") totalSkor += 5;
+    if (soal11.length > 10) totalSkor += 10;
+    if (soal12.length > 10) totalSkor += 10;
+    if (soal13.length > 10) totalSkor += 10;
+    if (soal14.length > 10) totalSkor += 10;
+    if (soal15.length > 10) totalSkor += 10;
 
     skorSudahDihitung = true;
 
