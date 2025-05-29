@@ -2,50 +2,103 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sembunyikan Tulisan</title>
+  <title>Sidebar Toggle</title>
   <style>
-    #konten {
-      padding: 15px;
-      background-color: #f9f9f9;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      margin-top: 10px;
-      display: none; /* Mulai tersembunyi */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
     }
 
-    button {
-      padding: 10px 20px;
-      background-color: #0a1f44;
+    /* Tombol buka sidebar */
+    .open-btn {
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #001f3f; /* biru dongker */
       color: white;
+      padding: 10px 15px;
       border: none;
-      border-radius: 6px;
+      margin: 10px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #001f3f;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #ffb6c1; /* soft pink */
+      color: black;
+    }
+
+    /* Tombol tutup sidebar */
+    .sidebar .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 30px;
       cursor: pointer;
     }
 
-    button:hover {
-      background-color: #173e86;
+    .content {
+      padding: 20px;
     }
   </style>
 </head>
 <body>
 
-  <h2>Contoh Sembunyikan / Tampilkan Tulisan</h2>
+  <!-- Tombol buka -->
+  <button class="open-btn" onclick="openSidebar()">☰ Menu</button>
 
-  <button onclick="toggleKonten()">Tampilkan / Sembunyikan</button>
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">×</a>
+    <a href="#beranda">Beranda</a>
+    <a href="#profil">Profil</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#kontak">Kontak</a>
+  </div>
 
-  <div id="konten">
-    <p>Ini adalah tulisan yang bisa disembunyikan atau ditampilkan menggunakan JavaScript.</p>
+  <!-- Isi konten -->
+  <div class="content">
+    <h1 id="beranda">Beranda</h1>
+    <p>Selamat datang di website kami.</p>
+
+    <h1 id="profil">Profil</h1>
+    <p>Ini adalah bagian profil.</p>
+
+    <h1 id="galeri">Galeri</h1>
+    <p>Beberapa foto akan tampil di sini.</p>
+
+    <h1 id="kontak">Kontak</h1>
+    <p>Hubungi kami di email@example.com</p>
   </div>
 
   <script>
-    function toggleKonten() {
-      const konten = document.getElementById('konten');
-      if (konten.style.display === 'none') {
-        konten.style.display = 'block';
-      } else {
-        konten.style.display = 'none';
-      }
+    function openSidebar() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeSidebar() {
+      document.getElementById("mySidebar").style.width = "0";
     }
   </script>
 
