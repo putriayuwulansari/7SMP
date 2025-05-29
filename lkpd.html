@@ -144,11 +144,11 @@
 
   <form id="kuisForm">
 
-  <!-- Identitas Peserta -->
+  <!-- Identitas Peserta Didik-->
 
 <section>
   <div class="content">
-    <p><strong>Identitas Peserta</strong></p>
+    <p><strong>Identitas Peserta Didik</strong></p>
 <hr style="border: 2px solid #0a1f44; border-radius: 2px; margin: 20px 0;">
     <label>Nama: <input type="text" name="nama" required></label><br><br>
     <label>No. Absen: <input type="text" name="nama" required></label><br><br>
@@ -209,10 +209,10 @@
     <!-- Soal 6 -->
     <div class="soal">
       <p><strong>6. Hasil dari -4 × (-6)=...</strong></p>
-      <label><input type="radio" name="soal2" value="a"> a. 0,4</label><br>
-      <label><input type="radio" name="soal2" value="b"> b. 2</label><br>
-      <label><input type="radio" name="soal2" value="c"> c. 4</label><br>
-      <label><input type="radio" name="soal2" value="d"> d. 5</label>
+      <label><input type="radio" name="soal2" value="a"> a. -24</label><br>
+      <label><input type="radio" name="soal2" value="b"> b. 24</label><br>
+      <label><input type="radio" name="soal2" value="c"> c. -10</label><br>
+      <label><input type="radio" name="soal2" value="d"> d. 10</label>
     </div>
 
     <!-- Soal 7 -->
@@ -330,15 +330,15 @@
     const soal14 = document.querySelector('textarea[name="soal14"]').value.trim();
     const soal15 = document.querySelector('textarea[name="soal15"]').value.trim();
 
-    if (soal1 && soal1.value === "c") totalSkor += 10;
-    if (soal2 && soal2.value === "b") totalSkor += 10;
-    if (soal3 && soal3.value === "a") totalSkor += 10;
-    if (soal4 && soal4.value === "c") totalSkor += 10;
-    if (soal5 && soal5.value === "a") totalSkor += 10;
-    if (soal6 && soal6.value === "b") totalSkor += 10;
-    if (soal7 && soal7.value === "a") totalSkor += 10;
-    if (soal8 && soal8.value === "d") totalSkor += 10;
-    if (soal9 && soal9.value === "a") totalSkor += 10;
+    if (soal1 && soal1.value === "c") totalSkor += 5;
+    if (soal2 && soal2.value === "b") totalSkor += 5;
+    if (soal3 && soal3.value === "a") totalSkor += 5;
+    if (soal4 && soal4.value === "c") totalSkor += 5;
+    if (soal5 && soal5.value === "a") totalSkor += 5;
+    if (soal6 && soal6.value === "b") totalSkor += 5;
+    if (soal7 && soal7.value === "a") totalSkor += 5;
+    if (soal8 && soal8.value === "d") totalSkor += 5;
+    if (soal9 && soal9.value === "a") totalSkor += 5;
     if (soal10 && soal10.value === "a") totalSkor += 10;
     if (soal11 && soal11.value === "1") totalSkor += 10;
     if (soal12 && soal12.value === "2") totalSkor += 10;
@@ -358,7 +358,7 @@
 
   function tampilkanSkor() {
     if (skorSudahDihitung) {
-      document.getElementById("skor").innerText = "Total Skor: " + totalSkor + " / 30";
+      document.getElementById("skor").innerText = "Total Skor: " + totalSkor + " / 100";
       document.getElementById("skor").style.display = "block";
       document.getElementById("btnSkor").disabled = true;
     } else {
