@@ -2,130 +2,157 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Soal Interaktif</title>
+  <title>Kuis IPS</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #fdfcff;
+      color: #0a0a0a;
+      max-width: 700px;
+      margin: 20px auto;
       padding: 20px;
+    }
+
+    h2 {
+      color: #0a1f44;
     }
 
     .soal {
-      margin-bottom: 30px;
-      padding: 20px;
-      border: 2px solid #ddd;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      transition: 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
-    .pilihan label {
-      display: block;
-      margin: 5px 0;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      padding: 5px;
-      border-radius: 5px;
-    }
-
-    .pilihan input[type="radio"] {
-      margin-right: 10px;
-    }
-
-    .jawaban {
+    .jawaban, .penjelasan {
       display: none;
       margin-top: 10px;
+      padding: 10px;
+      background-color: #f0f9ff;
+      border-left: 4px solid #0a1f44;
     }
 
     .benar {
-      background-color: #d4edda;
-      color: #155724;
+      color: green;
+      font-weight: bold;
     }
 
     .salah {
-      background-color: #f8d7da;
-      color: #721c24;
-    }
-
-    .scoreboard {
-      font-size: 20px;
-      margin-top: 20px;
+      color: red;
       font-weight: bold;
     }
 
     button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 5px;
-      background-color: #007bff;
+      background-color: #0a1f44;
       color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: 0.3s;
     }
 
-    button:hover {
-      background-color: #0056b3;
+    #skor {
+      font-weight: bold;
+      font-size: 18px;
+      color: #0a1f44;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <div class="soal" data-jawaban="b">
-    <p><strong>Soal Pilihan Ganda 1</strong></p>
-    <p>1. Hasil dari 3/4 + 2/4 adalah...</p>
-    <div class="pilihan">
-      <label><input type="radio" name="pg1" value="a"> a. 4/4</label>
-      <label><input type="radio" name="pg1" value="b"> b. 5/4</label>
-      <label><input type="radio" name="pg1" value="c"> c. 3/2</label>
-      <label><input type="radio" name="pg1" value="d"> d. 1</label>
-    </div>
-    <button onclick="cekJawaban(this)">Cek Jawaban</button>
-    <div class="jawaban">
-      <p><strong>Jawaban: b. 5/4</strong></p>
-      <p><strong>Karena penyebutnya sama, cukup jumlahkan pembilang: 3+2 = 5 → 5/4</strong></p>
-    </div>
-  </div>
+  <h2>Kuis IPS - Kelas 7</h2>
 
-  <div class="scoreboard" id="skor"></div>
+  <form id="kuisForm">
+
+    <!-- Soal 1 -->
+    <div class="soal">
+      <p><strong>1. Indonesia terletak di antara dua benua dan dua samudra. Hal ini menunjukkan letak...</strong></p>
+      <label><input type="radio" name="soal1" value="a"> a. Geologis</label><br>
+      <label><input type="radio" name="soal1" value="b"> b. Astronomis</label><br>
+      <label><input type="radio" name="soal1" value="c"> c. Geografis</label><br>
+      <label><input type="radio" name="soal1" value="d"> d. Topografis</label>
+
+      <div class="jawaban" id="jawaban1"></div>
+      <div class="penjelasan" id="penjelasan1">Letak geografis adalah posisi suatu wilayah berdasarkan posisi relatif terhadap wilayah lain, seperti benua dan samudra.</div>
+    </div>
+
+    <!-- Soal 2 -->
+    <div class="soal">
+      <p><strong>2. Salah satu dampak letak geografis Indonesia adalah...</strong></p>
+      <label><input type="radio" name="soal2" value="a"> a. Sering terjadi gempa bumi</label><br>
+      <label><input type="radio" name="soal2" value="b"> b. Berada di wilayah waktu GMT</label><br>
+      <label><input type="radio" name="soal2" value="c"> c. Menjadi jalur perdagangan internasional</label><br>
+      <label><input type="radio" name="soal2" value="d"> d. Banyak gunung api aktif</label>
+
+      <div class="jawaban" id="jawaban2"></div>
+      <div class="penjelasan" id="penjelasan2">Karena terletak strategis antara dua benua dan samudra, Indonesia menjadi jalur perdagangan internasional penting.</div>
+    </div>
+
+    <!-- Soal 3 (esai) -->
+    <div class="soal">
+      <p><strong>3. Jelaskan mengapa Indonesia memiliki banyak keragaman budaya!</strong></p>
+      <textarea name="soal3" rows="4" cols="60" placeholder="Tulis jawabanmu di sini..."></textarea>
+
+      <div class="jawaban" id="jawaban3"></div>
+      <div class="penjelasan" id="penjelasan3">
+        Karena Indonesia terdiri dari ribuan pulau, banyak suku bangsa, bahasa daerah, dan adat istiadat yang berbeda. Faktor geografis, sejarah, dan interaksi antarsuku memperkaya keberagaman budaya.
+      </div>
+    </div>
+
+    <button type="button" onclick="cekJawaban()">Submit Jawaban</button>
+  </form>
+
+  <div id="skor"></div>
 
   <script>
-    let total = 1; // jumlah total soal
-    let benar = 0;
+    function cekJawaban() {
+      let poin = 0;
 
-    function cekJawaban(button) {
-      const soal = button.closest(".soal");
-      const jawabanBenar = soal.getAttribute("data-jawaban");
-      const inputs = soal.querySelectorAll("input[type=radio]");
-      const jawabanDiv = soal.querySelector(".jawaban");
-
-      let dipilih = false;
-
-      inputs.forEach(input => {
-        input.disabled = true;
-        if (input.checked) {
-          dipilih = true;
-          const label = input.parentElement;
-          if (input.value === jawabanBenar) {
-            label.classList.add("benar");
-            benar++;
-          } else {
-            label.classList.add("salah");
-          }
+      // Soal 1
+      const jawaban1 = document.querySelector('input[name="soal1"]:checked');
+      const j1 = document.getElementById("jawaban1");
+      if (jawaban1) {
+        j1.style.display = "block";
+        document.getElementById("penjelasan1").style.display = "block";
+        if (jawaban1.value === "c") {
+          j1.innerHTML = "<span class='benar'>✅ Jawabanmu benar</span>";
+          poin += 10;
+        } else {
+          j1.innerHTML = "<span class='salah'>❌ Jawabanmu salah</span>";
         }
-      });
-
-      if (!dipilih) {
-        alert("Silakan pilih jawaban terlebih dahulu!");
-        return;
       }
 
-      jawabanDiv.style.display = "block";
-      button.disabled = true;
-
-      if (document.querySelectorAll("button:enabled").length === 0) {
-        // Semua soal sudah dijawab
-        document.getElementById("skor").innerText = `Skor Anda: ${benar} / ${total}`;
+      // Soal 2
+      const jawaban2 = document.querySelector('input[name="soal2"]:checked');
+      const j2 = document.getElementById("jawaban2");
+      if (jawaban2) {
+        j2.style.display = "block";
+        document.getElementById("penjelasan2").style.display = "block";
+        if (jawaban2.value === "c") {
+          j2.innerHTML = "<span class='benar'>✅ Jawabanmu benar</span>";
+          poin += 10;
+        } else {
+          j2.innerHTML = "<span class='salah'>❌ Jawabanmu salah</span>";
+        }
       }
+
+      // Soal 3 (esai)
+      const esai = document.querySelector('textarea[name="soal3"]').value.trim();
+      const j3 = document.getElementById("jawaban3");
+      j3.style.display = "block";
+      document.getElementById("penjelasan3").style.display = "block";
+      if (esai.length > 10) {
+        j3.innerHTML = "<span class='benar'>Jawabanmu:</span> " + esai;
+        poin += 10;
+      } else {
+        j3.innerHTML = "<span class='salah'>Jawabanmu terlalu singkat atau kosong ❌</span>";
+      }
+
+      // Skor
+      document.getElementById("skor").innerText = "Total Skor: " + poin + " / 30";
     }
   </script>
 
