@@ -23,17 +23,63 @@
         padding: 20px;
         text-align: center;
     }
-    nav {
-        background-color: #ffffff; /* putih */
-        padding: 10px;
-        text-align: center;
+
+    .open-btn {
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #ffffff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      margin: 10px;
     }
-    nav a {
-        color: #0d1b2a; /* biru dongker */
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: bold;
+
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #ffffff;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
     }
+
+    .sidebar a {
+      padding: 12px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #0d1b2a;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #ffb6c1;
+      color: black;
+    }
+
+    .sidebar .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* Responsif untuk layar kecil */
+    @media screen and (max-width: 600px) {
+      .sidebar a {
+        font-size: 16px;
+        padding: 10px 15px;
+      }
+
+      .open-btn {
+        font-size: 18px;
+        padding: 8px 12px;
+      }
     section {
         padding: 20px;
     }
@@ -143,14 +189,22 @@
   </div>
 </header>
 
-<nav>
+  <button class="open-btn" onclick="openSidebar()">☰ Menu</button>
+
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">×</a>
     <a href="#bulat">Bilangan Bulat</a>
     <a href="#desimal">Desimal</a>
     <a href="#pecahan">Pecahan</a>
-    <a href="#operasi">Operasi</a>
-</nav>
+    <a href="#penjumlahan">Penjumlahan dan Pengurangan</a>
+    <a href="#perkalian">Perkalian dan Pembagian</a>
+    <a href="#video">Video Pembelajaran</a>
+    <a href="#sumber">Sumber Belajar Tambahan</a>
+    <a href="#profil">Profile Anggota Pengembang</a>
+  </div>
 
-<section id="bulat">
+
+<section id="bulat">Bilangan Bulat>
     <div class="content">
         <h2>Bilangan Bulat</h2>
         <div class="kop-pembatas"></div>
