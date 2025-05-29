@@ -201,11 +201,8 @@
   <p><strong>Skor Kuis</strong></p>
   <hr class="pembatas" />
   <p id="skor-text">Klik tombol di bawah untuk melihat hasilmu!</p>
-<button id="btnSkor" onclick="tampilkanSkor()" style="display: none;">Tampilkan Skor</button>
-<!-- Tempat Menampilkan Skor -->
+<button id="btnSkor" onclick="tampilkanSkor()" style="display: fixed;">Tampilkan Skor</button>
 <p id="skor" style="display:none; font-weight:bold;"></p>
-
-<!-- Menu yang Muncul Setelah Skor Tampil -->
 <div id="menuSetelahSkor" style="display: none;">
   <ul>
     <li><a href="kuis.html">Kuis</a></li>
@@ -244,9 +241,7 @@
       document.getElementById("skor").innerText = "Total Skor: " + totalSkor + " / 30";
       document.getElementById("skor").style.display = "block";
       document.getElementById("btnSkor").disabled = true;
-    
-    // Tampilkan menu setelah skor
-    document.getElementById("menuSetelahSkor").style.display = "block";
+      document.getElementById("menuSetelahSkor").style.display = "block";
     } else {
       alert("Silakan periksa jawaban dulu!");
     }
