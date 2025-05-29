@@ -295,7 +295,6 @@
 
 <section>
   <button class="cek" onclick="cekJawaban()">Kirim Jawaban</button>
-  </form>
 </section>
     
 <section>
@@ -305,7 +304,6 @@
   <p id="skor-text">Klik tombol di bawah untuk melihat hasilmu!</p>
 <button id="btnSkor" onclick="tampilkanSkor()" style="display: fixed;">Tampilkan Skor</button>
 </div>
-</div>
 </section>
     
 <script>
@@ -313,8 +311,7 @@
   let skorSudahDihitung = false;
 
 function cekJawaban(event) {
-  event.preventDefault(); // ← Tambahkan ini
-  ...
+  event.preventDefault();
 }
     const soal1 = document.querySelector('input[name="soal1"]:checked');
     const soal2 = document.querySelector('input[name="soal2"]:checked');
@@ -359,7 +356,6 @@ if (soal15.includes("5") totalSkor += 10;
   }
   function tampilkanSkor() {
     if (skorSudahDihitung) {
-      document.getElementById("skor-text").innerText = "Skor total kamu: " + totalSkor;
       document.getElementById("skor").innerText = "Total Skor: " + totalSkor + " / 100";
       document.getElementById("skor").style.display = "block";
       document.getElementById("btnSkor").disabled = true;
