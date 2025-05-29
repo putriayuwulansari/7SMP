@@ -8,6 +8,10 @@
     body {
         font-family: 'Times New Roman', sans-serif;
         line-height: 1.6;
+        background-image: url('batik3.png');
+        background-repeat: repeat;
+        background-size: cover;
+        background-attachment: fixed;
         background-color: #f8cdd6; /* pink soft */
         color: #000000; /* hitam */
         margin: 0;
@@ -123,7 +127,8 @@
   <form id="kuisForm">
 
   <!-- Identitas Peserta -->
-  
+
+<section>
   <div class="content">
     <p><strong>Identitas Peserta</strong></p>
     <label>Nama: <input type="text" name="nama" required></label><br><br>
@@ -131,8 +136,10 @@
     <label>Kelas: <input type="text" name="nama" required></label><br><br>
     <label>Hari/Tanggal: <input type="text" name="nim" required></label>
   </div>
+</section>
 
     <!-- Soal 1 -->
+<section>
   <div class="content">
     <h2>Soal Pilihan Ganda</h2>
     <hr>
@@ -153,8 +160,10 @@
       <label><input type="radio" name="soal2" value="d"> d. Banyak gunung api aktif</label>
     </div>
   </div>
+</section>
     
     <!-- Soal 3 (esai) -->
+<section>
   <div class="content">
     <h2>Soal Esai</h2>
     <hr>
@@ -163,6 +172,7 @@
       <textarea name="soal3" rows="4" cols="60" placeholder="Tulis jawabanmu di sini..."></textarea>
     </div>
   </div>
+</section>
 
     <button type="button" onclick="cekJawaban()" id="submitBtn">Submit Jawaban</button>
   </form>
