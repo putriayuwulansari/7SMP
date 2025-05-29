@@ -97,13 +97,6 @@
       font-size: 18px;
       color: #0a1f44;
       margin-top: 20px;
-      background-color: #ffffff;
-      border: 0px solid #0d1b2a;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      text-align: center;
     }
     @media (max-width: 480px) {
       .form-container {
@@ -293,14 +286,12 @@
   </div>
 </section>
 
-<section></section>
+<section>
     <button type="button" onclick="cekJawaban()" id="submitBtn">Submit Jawaban</button>
-  </form>
 </section>
+</form>
 
-<div class="soal">
   <div id="skor"></div>
-</div>
 
   <script>
     function cekJawaban() {
@@ -338,7 +329,7 @@
     if (soal14.includes("4") poin += 10;
     if (soal15.includes("5") poin += 10;
 
-      document.getElementById("skor").innerText = "Total Skor: " + poin + " / 30";
+      document.getElementById("skor").innerText = "Total Skor: " + poin + " / 100";
 
       // Nonaktifkan semua input & tombol
       const inputs = document.querySelectorAll("input, textarea, button");
