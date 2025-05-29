@@ -25,21 +25,6 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
-    .jawaban {
-      display: none;
-      margin-top: 10px;
-    }
-
-    .benar {
-      color: green;
-      font-weight: bold;
-    }
-
-    .salah {
-      color: red;
-      font-weight: bold;
-    }
-
     button {
       background-color: #0a1f44;
       color: white;
@@ -50,6 +35,11 @@
       cursor: pointer;
     }
 
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
     #skor {
       font-weight: bold;
       font-size: 18px;
@@ -57,16 +47,9 @@
       margin-top: 20px;
     }
 
-    #kunci {
-      display: none;
-      margin-top: 30px;
-      padding: 15px;
-      border-top: 2px solid #ccc;
-      background-color: #f9f9f9;
-    }
-
-    #kunci h3 {
-      color: #0a1f44;
+    input:disabled,
+    textarea:disabled {
+      background-color: #eee;
     }
   </style>
 </head>
@@ -83,8 +66,6 @@
       <label><input type="radio" name="soal1" value="b"> b. Astronomis</label><br>
       <label><input type="radio" name="soal1" value="c"> c. Geografis</label><br>
       <label><input type="radio" name="soal1" value="d"> d. Topografis</label>
-
-      <div class="jawaban" id="jawaban1"></div>
     </div>
 
     <!-- Soal 2 -->
@@ -94,78 +75,36 @@
       <label><input type="radio" name="soal2" value="b"> b. Berada di wilayah waktu GMT</label><br>
       <label><input type="radio" name="soal2" value="c"> c. Menjadi jalur perdagangan internasional</label><br>
       <label><input type="radio" name="soal2" value="d"> d. Banyak gunung api aktif</label>
-
-      <div class="jawaban" id="jawaban2"></div>
     </div>
 
     <!-- Soal 3 (esai) -->
     <div class="soal">
       <p><strong>3. Jelaskan mengapa Indonesia memiliki banyak keragaman budaya!</strong></p>
       <textarea name="soal3" rows="4" cols="60" placeholder="Tulis jawabanmu di sini..."></textarea>
-
-      <div class="jawaban" id="jawaban3"></div>
     </div>
 
-    <button type="button" onclick="cekJawaban()">Submit Jawaban</button>
+    <button type="button" onclick="cekJawaban()" id="submitBtn">Submit Jawaban</button>
   </form>
 
   <div id="skor"></div>
-
-  <div id="kunci">
-    <h3>Kunci Jawaban</h3>
-    <ol>
-      <li>c. Geografis</li>
-      <li>c. Menjadi jalur perdagangan internasional</li>
-      <li>(Esai bebas, nilai jika masuk akal dan lengkap)</li>
-    </ol>
-  </div>
 
   <script>
     function cekJawaban() {
       let poin = 0;
 
-      // Soal 1
-      const jawaban1 = document.querySelector('input[name="soal1"]:checked');
-      const j1 = document.getElementById("jawaban1");
-      if (jawaban1) {
-        j1.style.display = "block";
-        if (jawaban1.value === "c") {
-          j1.innerHTML = "<span class='benar'>✅ Jawabanmu benar</span>";
-          poin += 10;
-        } else {
-          j1.innerHTML = "<span class='salah'>❌ Jawabanmu salah</span>";
-        }
-      }
+      const soal1 = document.querySelector('input[name="soal1"]:checked');
+      const soal2 = document.querySelector('input[name="soal2"]:checked');
+      const soal3 = document.querySelector('textarea[name="soal3"]').value.trim();
 
-      // Soal 2
-      const jawaban2 = document.querySelector('input[name="soal2"]:checked');
-      const j2 = document.getElementById("jawaban2");
-      if (jawaban2) {
-        j2.style.display = "block";
-        if (jawaban2.value === "c") {
-          j2.innerHTML = "<span class='benar'>✅ Jawabanmu benar</span>";
-          poin += 10;
-        } else {
-          j2.innerHTML = "<span class='salah'>❌ Jawabanmu salah</span>";
-        }
-      }
+      if (soal1 && soal1.value === "c") poin += 10;
+      if (soal2 && soal2.value === "c") poin += 10;
+      if (soal3.length > 10) poin += 10;
 
-      // Soal 3 (esai)
-      const esai = document.querySelector('textarea[name="soal3"]').value.trim();
-      const j3 = document.getElementById("jawaban3");
-      j3.style.display = "block";
-      if (esai.length > 10) {
-        j3.innerHTML = "<span class='benar'>✅ Jawabanmu dicatat</span>";
-        poin += 10;
-      } else {
-        j3.innerHTML = "<span class='salah'>❌ Jawabanmu terlalu singkat atau kosong</span>";
-      }
-
-      // Skor
       document.getElementById("skor").innerText = "Total Skor: " + poin + " / 30";
 
-      // Tampilkan kunci
-      document.getElementById("kunci").style.display = "block";
+      // Nonaktifkan semua input & tombol
+      const inputs = document.querySelectorAll("input, textarea, button");
+      inputs.forEach(i => i.disabled = true);
     }
   </script>
 
