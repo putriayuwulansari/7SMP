@@ -198,63 +198,55 @@
   </form>
 </section>
 
+<button class="cek" onclick="cekJawaban()">Periksa Jawaban</button>
+
+<p id="skor" style="display: none;"></p>
+
     
 <div class="soal" id="skor">
   <p><strong>Skor Kuis</strong></p>
   <hr class="pembatas" />
   <p id="skor-text">Klik tombol di bawah untuk melihat hasilmu!</p>
-  <button onclick="hitungSkor()">Lihat Skor</button>
+<button id="btnSkor" onclick="tampilkanSkor()" style="display: none;">Tampilkan Skor</button>
 </div>
 
 <script>
-  function cekJawaban(button) {
-    const soalDiv = button.parentElement;
-    const jawaban = soalDiv.getAttribute('data-jawaban');
-    const radioButtons = soalDiv.querySelectorAll('input[type="radio"]');
-    let userJawaban = null;
+  let totalSkor = 0;
+  let skorSudahDihitung = false;
 
-    radioButtons.forEach(rb => {
-      if (rb.checked) {
-        userJawaban = rb.value;
-      }
-    });
+  function cekJawaban() {
+    totalSkor = 0;
 
-    const divJawaban = soalDiv.querySelector('.jawaban');
-    divJawaban.style.display = 'block';
+    const soal1 = document.querySelector('input[name="soal1"]:checked');
+    const soal2 = document.querySelector('input[name="soal2"]:checked');
+    const soal3 = document.querySelector('textarea[name="soal3"]').value.trim();
 
-    if (userJawaban === jawaban) {
-      divJawaban.classList.add('benar');
-      divJawaban.classList.remove('salah');
-    } else {
-      divJawaban.classList.add('salah');
-      divJawaban.classList.remove('benar');
-    }
+    if (soal1 && soal1.value === "c") totalSkor += 10;
+    if (soal2 && soal2.value === "c") totalSkor += 10;
+    if (soal3.length > 10) totalSkor += 10;
 
-    // Nonaktifkan semua radio button setelah dipilih
-    radioButtons.forEach(rb => rb.disabled = true);
-    button.disabled = true;
+    skorSudahDihitung = true;
+
+    // Nonaktifkan input & tombol cek
+    const inputs = document.querySelectorAll("input, textarea, button.cek");
+    inputs.forEach(i => i.disabled = true);
+    
+    // Tampilkan tombol skor
+    document.getElementById("btnSkor").style.display = "inline";
   }
 
-  function hitungSkor() {
-    const semuaSoal = document.querySelectorAll('.soal');
-    let benar = 0;
-    let total = 0;
-
-    semuaSoal.forEach(soal => {
-      const jawaban = soal.getAttribute('data-jawaban');
-      const radios = soal.querySelectorAll('input[type="radio"]');
-      radios.forEach(r => {
-        if (r.checked && r.value === jawaban) {
-          benar++;
-        }
-      });
-      total++;
-    });
-
-    const skorPersen = Math.round((benar / (total - 1)) * 100); // dikurangi 1 karena skor-container juga .soal
-    document.getElementById('skor-text').innerHTML = `Jawaban benar: ${benar} dari ${total - 1} soal.<br>Skor kamu: <strong>${skorPersen}%</strong>`;
+  function tampilkanSkor() {
+    if (skorSudahDihitung) {
+      document.getElementById("skor").innerText = "Total Skor: " + totalSkor + " / 30";
+      document.getElementById("skor").style.display = "block";
+      document.getElementById("btnSkor").disabled = true;
+    } else {
+      alert("Silakan periksa jawaban dulu!");
+    }
   }
 </script>
+
+
 
 <footer>
     <p>@2025 Fakultas Keguruan dan Ilmu Pendidikan | Universitas Jember ❤️</p>
