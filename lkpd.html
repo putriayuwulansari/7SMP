@@ -98,6 +98,15 @@
       color: #0a1f44;
       margin-top: 20px;
     }
+    #skor-container {
+      background-color: #ffffff;
+      border: 3px solid #0d1b2a;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
     @media (max-width: 480px) {
       .form-container {
         padding: 10px;
@@ -212,6 +221,63 @@
     inputs.forEach(i => i.disabled = true);
   }
   </script>
+
+<div class="soal" id="skor-container">
+  <p><strong>Skor Kuis</strong></p>
+  <hr class="pembatas" />
+  <p id="skor-text">Klik tombol di bawah untuk melihat hasilmu!</p>
+  <button onclick="hitungSkor()">Lihat Skor</button>
+</div>
+
+<script>
+  function cekJawaban(button) {
+    const soalDiv = button.parentElement;
+    const jawaban = soalDiv.getAttribute('data-jawaban');
+    const radioButtons = soalDiv.querySelectorAll('input[type="radio"]');
+    let userJawaban = null;
+
+    radioButtons.forEach(rb => {
+      if (rb.checked) {
+        userJawaban = rb.value;
+      }
+    });
+
+    const divJawaban = soalDiv.querySelector('.jawaban');
+    divJawaban.style.display = 'block';
+
+    if (userJawaban === jawaban) {
+      divJawaban.classList.add('benar');
+      divJawaban.classList.remove('salah');
+    } else {
+      divJawaban.classList.add('salah');
+      divJawaban.classList.remove('benar');
+    }
+
+    // Nonaktifkan semua radio button setelah dipilih
+    radioButtons.forEach(rb => rb.disabled = true);
+    button.disabled = true;
+  }
+
+  function hitungSkor() {
+    const semuaSoal = document.querySelectorAll('.soal');
+    let benar = 0;
+    let total = 0;
+
+    semuaSoal.forEach(soal => {
+      const jawaban = soal.getAttribute('data-jawaban');
+      const radios = soal.querySelectorAll('input[type="radio"]');
+      radios.forEach(r => {
+        if (r.checked && r.value === jawaban) {
+          benar++;
+        }
+      });
+      total++;
+    });
+
+    const skorPersen = Math.round((benar / (total - 1)) * 100); // dikurangi 1 karena skor-container juga .soal
+    document.getElementById('skor-text').innerHTML = `Jawaban benar: ${benar} dari ${total - 1} soal.<br>Skor kamu: <strong>${skorPersen}%</strong>`;
+  }
+</script>
 
 <footer>
     <p>@2025 Fakultas Keguruan dan Ilmu Pendidikan | Universitas Jember ❤️</p>
