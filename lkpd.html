@@ -57,6 +57,15 @@
         padding: 10px;
         bottom: 0;
     }
+    .kuis {
+	  background-color: rgba(255, 255, 255, 0.95);
+	  background-color: #ffffff;
+	  border-radius: 10px;
+	  padding: 15px 20px;
+	  margin: 20px auto; /* agar tengah */
+	  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+	  max-width: 500px;   /* Batas lebar kotak soal */
+    }
     .soal {
         background-color: #ffffff;
         border: 0px solid #0d1b2a;
@@ -278,13 +287,13 @@
 </section>
 
 <section>
-    <button type="button" onclick="cekJawaban()" id="submitBtn">Submit Jawaban</button>
+    <button type="button" onclick="cekJawaban()" id="submitBtn">Kirim Jawaban</button>
 </section>
   </form>
 
 <section>
-<div class="soal" id="skor">
-  <p><strong>Skor Kuis</strong></p>
+<div class="kuis" id="skor">
+  <p><strong>Skor Anda Akan Muncul di Sini Setelah Jawaban Terkirim!</strong></p>
   <div id="skor"></div>
 </div>
 </section>
