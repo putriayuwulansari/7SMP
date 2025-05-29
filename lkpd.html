@@ -194,20 +194,15 @@
 </section>
 
 <section>
-    <button type="button" onclick="cekJawaban()" id="submitBtn">Submit Jawaban</button>
+  <button class="cek" onclick="cekJawaban()">Submit Jawaban</button>
   </form>
 </section>
-
-<button class="cek" onclick="cekJawaban()">Periksa Jawaban</button>
-
-<p id="skor" style="display: none;"></p>
-
     
 <div class="soal" id="skor">
   <p><strong>Skor Kuis</strong></p>
   <hr class="pembatas" />
   <p id="skor-text">Klik tombol di bawah untuk melihat hasilmu!</p>
-<button id="btnSkor" onclick="tampilkanSkor()" style="display: none;">Tampilkan Skor</button>
+<button id="skor" onclick="tampilkanSkor()" style="display: none;">Tampilkan Skor</button>
 </div>
 
 <script>
@@ -245,8 +240,6 @@
     }
   }
 </script>
-
-
 
 <footer>
     <p>@2025 Fakultas Keguruan dan Ilmu Pendidikan | Universitas Jember ❤️</p>
