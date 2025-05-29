@@ -201,8 +201,12 @@
   <p><strong>Skor Kuis</strong></p>
   <hr class="pembatas" />
   <p id="skor-text">Klik tombol di bawah untuk melihat hasilmu!</p>
-<button id="Skor" onclick="tampilkanSkor()" style="display: none;">Tampilkan Skor</button>
-    <div id="menuSetelahSkor" style="display: none;">
+<button id="btnSkor" onclick="tampilkanSkor()" style="display: none;">Tampilkan Skor</button>
+<!-- Tempat Menampilkan Skor -->
+<p id="skor" style="display:none; font-weight:bold;"></p>
+
+<!-- Menu yang Muncul Setelah Skor Tampil -->
+<div id="menuSetelahSkor" style="display: none;">
   <ul>
     <li><a href="kuis.html">Kuis</a></li>
   </ul>
@@ -248,7 +252,7 @@
     }
   }
 </script>
-
+    
 <footer>
     <p>@2025 Fakultas Keguruan dan Ilmu Pendidikan | Universitas Jember ❤️</p>
 </footer>
