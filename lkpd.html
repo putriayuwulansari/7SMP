@@ -293,25 +293,19 @@
   </div>
 </section>
 
-<section>
+<section></section>
     <button type="button" onclick="cekJawaban()" id="submitBtn">Submit Jawaban</button>
   </form>
 </section>
-    
-<section>
-<div class="soal" id="skor">
-  <p><strong>Skor Kuis</strong></p>
-  <hr class="pembatas" />
-  <p id="skor-text">Klik tombol di bawah untuk melihat hasilmu!</p>
-<button id="btnSkor" onclick="tampilkanSkor()" style="display: fixed;">Tampilkan Skor</button>
-</div>
-</section>
-    
-<script>
-function cekJawaban() {
-let poin = 0;
 
-    // Logika penilaian
+<div class="soal">
+  <div id="skor"></div>
+</div>
+
+  <script>
+    function cekJawaban() {
+      let poin = 0;
+
     const soal1 = document.querySelector('input[name="soal1"]:checked');
     const soal2 = document.querySelector('input[name="soal2"]:checked');
     const soal3 = document.querySelector('input[name="soal3"]:checked');
@@ -328,42 +322,30 @@ let poin = 0;
     const soal14 = document.querySelector('textarea[name="soal14"]').value.trim();
     const soal15 = document.querySelector('textarea[name="soal15"]').value.trim();
 
-    if (soal1 && soal1.value === "c") totalSkor += 5;
-    if (soal2 && soal2.value === "b") totalSkor += 5;
-    if (soal3 && soal3.value === "a") totalSkor += 5;
-    if (soal4 && soal4.value === "c") totalSkor += 5;
-    if (soal5 && soal5.value === "a") totalSkor += 5;
-    if (soal6 && soal6.value === "b") totalSkor += 5;
-    if (soal7 && soal7.value === "a") totalSkor += 5;
-    if (soal8 && soal8.value === "d") totalSkor += 5;
-    if (soal9 && soal9.value === "a") totalSkor += 5;
-    if (soal10 && soal10.value === "a") totalSkor += 5;
-if (soal11.includes("1") totalSkor += 10;
-if (soal12.includes("2") totalSkor += 10;
-if (soal13.includes("3") totalSkor += 10;
-if (soal14.includes("4") totalSkor += 10;
-if (soal15.includes("5") totalSkor += 10;
-	
-    skorSudahDihitung = true;
+    if (soal1 && soal1.value === "c") poin += 5;
+    if (soal2 && soal2.value === "b") poin += 5;
+    if (soal3 && soal3.value === "a") poin += 5;
+    if (soal4 && soal4.value === "c") poin += 5;
+    if (soal5 && soal5.value === "a") poin += 5;
+    if (soal6 && soal6.value === "b") poin += 5;
+    if (soal7 && soal7.value === "a") poin += 5;
+    if (soal8 && soal8.value === "d") poin += 5;
+    if (soal9 && soal9.value === "a") poin += 5;
+    if (soal10 && soal10.value === "a") poin += 5;
+    if (soal11.includes("1") poin += 10;
+    if (soal12.includes("2") poin += 10;
+    if (soal13.includes("3") poin += 10;
+    if (soal14.includes("4") poin += 10;
+    if (soal15.includes("5") poin += 10;
 
-    // Nonaktifkan input & tombol cek
-    const inputs = document.querySelectorAll("input, textarea, button.cek");
-    inputs.forEach(i => i.disabled = true);
-    
-    // Tampilkan tombol skor
-    document.getElementById("btnSkor").style.display = "inline";
-  }
-  function tampilkanSkor() {
-    if (skorSudahDihitung) {
-      document.getElementById("skor").innerText = "Total Skor: " + totalSkor + " / 100";
-      document.getElementById("skor").style.display = "block";
-      document.getElementById("btnSkor").disabled = true;
-    } else {
-      alert("Silakan periksa jawaban dulu!");
+      document.getElementById("skor").innerText = "Total Skor: " + poin + " / 30";
+
+      // Nonaktifkan semua input & tombol
+      const inputs = document.querySelectorAll("input, textarea, button");
+      inputs.forEach(i => i.disabled = true);
     }
-  }
-</script>
-    
+  </script>
+	
 <footer>
     <p>@2025 Fakultas Keguruan dan Ilmu Pendidikan | Universitas Jember ❤️</p>
 </footer>
