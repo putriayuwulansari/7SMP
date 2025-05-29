@@ -1,84 +1,30 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lembar Kerja Peserta Didik (LKPD)</title>
-    <style>
+  <meta charset="UTF-8">
+  <title>Kuis IPS</title>
+  <style>
     body {
-        font-family: 'Times New Roman', sans-serif;
-        line-height: 1.6;
-        background-image: url('batik3.png');
-        background-repeat: repeat;
-        background-size: cover;
-        background-attachment: fixed;
-        background-color: #f8cdd6; /* pink soft */
-        color: #000000; /* hitam */
-        margin: 0;
-        padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fdfcff;
+      color: #0a0a0a;
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 20px;
     }
-    header {
-        background-color: #0d1b2a; /* biru dongker */
-        color: #ffffff; /* putih */
-        padding: 20px;
-        text-align: center;
-    }
-    section {
-        padding: 20px;
-    }
+
     h2 {
-        color: #0d1b2a; /* biru dongker */
+      color: #0a1f44;
     }
-    footer {
-        background-color: #0d1b2a; /* biru dongker */
-        color: #ffffff; /* putih */
-        text-align: center;
-        padding: 10px;
-        bottom: 0;
-    }
+
     .soal {
-        background-color: #ffffff;
-        border: 0px solid #0a1f44;
-        border-radius: 10px;
-        padding: 20px;
-        margin-bottom: 20px;
-        box-shadow: 0 0 10px rgba(13, 27, 42, 0.1);
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-    .content {
-        background-color: #ffffff; /* putih */
-        margin: 5px 0;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(13, 27, 42, 0.1); /* bayangan biru dongker */
-    }
-    .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        padding: 10px 20px;
-    }
-    .judul-header {
-        flex: 1;
-        text-align: center;
-    }
-    .logo-header {
-        height: 120px;
-    }
-    /* RESPONSIF UNTUK HP */
-    @media (max-width: 600px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .logo-header {
-        margin: 10px 0;
-    }
-    .judul-header {
-        order: -1; /* supaya teks tampil di atas logo */
-      }
-    }
+
     button {
       background-color: #0a1f44;
       color: white;
@@ -88,208 +34,140 @@
       border-radius: 6px;
       cursor: pointer;
     }
+
     button:disabled {
       background-color: #ccc;
       cursor: not-allowed;
     }
+
     #skor {
       font-weight: bold;
       font-size: 18px;
       color: #0a1f44;
       margin-top: 20px;
     }
-    @media (max-width: 480px) {
-      .form-container {
-        padding: 10px;
-    }
-    input,
-    textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-      input,
-      textarea {
-        font-size: 15px;
-      }
-    }
+
     input:disabled,
     textarea:disabled {
       background-color: #eee;
     }
-     </style>
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="header-container">
-    <img src="logo1.png" alt="Logo Kiri" class="logo-header">
-    <div class="judul-header">
-        <h1>Lembar Kerja Peserta Didik (LKPD)</h1>
-        <p>Materi: Bilangan (Bilangan Bulat, Desimal, Pecahan)</p>
-    </div>
-    <img src="logo2.png" alt="Logo Kanan" class="logo-header">
-  </div>
-</header>
+  <h2>Kuis IPS - Kelas 7</h2>
 
   <form id="kuisForm">
 
-  <!-- Identitas Peserta Didik-->
-
-<section>
-  <div class="content">
-    <p><strong>Identitas Peserta Didik</strong></p>
-<hr style="border: 2px solid #0a1f44; border-radius: 2px; margin: 20px 0;">
-    <label>Nama: <input type="text" name="nama" required></label><br><br>
-    <label>No. Absen: <input type="text" name="nama" required></label><br><br>
-    <label>Kelas: <input type="text" name="nama" required></label><br><br>
-    <label>Hari/Tanggal: <input type="text" name="nim" required></label>
-  </div>
-</section>
-
-
-    <!-- Soal 1 -->
-<section>
-  <div class="content">
-    <p><b>Soal Pilihan Ganda</b></p>
-<hr style="border: 2px solid #0a1f44; border-radius: 2px; margin: 20px 0;">
+    <!-- Pilihan Ganda -->
     <div class="soal">
-      <p><strong>1. Hasil dari <sup>3</sup>&frasl;<sub>4</sub> + 0,6 adalah...</strong></p>
-      <label><input type="radio" name="soal1" value="a"> a. 0,85</label><br>
-      <label><input type="radio" name="soal1" value="b"> b. 1,25</label><br>
-      <label><input type="radio" name="soal1" value="c"> c. 1,35</label><br>
-      <label><input type="radio" name="soal1" value="d"> d. 1,40</label>
+      <p><strong>1. Indonesia terletak di antara dua benua dan dua samudra. Hal ini menunjukkan letak...</strong></p>
+      <label><input type="radio" name="soal1" value="a"> a. Geologis</label><br>
+      <label><input type="radio" name="soal1" value="b"> b. Astronomis</label><br>
+      <label><input type="radio" name="soal1" value="c"> c. Geografis</label><br>
+      <label><input type="radio" name="soal1" value="d"> d. Topografis</label>
     </div>
 
-    <!-- Soal 2 -->
     <div class="soal">
-      <p><strong>2. Nilai dari <sup>2</sup>&frasl;<sub>5</sub> ÷ 0,2 adalah...</strong></p>
-      <label><input type="radio" name="soal2" value="a"> a. 0,4</label><br>
-      <label><input type="radio" name="soal2" value="b"> b. 2</label><br>
-      <label><input type="radio" name="soal2" value="c"> c. 4</label><br>
-      <label><input type="radio" name="soal2" value="d"> d. 5</label>
+      <p><strong>2. Salah satu dampak letak geografis Indonesia adalah...</strong></p>
+      <label><input type="radio" name="soal2" value="a"> a. Sering terjadi gempa bumi</label><br>
+      <label><input type="radio" name="soal2" value="b"> b. Berada di wilayah waktu GMT</label><br>
+      <label><input type="radio" name="soal2" value="c"> c. Menjadi jalur perdagangan internasional</label><br>
+      <label><input type="radio" name="soal2" value="d"> d. Banyak gunung api aktif</label>
     </div>
 
-    <!-- Soal 3 -->
     <div class="soal">
-      <p><strong>3. Urutkan bilangan berikut dari yang terkecil ke terbesar: 0,75, <sup>2</sup>&frasl;<sub>3</sub>, <sup>4</sup>&frasl;<sub>5</sub></strong></p>
-      <label><input type="radio" name="soal3" value="a"> a.<sup>2</sup>&frasl;<sub>3</sub>, 0,75, <sup>4</sup>&frasl;<sub>5</sub></strong></label><br>
-      <label><input type="radio" name="soal3" value="b"> b. 0,75, <sup>2</sup>&frasl;<sub>3</sub>, <sup>4</sup>&frasl;<sub>5</sub></strong></label><br>
-      <label><input type="radio" name="soal3" value="c"> c. <sup>2</sup>&frasl;<sub>3</sub>, <sup>4</sup>&frasl;<sub>5</sub></strong>, 0,75</label><br>
-      <label><input type="radio" name="soal3" value="d"> d. <sup>4</sup>&frasl;<sub>5</sub></strong>, <sup>2</sup>&frasl;<sub>3</sub>, 0,75</label>
+      <p><strong>3. Batas wilayah Indonesia di sebelah barat adalah...</strong></p>
+      <label><input type="radio" name="soal3" value="a"> a. Samudra Hindia</label><br>
+      <label><input type="radio" name="soal3" value="b"> b. Laut Cina Selatan</label><br>
+      <label><input type="radio" name="soal3" value="c"> c. Papua Nugini</label><br>
+      <label><input type="radio" name="soal3" value="d"> d. Samudra Pasifik</label>
     </div>
 
-    <!-- Soal 4 -->
     <div class="soal">
-      <p><strong>4. Hasil dari -7 + 12=...</strong></p>
-      <label><input type="radio" name="soal4" value="a"> a. 19</label><br>
-      <label><input type="radio" name="soal4" value="b"> b. -19</label><br>
-      <label><input type="radio" name="soal4" value="c"> c. 5</label><br>
-      <label><input type="radio" name="soal4" value="d"> d. -5</label>
+      <p><strong>4. Gunung berapi yang masih aktif di Indonesia disebut juga dengan...</strong></p>
+      <label><input type="radio" name="soal4" value="a"> a. Vulkanik</label><br>
+      <label><input type="radio" name="soal4" value="b"> b. Tektonik</label><br>
+      <label><input type="radio" name="soal4" value="c"> c. Dorman</label><br>
+      <label><input type="radio" name="soal4" value="d"> d. Erosi</label>
     </div>
 
-    <!-- Soal 5 -->
     <div class="soal">
-      <p><strong>5. Hasil dari -9-6...</strong></p>
-      <label><input type="radio" name="soal5" value="a"> a. -15</label><br>
-      <label><input type="radio" name="soal5" value="b"> b. 3</label><br>
-      <label><input type="radio" name="soal5" value="c"> c. -3</label><br>
-      <label><input type="radio" name="soal5" value="d"> d. 15</label>
+      <p><strong>5. Indonesia terdiri atas beribu-ribu pulau, maka disebut sebagai negara...</strong></p>
+      <label><input type="radio" name="soal5" value="a"> a. Kepulauan</label><br>
+      <label><input type="radio" name="soal5" value="b"> b. Maritim</label><br>
+      <label><input type="radio" name="soal5" value="c"> c. Agraris</label><br>
+      <label><input type="radio" name="soal5" value="d"> d. Daratan</label>
     </div>
 
-    <!-- Soal 6 -->
     <div class="soal">
-      <p><strong>6. Hasil dari -4 × (-6)=...</strong></p>
-      <label><input type="radio" name="soal6" value="a"> a. -24</label><br>
-      <label><input type="radio" name="soal6" value="b"> b. 24</label><br>
-      <label><input type="radio" name="soal6" value="c"> c. -10</label><br>
-      <label><input type="radio" name="soal6" value="d"> d. 10</label>
+      <p><strong>6. Wilayah Indonesia yang paling luas adalah...</strong></p>
+      <label><input type="radio" name="soal6" value="a"> a. Sumatra</label><br>
+      <label><input type="radio" name="soal6" value="b"> b. Kalimantan</label><br>
+      <label><input type="radio" name="soal6" value="c"> c. Jawa</label><br>
+      <label><input type="radio" name="soal6" value="d"> d. Papua</label>
     </div>
 
-    <!-- Soal 7 -->
     <div class="soal">
-      <p><strong>7. Hasil dari -30 ÷ 5=...</strong></p>
-      <label><input type="radio" name="soal7" value="a"> a. -6</label><br>
-      <label><input type="radio" name="soal7" value="b"> b. 6</label><br>
-      <label><input type="radio" name="soal7" value="c"> c. -25</label><br>
-      <label><input type="radio" name="soal7" value="d"> d. -5</label>
+      <p><strong>7. Salah satu bentuk interaksi sosial adalah...</strong></p>
+      <label><input type="radio" name="soal7" value="a"> a. Berjalan sendiri</label><br>
+      <label><input type="radio" name="soal7" value="b"> b. Menonton TV</label><br>
+      <label><input type="radio" name="soal7" value="c"> c. Bermain bersama teman</label><br>
+      <label><input type="radio" name="soal7" value="d"> d. Mendengarkan musik</label>
     </div>
 
-    <!-- Soal 8 -->
     <div class="soal">
-      <p><strong>8. Suhu di puncak gunung adalah -5℃, sedangkan suhu di kota di bawahnya adalah 25℃. Selisih suhu antara kota dan puncak gunung adalah...</strong></p>
-      <label><input type="radio" name="soal8" value="a"> a. 20℃</label><br>
-      <label><input type="radio" name="soal8" value="b"> b. 25℃</label><br>
-      <label><input type="radio" name="soal8" value="c"> c. 30℃</label><br>
-      <label><input type="radio" name="soal8" value="d"> d. 35℃</label>
+      <p><strong>8. Wilayah daratan Indonesia terbentang dari...</strong></p>
+      <label><input type="radio" name="soal8" value="a"> a. Sabang sampai Merauke</label><br>
+      <label><input type="radio" name="soal8" value="b"> b. Aceh sampai Lombok</label><br>
+      <label><input type="radio" name="soal8" value="c"> c. Jawa sampai Sulawesi</label><br>
+      <label><input type="radio" name="soal8" value="d"> d. Sumatra sampai Bali</label>
     </div>
 
-    <!-- Soal 9 -->
     <div class="soal">
-      <p><strong>9. Tino memiliki uang Rp20.000. Ia meminjam uang kepada temannya Rp15.000. Saldo bersih Tino sekarang adalah...</strong></p>
-      <label><input type="radio" name="soal9" value="a"> a. Rp. 5.000</label><br>
-      <label><input type="radio" name="soal9" value="b"> b. Rp. 15.000</label><br>
-      <label><input type="radio" name="soal9" value="c"> c. -Rp. 5.000</label><br>
-      <label><input type="radio" name="soal9" value="d"> d. -Rp. 15.000</label>
+      <p><strong>9. Keuntungan Indonesia berada di daerah tropis adalah...</strong></p>
+      <label><input type="radio" name="soal9" value="a"> a. Curah hujan tinggi</label><br>
+      <label><input type="radio" name="soal9" value="b"> b. Suhu sangat rendah</label><br>
+      <label><input type="radio" name="soal9" value="c"> c. Banyak salju</label><br>
+      <label><input type="radio" name="soal9" value="d"> d. Musim gugur panjang</label>
     </div>
 
-    <!-- Soal 10 -->
     <div class="soal">
-      <p><strong>10. Dalam sebuah game, pemain mendapat:</strong></p>
-	  <strong><p>+10 poin jika menang</strong></p>
-	  <strong><p>-5 poin jika kalah</strong></p>    
-      <strong><p>Seorang pemain bermain 6 kali: menang 4 kali dan kalah 2 kali. Total poin yang diperoleh pemain adalah...</strong></p>
-      <label><input type="radio" name="soal10" value="a"> a. 30 poin</label><br>
-      <label><input type="radio" name="soal10" value="b"> b. 40 poin</label><br>
-      <label><input type="radio" name="soal10" value="c"> c. 24 poin</label><br>
-      <label><input type="radio" name="soal10" value="d"> d. 25 poin</label>
+      <p><strong>10. Peta yang menggambarkan keadaan bentuk permukaan bumi disebut...</strong></p>
+      <label><input type="radio" name="soal10" value="a"> a. Peta politik</label><br>
+      <label><input type="radio" name="soal10" value="b"> b. Peta topografi</label><br>
+      <label><input type="radio" name="soal10" value="c"> c. Peta cuaca</label><br>
+      <label><input type="radio" name="soal10" value="d"> d. Peta penduduk</label>
     </div>
-  </div>
-</section>
 
-<section>
-    <!-- Soal 11 (esai) -->
-  <div class="content">
-    <p><b>Soal Esai</b></p>
-<hr style="border: 2px solid #0a1f44; border-radius: 2px; margin: 20px 0;">
+    <!-- Soal Esai -->
     <div class="soal">
       <p><strong>11. Jelaskan mengapa Indonesia memiliki banyak keragaman budaya!</strong></p>
-      <textarea name="soal11" rows="4" cols="60" placeholder="Tulis jawabanmu di sini..."></textarea>
+      <textarea name="soal11" rows="4" cols="60"></textarea>
     </div>
 
-    <!-- Soal 12 (esai) -->
     <div class="soal">
-      <p><strong>12. Jelaskan mengapa Indonesia memiliki banyak keragaman budaya!</strong></p>
-      <textarea name="soal12" rows="4" cols="60" placeholder="Tulis jawabanmu di sini..."></textarea>
+      <p><strong>12. Sebutkan 3 manfaat kerja sama antar daerah di Indonesia!</strong></p>
+      <textarea name="soal12" rows="4" cols="60"></textarea>
     </div>
 
-    <!-- Soal 13 (esai) -->
     <div class="soal">
-      <p><strong>13. Jelaskan mengapa Indonesia memiliki banyak keragaman budaya!</strong></p>
-      <textarea name="soal13" rows="4" cols="60" placeholder="Tulis jawabanmu di sini..."></textarea>
+      <p><strong>13. Mengapa Indonesia rawan bencana alam? Jelaskan!</strong></p>
+      <textarea name="soal13" rows="4" cols="60"></textarea>
     </div>
 
-    <!-- Soal 14 (esai) -->
     <div class="soal">
-      <p><strong>14. Jelaskan mengapa Indonesia memiliki banyak keragaman budaya!</strong></p>
-      <textarea name="soal14" rows="4" cols="60" placeholder="Tulis jawabanmu di sini..."></textarea>
+      <p><strong>14. Apa peran teknologi dalam kegiatan ekonomi masyarakat?</strong></p>
+      <textarea name="soal14" rows="4" cols="60"></textarea>
     </div>
 
-    <!-- Soal 15 (esai) -->
     <div class="soal">
-      <p><strong>15. Jelaskan mengapa Indonesia memiliki banyak keragaman budaya!</strong></p>
-      <textarea name="soal15" rows="4" cols="60" placeholder="Tulis jawabanmu di sini..."></textarea>
+      <p><strong>15. Bagaimana cara melestarikan budaya daerah di era modern ini?</strong></p>
+      <textarea name="soal15" rows="4" cols="60"></textarea>
     </div>
-  </div>
-</section>
 
-<section>
     <button type="button" onclick="cekJawaban()" id="submitBtn">Submit Jawaban</button>
-</section>
-</form>
+  </form>
 
   <div id="skor"></div>
 
@@ -297,49 +175,35 @@
     function cekJawaban() {
       let poin = 0;
 
-    const soal1 = document.querySelector('input[name="soal1"]:checked');
-    const soal2 = document.querySelector('input[name="soal2"]:checked');
-    const soal3 = document.querySelector('input[name="soal3"]:checked');
-    const soal4 = document.querySelector('input[name="soal4"]:checked');
-    const soal5 = document.querySelector('input[name="soal5"]:checked');
-    const soal6 = document.querySelector('input[name="soal6"]:checked');
-    const soal7 = document.querySelector('input[name="soal7"]:checked');
-    const soal8 = document.querySelector('input[name="soal8"]:checked');
-    const soal9 = document.querySelector('input[name="soal9"]:checked');
-    const soal10 = document.querySelector('input[name="soal10"]:checked');
-    const soal11 = document.querySelector('textarea[name="soal11"]').value.trim();
-    const soal12 = document.querySelector('textarea[name="soal12"]').value.trim();
-    const soal13 = document.querySelector('textarea[name="soal13"]').value.trim();
-    const soal14 = document.querySelector('textarea[name="soal14"]').value.trim();
-    const soal15 = document.querySelector('textarea[name="soal15"]').value.trim();
+      const kunci = {
+        soal1: "c",
+        soal2: "c",
+        soal3: "a",
+        soal4: "a",
+        soal5: "a",
+        soal6: "d",
+        soal7: "c",
+        soal8: "a",
+        soal9: "a",
+        soal10: "b"
+      };
 
-    if (soal1 && soal1.value === "c") poin += 5;
-    if (soal2 && soal2.value === "b") poin += 5;
-    if (soal3 && soal3.value === "a") poin += 5;
-    if (soal4 && soal4.value === "c") poin += 5;
-    if (soal5 && soal5.value === "a") poin += 5;
-    if (soal6 && soal6.value === "b") poin += 5;
-    if (soal7 && soal7.value === "a") poin += 5;
-    if (soal8 && soal8.value === "d") poin += 5;
-    if (soal9 && soal9.value === "a") poin += 5;
-    if (soal10 && soal10.value === "a") poin += 5;
-    if (soal11.includes("1") poin += 10;
-    if (soal12.includes("2") poin += 10;
-    if (soal13.includes("3") poin += 10;
-    if (soal14.includes("4") poin += 10;
-    if (soal15.includes("5") poin += 10;
+      for (let i = 1; i <= 10; i++) {
+        const jawaban = document.querySelector('input[name="soal' + i + '"]:checked');
+        if (jawaban && jawaban.value === kunci['soal' + i]) poin += 5;
+      }
+
+      for (let i = 11; i <= 15; i++) {
+        const esai = document.querySelector('textarea[name="soal' + i + '"]').value.trim();
+        if (esai.length > 10) poin += 10;
+      }
 
       document.getElementById("skor").innerText = "Total Skor: " + poin + " / 100";
 
-      // Nonaktifkan semua input & tombol
       const inputs = document.querySelectorAll("input, textarea, button");
       inputs.forEach(i => i.disabled = true);
     }
   </script>
-	
-<footer>
-    <p>@2025 Fakultas Keguruan dan Ilmu Pendidikan | Universitas Jember ❤️</p>
-</footer>
-  
+
 </body>
 </html>
