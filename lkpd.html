@@ -1,30 +1,87 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Kuis IPS</title>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran Matematika Kelas 7 SMP</title>
+    <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #fdfcff;
-      color: #0a0a0a;
-      max-width: 700px;
-      margin: 20px auto;
-      padding: 20px;
+        font-family: 'Times New Roman', sans-serif;
+        line-height: 1.6;
+        background-color: #f8cdd6; /* pink soft */
+        color: #000000; /* hitam */
+        margin: 0;
+        padding: 0;
     }
-
+    header {
+        background-color: #0d1b2a; /* biru dongker */
+        color: #ffffff; /* putih */
+        padding: 20px;
+        text-align: center;
+    }
+    section {
+        padding: 20px;
+    }
     h2 {
-      color: #0a1f44;
+        color: #0d1b2a; /* biru dongker */
     }
-
-    .soal {
+    footer {
+        background-color: #0d1b2a; /* biru dongker */
+        color: #ffffff; /* putih */
+        text-align: center;
+        padding: 10px;
+        bottom: 0;
+    }
+    .sub-bab {
+        background-color: #ffffff;
+        border: 0px solid #0a1f44;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(13, 27, 42, 0.1);
+    }
+    .content {
+        background-color: #ffffff; /* putih */
+        margin: 5px 0;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(13, 27, 42, 0.1); /* bayangan biru dongker */
+    }
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px 20px;
+    }
+    .judul-header {
+        flex: 1;
+        text-align: center;
+    }
+    .logo-header {
+        height: 120px;
+    }
+    /* RESPONSIF UNTUK HP */
+    @media (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .logo-header {
+        margin: 10px 0;
+    }
+    .judul-header {
+        order: -1; /* supaya teks tampil di atas logo */
+      }
+    }
+        .soal {
       background-color: rgba(255, 255, 255, 0.95);
       border-radius: 10px;
       padding: 15px 20px;
       margin-bottom: 20px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-
     button {
       background-color: #0a1f44;
       color: white;
@@ -34,39 +91,51 @@
       border-radius: 6px;
       cursor: pointer;
     }
-
     button:disabled {
       background-color: #ccc;
       cursor: not-allowed;
     }
-
     #skor {
       font-weight: bold;
       font-size: 18px;
       color: #0a1f44;
       margin-top: 20px;
     }
-
     input:disabled,
     textarea:disabled {
       background-color: #eee;
     }
-  </style>
+     </style>
 </head>
 <body>
 
-  <h2>Kuis IPS - Kelas 7</h2>
+<header>
+  <div class="header-container">
+    <img src="logo1.png" alt="Logo Kiri" class="logo-header">
+    <div class="judul-header">
+        <h1>Lembar Kerja Peserta Didik (LKPD)</h1>
+        <p>Materi: Bilangan (Bilangan Bulat, Desimal, Pecahan)</p>
+    </div>
+    <img src="logo2.png" alt="Logo Kanan" class="logo-header">
+  </div>
+</header>
 
   <form id="kuisForm">
 
   <!-- Identitas Peserta -->
-  <div class="soal">
+  
+  <div class="content">
     <p><strong>Identitas Peserta</strong></p>
     <label>Nama: <input type="text" name="nama" required></label><br><br>
-    <label>NIM: <input type="text" name="nim" required></label>
+    <label>No. Absen: <input type="text" name="nama" required></label><br><br>
+    <label>Kelas: <input type="text" name="nama" required></label><br><br>
+    <label>Hari/Tanggal: <input type="text" name="nim" required></label>
   </div>
 
     <!-- Soal 1 -->
+  <div class="content">
+    <h2>Soal Pilihan Ganda</h2>
+    <hr>
     <div class="soal">
       <p><strong>1. Indonesia terletak di antara dua benua dan dua samudra. Hal ini menunjukkan letak...</strong></p>
       <label><input type="radio" name="soal1" value="a"> a. Geologis</label><br>
@@ -83,12 +152,17 @@
       <label><input type="radio" name="soal2" value="c"> c. Menjadi jalur perdagangan internasional</label><br>
       <label><input type="radio" name="soal2" value="d"> d. Banyak gunung api aktif</label>
     </div>
-
+  </div>
+    
     <!-- Soal 3 (esai) -->
+  <div class="content">
+    <h2>Soal Esai</h2>
+    <hr>
     <div class="soal">
       <p><strong>3. Jelaskan mengapa Indonesia memiliki banyak keragaman budaya!</strong></p>
       <textarea name="soal3" rows="4" cols="60" placeholder="Tulis jawabanmu di sini..."></textarea>
     </div>
+  </div>
 
     <button type="button" onclick="cekJawaban()" id="submitBtn">Submit Jawaban</button>
   </form>
@@ -115,5 +189,9 @@
   }
   </script>
 
+<footer>
+    <p>@2025 Fakultas Keguruan dan Ilmu Pendidikan | Universitas Jember ❤️</p>
+</footer>
+  
 </body>
 </html>
