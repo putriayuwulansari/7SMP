@@ -59,6 +59,13 @@
 
   <form id="kuisForm">
 
+  <!-- Identitas Peserta -->
+  <div class="soal">
+    <p><strong>Identitas Peserta</strong></p>
+    <label>Nama: <input type="text" name="nama" required></label><br><br>
+    <label>NIM: <input type="text" name="nim" required></label>
+  </div>
+
     <!-- Soal 1 -->
     <div class="soal">
       <p><strong>1. Indonesia terletak di antara dua benua dan dua samudra. Hal ini menunjukkan letak...</strong></p>
@@ -89,23 +96,23 @@
   <div id="skor"></div>
 
   <script>
-    function cekJawaban() {
-      let poin = 0;
-
-      const soal1 = document.querySelector('input[name="soal1"]:checked');
-      const soal2 = document.querySelector('input[name="soal2"]:checked');
-      const soal3 = document.querySelector('textarea[name="soal3"]').value.trim();
-
-      if (soal1 && soal1.value === "c") poin += 10;
-      if (soal2 && soal2.value === "c") poin += 10;
-      if (soal3.length > 10) poin += 10;
-
-      document.getElementById("skor").innerText = "Total Skor: " + poin + " / 30";
-
-      // Nonaktifkan semua input & tombol
-      const inputs = document.querySelectorAll("input, textarea, button");
-      inputs.forEach(i => i.disabled = true);
-    }
+  function cekJawaban() {
+    let poin = 0;
+  
+    const soal1 = document.querySelector('input[name="soal1"]:checked');
+    const soal2 = document.querySelector('input[name="soal2"]:checked');
+    const soal3 = document.querySelector('textarea[name="soal3"]').value.trim();
+  
+    if (soal1 && soal1.value === "c") poin += 10;
+    if (soal2 && soal2.value === "c") poin += 10;
+    if (soal3.length > 10) poin += 10;
+  
+    document.getElementById("skor").innerText = "Total Skor: " + poin + " / 30";
+  
+    // Nonaktifkan semua input termasuk nama & nim
+    const inputs = document.querySelectorAll("input, textarea, button");
+    inputs.forEach(i => i.disabled = true);
+  }
   </script>
 
 </body>
