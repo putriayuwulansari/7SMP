@@ -50,19 +50,6 @@
     .logo-header {
         height: 120px;
     }
-    /* RESPONSIF UNTUK HP */
-    @media (max-width: 600px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    .logo-header {
-        margin: 10px 0;
-    }
-    .judul-header {
-        order: -1; /* supaya teks tampil di atas logo */
-    }
     footer {
         background-color: #0d1b2a; /* biru dongker */
         color: #ffffff; /* putih */
@@ -123,6 +110,19 @@
     input:disabled,
     textarea:disabled {
       background-color: #eee;
+    }
+ /* RESPONSIF UNTUK HP */
+    @media (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .logo-header {
+        margin: 10px 0;
+    }
+    .judul-header {
+        order: -1; /* supaya teks tampil di atas logo */
     }
   </style>
 </head>
