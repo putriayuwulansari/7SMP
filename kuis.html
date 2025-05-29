@@ -28,6 +28,13 @@ body {
       border-bottom: 2px solid #0d1b2a;
       padding-bottom: 5px;
     }
+    .content {
+        background-color: #ffffff; /* putih */
+        margin: 5px 0;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(13, 27, 42, 0.1); /* bayangan biru dongker */
+    }
     .soal {
       background-color: white;
       border: 3px solid #0d1b2a;
@@ -150,7 +157,8 @@ body {
 </header>
       
   <!-- Soal Pilihan Ganda -->
-    
+
+<div class="content">
   <div class="soal" data-jawaban="b">
     <p><strong>Soal 1</strong></p>
     <hr class="pembatas" />
@@ -320,6 +328,7 @@ body {
       <p><b>Pembahasan:</b> Jika <sup>3</sup>&frasl;<sub>5</sub> × X = 24 → X = 24 × <sup>5</sup>&frasl;<sub>3</sub> = 40</p>
     </div>
   </div>
+</div>
 
   <script>
     function cekJawaban(button) {
