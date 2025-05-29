@@ -227,35 +227,6 @@
     const inputs = document.querySelectorAll("input, textarea, button");
     inputs.forEach(i => i.disabled = true);
   }
-
-  function cekJawaban(button) {
-    const soalDiv = button.parentElement;
-    const jawaban = soalDiv.getAttribute('data-jawaban');
-    const radioButtons = soalDiv.querySelectorAll('input[type="radio"]');
-    let userJawaban = null;
-
-    radioButtons.forEach(rb => {
-      if (rb.checked) {
-        userJawaban = rb.value;
-      }
-    });
-
-    const divJawaban = soalDiv.querySelector('.jawaban');
-    divJawaban.style.display = 'block';
-
-    if (userJawaban === jawaban) {
-      divJawaban.classList.add('benar');
-      divJawaban.classList.remove('salah');
-    } else {
-      divJawaban.classList.add('salah');
-      divJawaban.classList.remove('benar');
-    }
-
-    // Nonaktifkan semua radio button setelah dipilih
-    radioButtons.forEach(rb => rb.disabled = true);
-    button.disabled = true;
-  }
-
   function hitungSkor() {
     const semuaSoal = document.querySelectorAll('.soal');
     let benar = 0;
