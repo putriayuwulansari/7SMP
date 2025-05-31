@@ -180,7 +180,7 @@
     </div>
 
     <div class="soal">
-      <p><strong>2. Nilai dari <sup>2</sup>&frasl;<sub>5</sub> ÷ 0,2 adalah...</strong></p>
+      <p><strong>2. Nilai dari <sup>2</sup>&frasl;<sub>5</sub> : 0,2 adalah...</strong></p>
       <label><input type="radio" name="soal2" value="a"> a. 0,4</label><br>
       <label><input type="radio" name="soal2" value="b"> b. 2</label><br>
       <label><input type="radio" name="soal2" value="c"> c. 4</label><br>
@@ -196,7 +196,7 @@
     </div>
 
     <div class="soal">
-      <p><strong>4. Hasil dari -7 + 12=...</strong></p>
+      <p><strong>4. Hasil dari -7 + 12 = ...</strong></p>
       <label><input type="radio" name="soal4" value="a"> a. 19</label><br>
       <label><input type="radio" name="soal4" value="b"> b. -19</label><br>
       <label><input type="radio" name="soal4" value="c"> c. 5</label><br>
@@ -204,7 +204,7 @@
     </div>
 
     <div class="soal">
-      <p><strong>5. Hasil dari -9-6...</strong></p>
+      <p><strong>5. Hasil dari -9 - 6 = ...</strong></p>
       <label><input type="radio" name="soal5" value="a"> a. -15</label><br>
       <label><input type="radio" name="soal5" value="b"> b. 3</label><br>
       <label><input type="radio" name="soal5" value="c"> c. -3</label><br>
@@ -220,7 +220,7 @@
     </div>
 
     <div class="soal">
-      <p><strong>7. Hasil dari -30 ÷ 5=...</strong></p>
+      <p><strong>7. Hasil dari -30 : 5=...</strong></p>
       <label><input type="radio" name="soal7" value="a"> a. -6</label><br>
       <label><input type="radio" name="soal7" value="b"> b. 6</label><br>
       <label><input type="radio" name="soal7" value="c"> c. -25</label><br>
@@ -261,7 +261,7 @@
     <p><b><h2>Soal Esai</h2></b></p>
 <hr style="border: 2px solid #0a1f44; border-radius: 2px; margin: 20px 0;">
     <div class="soal">
-      <p><strong>11. Hitung hasil dari: (-12) + 7 - (-5) + (-3)=...</strong></p>
+      <p><strong>11. Hitung hasil dari: (-12) + 7 - (-5) + (-3) = ...</strong></p>
       <textarea name="soal11" rows="4" cols="60"></textarea>
     </div>
 
@@ -271,17 +271,17 @@
     </div>
 
     <div class="soal">
-      <p><strong>13. <sup>5</sup>&frasl;<sub>8</sub> × 0,6...</strong></p>
+      <p><strong>13. 4 : (- <sup>6</sup>&frasl;<sub>7</sub> ) × (-9) = ...</strong></p>
       <textarea name="soal13" rows="4" cols="60"></textarea>
     </div>
 
     <div class="soal">
-      <p><strong>14. Hitung hasil dari: (<sup>2</sup>&frasl;<sub>3</sub> + 0,25) - (<sup>1</sup>&frasl;<sub>6</sub>)</strong></p>
+      <p><strong>14. Hitung hasil dari: (<sup>2</sup>&frasl;<sub>3</sub> + 0,25) - (<sup>1</sup>&frasl;<sub>6</sub>) = ...</strong></p>
       <textarea name="soal14" rows="4" cols="60"></textarea>
     </div>
 
     <div class="soal">
-      <p><strong>15. Dari 1 liter sirup, Andi meminum <sup>2</sup>&frasl;<sub>5</sub> liter dan Budi meminum 0,3 liter. Berapa liter sisanya?</strong></p>
+      <p><strong>15. Dari 1 liter sirup, Andi meminum <sup>2</sup>&frasl;<sub>5</sub> liter dan Budi meminum 0,3 liter. Berapa liter sisanya?...</strong></p>
       <textarea name="soal15" rows="4" cols="60"></textarea>
     </div>
   </div>
@@ -316,15 +316,32 @@
         soal10: "a"
       };
 
+	const kunciEsai = {
+	  soal11: ["-3", "- 3", "(-3)"],
+	  soal12: ["3/4", "<sup>3</sup>&frasl;<sub>4</sub>", "0,75"],
+	  soal13: ["42", "(42)", "4 2"],
+	  soal14: ["3/4", "<sup>3</sup>&frasl;<sub>4</sub>", "0,75"],
+	  soal15: ["3/10", "3/10 liter", "0,3 liter", "0,3"]
+	};
+
+
+	    
       for (let i = 1; i <= 10; i++) {
         const jawaban = document.querySelector('input[name="soal' + i + '"]:checked');
         if (jawaban && jawaban.value === kunci['soal' + i]) poin += 5;
       }
 
-      for (let i = 11; i <= 15; i++) {
-        const esai = document.querySelector('textarea[name="soal' + i + '"]').value.trim();
-        if (esai.length > 10) poin += 10;
-      }
+	for (let i = 11; i <= 15; i++) {
+	  const esai = document.querySelector('textarea[name="soal' + i + '"]').value.toLowerCase().trim();
+	  let benar = 0;
+	
+	  kunciEsai["soal" + i].forEach(kata => {
+	    if (esai.includes(kata)) benar++;
+	  });
+	
+	  if (benar >= 1) poin += 10; // jika mengandung minimal 1 kata kunci → nilai 10
+	}
+	
 
       document.getElementById("skor").innerText = "Total Skor: " + poin + " / 100";
 
