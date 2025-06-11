@@ -24,26 +24,19 @@
         text-align: center;
     }
     nav {
-        background-color: #ffffff; /* putih */
-        padding: 10px;
-        text-align: center;
-    }
-    nav a {
-        color: #0d1b2a; /* biru dongker */
-        margin: 0 15px;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    /* Tambahkan media query untuk layar kecil (HP) */
-@media (max-width: 600px) {
-    nav {
-        padding: 10px;
+      background-color: #ffffff;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; /* penting untuk HP */
+      gap: 10px; /* jarak antar link */
     }
 
-    nav a {
-        display: block;
-        margin: 10px 0;
-    }
+nav a {
+  color: #0d1b2a;
+  text-decoration: none;
+  font-weight: bold;
+}
     section {
         padding: 20px;
     }
