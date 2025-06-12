@@ -2,255 +2,181 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kuis Geografi Kelas 12</title>
   <style>
-    :root {
-      --biru-dongker: #0a1f44;
-      --hitam: #1c1c1c;
-      --putih: #ffffff;
-      --soft-pink: #ffe6e6;
-    }
     body {
       font-family: Arial, sans-serif;
+      background-color: #fef6f9; /* soft pink */
+      color: #0d1b2a; /* hitam/biru dongker */
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      background-color: #0d1b2a; /* biru dongker */
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .container {
       max-width: 800px;
       margin: auto;
-      background: var(--soft-pink);
-      color: var(--hitam);
-      padding: 0 20px 100px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
     }
-    header, footer {
-      background-color: var(--biru-dongker);
-      color: var(--putih);
-      text-align: center;
-      padding: 20px 10px;
-      border-radius: 0 0 10px 10px;
+
+    .soal {
+      background-color: #fdfcff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 5px solid #f2a5b3; /* soft pink border */
+      border-radius: 5px;
     }
-    .kontainer-info {
+
+    .info {
       display: flex;
       justify-content: space-between;
-      background: var(--putih);
-      padding: 10px 15px;
-      border-radius: 10px;
-      margin: 20px 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #e8eaf6;
+      border-radius: 5px;
+      color: #0d1b2a;
       font-weight: bold;
     }
-    .soal {
-      background: var(--putih);
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-    }
+
     button {
-      background: var(--biru-dongker);
-      color: var(--putih);
-      padding: 12px 18px;
-      font-size: 16px;
+      background-color: #0d1b2a;
+      color: white;
+      padding: 10px 20px;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
-      margin: 20px auto;
-      display: block;
-    }
-    .feedback {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    .benar { color: green; }
-    .salah { color: red; }
-    #kuisForm { display: none; }
-    #mulaiBtn { display: block; margin: 30px auto; }
-
-    /* Tambahkan jarak dari tombol ke footer */
-    .jarak-bawah {
-      margin-bottom: 60px;
+      font-size: 16px;
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .kontainer-info {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-      }
-      button {
-        width: 100%;
-      }
-      input[type="radio"]:checked + label {
-  font-weight: bold;
-}
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
 
-.benar-radio {
-  background-color: #0a1f44; /* biru dongker */
-  color: white;
-  padding: 5px 10px;
-  border-radius: 6px;
-  display: inline-block;
-  margin-top: 5px;
-}
+    label.correct {
+      background-color: #d0eaff; /* biru muda */
+    }
 
-.salah-radio {
-  background-color: #d62828; /* merah terang */
-  color: white;
-  padding: 5px 10px;
-  border-radius: 6px;
-  display: inline-block;
-  margin-top: 5px;
-}
-
+    label.wrong {
+      background-color: #ffcdd2; /* merah muda */
     }
   </style>
 </head>
 <body>
+  <header>
+    <h2>Kuis Interaktif Geografi Kelas 12</h2>
+  </header>
 
-<header>
-  <h1>Kuis Interaktif Geografi</h1>
-  <p>Kelas 12 - Materi Lingkungan dan Geosfer</p>
-</header>
+  <div class="container">
+    <div class="info">
+      <div>Waktu: <span id="timer">40:00</span></div>
+      <div>Skor: <span id="score">0</span></div>
+    </div>
 
-<div id="kontainer-info" class="kontainer-info" style="display: none;">
-  <div id="timer">Waktu: 30:00</div>
-  <div id="skor">Skor: 0</div>
-</div>
+    <form id="quizForm">
+      <div id="questions"></div>
+      <button type="button" onclick="submitQuiz()">Kirim Jawaban</button>
+    </form>
+  </div>
 
-<form id="kuisForm">
-  <div id="kontenSoal"></div>
-  <button type="button" class="jarak-bawah" onclick="periksaJawaban()">Kirim Jawaban</button>
-</form>
+  <footer>
+    <p>&copy; 2025 Kuis Geografi. Hak Cipta Dilindungi.</p>
+  </footer>
 
-<footer>
-  <p>&copy; 2025 Geografi Interaktif - SMA Nusantara</p>
-</footer>
+  <script>
+    const questions = [
+      {
+        soal: "1. Fenomena El Nino menyebabkan...",
+        opsi: [
+          "Curah hujan meningkat di Indonesia",
+          "Kemarau panjang di wilayah Indonesia",
+          "Suhu permukaan laut menurun drastis",
+          "Indonesia mengalami musim dingin"
+        ],
+        jawaban: 1,
+        pembahasan: "El Nino menyebabkan perairan Indonesia lebih kering, sehingga terjadi kemarau panjang."
+      },
+      {
+        soal: "2. Lapisan atmosfer yang berperan dalam pemantulan gelombang radio adalah...",
+        opsi: [
+          "Troposfer",
+          "Stratosfer",
+          "Mesosfer",
+          "Ionosfer"
+        ],
+        jawaban: 3,
+        pembahasan: "Ionosfer mengandung partikel bermuatan listrik yang memantulkan gelombang radio."
+      },
+      // Tambahkan 8 soal lainnya di sini
+    ];
 
-<script>
-const soalData = [
-  {
-    pertanyaan: "1. Fenomena El Nino dapat menyebabkan...",
-    pilihan: ["a. Curah hujan meningkat di Indonesia", "b. Suhu laut menurun", "c. Kekeringan panjang di Indonesia", "d. Angin muson barat menguat"],
-    jawaban: "c",
-    pembahasan: "El Nino menyebabkan pemanasan laut Pasifik dan berdampak pada berkurangnya curah hujan di Indonesia, memicu kekeringan."
-  },
-  {
-    pertanyaan: "2. Letak geografis Indonesia memberikan dampak penting berupa...",
-    pilihan: ["a. Kekayaan budaya yang homogen", "b. Musim gugur panjang", "c. Jalur perdagangan strategis", "d. Satu zona waktu saja"],
-    jawaban: "c",
-    pembahasan: "Letak Indonesia di antara dua benua dan dua samudra menjadikannya jalur perdagangan internasional."
-  },
-  {
-    pertanyaan: "3. Lapisan atmosfer tempat terjadinya cuaca adalah...",
-    pilihan: ["a. Stratosfer", "b. Termosfer", "c. Troposfer", "d. Mesosfer"],
-    jawaban: "c",
-    pembahasan: "Cuaca terjadi di lapisan troposfer, lapisan paling bawah atmosfer."
-  },
-  {
-    pertanyaan: "4. Gunung api yang terbentuk karena tumbukan lempeng adalah...",
-    pilihan: ["a. Gunung api shield", "b. Gunung api strato", "c. Gunung api maar", "d. Gunung api kubah"],
-    jawaban: "b",
-    pembahasan: "Gunung api strato terbentuk di zona subduksi akibat tumbukan lempeng."
-  },
-  {
-    pertanyaan: "5. Wilayah yang memiliki dua musim adalah wilayah beriklim...",
-    pilihan: ["a. Tropis", "b. Sedang", "c. Kutub", "d. Gurun"],
-    jawaban: "a",
-    pembahasan: "Wilayah tropis seperti Indonesia memiliki dua musim: kemarau dan penghujan."
-  },
-  {
-    pertanyaan: "6. Ciri utama peta topografi adalah...",
-    pilihan: ["a. Menunjukkan curah hujan", "b. Memuat informasi batas negara", "c. Menampilkan kontur ketinggian", "d. Menyajikan suhu udara"],
-    jawaban: "c",
-    pembahasan: "Peta topografi menggunakan garis kontur untuk menunjukkan tinggi rendah permukaan bumi."
-  },
-  {
-    pertanyaan: "7. Kota megapolitan adalah kota yang memiliki...",
-    pilihan: ["a. Jumlah penduduk < 1 juta", "b. Gabungan beberapa kota besar", "c. Pusat pemerintahan desa", "d. Kota dengan penduduk jarang"],
-    jawaban: "b",
-    pembahasan: "Kota megapolitan adalah hasil dari gabungan beberapa kota metropolitan."
-  },
-  {
-    pertanyaan: "8. Delta sungai terbentuk karena...",
-    pilihan: ["a. Erosi batuan keras", "b. Sedimentasi di muara sungai", "c. Aktivitas tektonik", "d. Pelapukan kimia"],
-    jawaban: "b",
-    pembahasan: "Delta terbentuk karena endapan (sedimentasi) material yang terbawa aliran sungai ke muara."
-  },
-  {
-    pertanyaan: "9. Lempeng Indo-Australia menunjam ke bawah lempeng Eurasia di Indonesia bagian...",
-    pilihan: ["a. Timur", "b. Tengah", "c. Barat", "d. Utara"],
-    jawaban: "c",
-    pembahasan: "Di bagian barat Indonesia (Sumatra, Jawa), lempeng Indo-Australia menunjam ke bawah lempeng Eurasia."
-  },
-  {
-    pertanyaan: "10. Urbanisasi berlebihan dapat menimbulkan masalah...",
-    pilihan: ["a. Ketersediaan lapangan kerja", "b. Pertumbuhan desa", "c. Overpopulasi kota", "d. Peningkatan pertanian"],
-    jawaban: "c",
-    pembahasan: "Urbanisasi yang tak terkendali menyebabkan overpopulasi, pengangguran, dan kemacetan di kota."
-  }
-];
+    let score = 0;
 
-let waktu = 1800; // 30 menit
-let timerInterval;
-
-function tampilkanSoal() {
-  const konten = document.getElementById("kontenSoal");
-  soalData.forEach((soal, index) => {
-    const div = document.createElement("div");
-    div.className = "soal";
-    div.innerHTML = `
-      <p><strong>${soal.pertanyaan}</strong></p>
-      ${soal.pilihan.map((p) => `
-        <label><input type="radio" name="soal${index}" value="${p.charAt(0)}"> ${p}</label><br>
-      `).join("")}
-      <div class="feedback" id="feedback${index}"></div>
-    `;
-    konten.appendChild(div);
-  });
-}
-
-function mulaiTimer() {
-  timerInterval = setInterval(() => {
-    const menit = Math.floor(waktu / 60);
-    const detik = waktu % 60;
-    document.getElementById("timer").innerText = `Waktu: ${menit.toString().padStart(2, '0')}:${detik.toString().padStart(2, '0')}`;
-    if (waktu <= 0) {
-      clearInterval(timerInterval);
-      periksaJawaban();
+    function loadQuestions() {
+      const container = document.getElementById("questions");
+      questions.forEach((q, idx) => {
+        const div = document.createElement("div");
+        div.className = "soal";
+        div.innerHTML = `
+          <p><strong>${q.soal}</strong></p>
+          ${q.opsi.map((opt, i) => `
+            <label>
+              <input type="radio" name="q${idx}" value="${i}"> ${opt}
+            </label><br>`).join("")}
+        `;
+        container.appendChild(div);
+      });
     }
-    waktu--;
-  }, 1000);
-}
 
-function periksaJawaban() {
-  let skor = 0;
-  soalData.forEach((soal, index) => {
-    const radios = document.querySelectorAll(`input[name="soal${index}"]`);
-    const feedback = document.getElementById(`feedback${index}`);
-    let jawabanDipilih = null;
+    function submitQuiz() {
+      const inputs = document.querySelectorAll("input[type=radio]");
+      inputs.forEach(i => i.disabled = true);
 
-    radios.forEach(radio => {
-      const label = radio.parentElement;
-      label.classList.remove("benar-radio", "salah-radio"); // Reset
-      if (radio.checked) {
-        jawabanDipilih = radio.value;
-        if (jawabanDipilih === soal.jawaban) {
-          label.classList.add("benar-radio");
-          skor += 10;
-          feedback.innerHTML = `<span class="benar">✔ Benar</span><br>${soal.pembahasan}`;
-        } else {
-          label.classList.add("salah-radio");
-          feedback.innerHTML = `<span class="salah">✘ Salah</span><br>${soal.pembahasan}`;
+      questions.forEach((q, idx) => {
+        const radios = document.getElementsByName("q" + idx);
+        radios.forEach((r, i) => {
+          if (parseInt(r.value) === q.jawaban) {
+            r.parentElement.classList.add("correct");
+            if (r.checked) score += 10;
+          } else if (r.checked) {
+            r.parentElement.classList.add("wrong");
+          }
+        });
+      });
+
+      document.getElementById("score").innerText = score;
+    }
+
+    function startTimer(duration, display) {
+      let timer = duration, minutes, seconds;
+      const interval = setInterval(() => {
+        minutes = Math.floor(timer / 60);
+        seconds = timer % 60;
+
+        display.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+        if (--timer < 0) {
+          clearInterval(interval);
+          submitQuiz();
         }
-      }
-    });
-
-    if (!jawabanDipilih) {
-      feedback.innerHTML = `<span class="salah">✘ Belum dijawab</span><br>${soal.pembahasan}`;
+      }, 1000);
     }
-  });
 
-  clearInterval(timerInterval);
-  document.getElementById("skor").innerHTML = `Skor: ${skor} / 100`;
-}
-</script>
-
+    window.onload = function () {
+      loadQuestions();
+      const fortyMinutes = 60 * 40;
+      const display = document.getElementById("timer");
+      startTimer(fortyMinutes, display);
+    }
+  </script>
 </body>
 </html>
