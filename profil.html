@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Profil Kelompok</title>
-  <style>
+<style>
     body {
         font-family: 'Times New Roman', sans-serif;
         line-height: 1.6;
@@ -17,43 +17,47 @@
         margin: 0;
         padding: 0;
     }
-     .content {
+    header {
+        background-color: #0d1b2a; /* biru dongker */
+        color: #ffffff; /* putih */
+        padding: 20px;
+        text-align: center;
+    }
+    section {
+        padding: 20px;
+    }
+    h2 {
+        color: #0d1b2a; /* biru dongker */
+    }
+        .content {
         background-color: #ffffff; /* putih */
         margin: 5px 0;
         padding: 20px;
-        border-radius: 5px;
+        border-radius: 10px;
         box-shadow: 0 0 10px rgba(13, 27, 42, 0.1); /* bayangan biru dongker */
     }
-    .image-container {
-        text-align: center;
-        margin: 20px 0;
-    }
-    .image-container img {
-        max-width: 60%;
-        height: auto;
-        border-radius: 8px;
-        border: 3px solid #0d1b2a;
+    .header-container {
         display: flex;
-        margin: 0 auto;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px 20px;
     }
-    .video-container {
+    .judul-header {
+        flex: 1;
         text-align: center;
-        margin: 20px 0;
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(13, 27, 42, 0.1);
-        position: relative;
     }
-
-    header, footer {
-      background-color: #0a1f44; /* Biru dongker */
-      color: white;
-      text-align: center;
-      padding: 20px 10px;
+    .logo-header {
+        height: 120px;
     }
-
-    main {
+    footer {
+        background-color: #0d1b2a; /* biru dongker */
+        color: #ffffff; /* putih */
+        text-align: center;
+        padding: 10px;
+        bottom: 0;
+    }
+     main {
       padding: 30px 20px;
       max-width: 900px;
       margin: auto;
@@ -124,46 +128,61 @@
       background-color: #ffffff;
       color: #000000;
     }
-    /* Responsif iframe video */
-    .video-container iframe {
-        width: 100%;
-        max-width: 800px;
-        aspect-ratio: 16 / 9;
-        border-radius: 8px;
-        border: 3px solid #0d1b2a;
-        background-color: #ffffff;
-        padding: 0; /* Hindari padding dalam iframe */
-        box-shadow: 0 0 10px rgba(13, 27, 42, 0.1);
-    }
+ /* RESPONSIF UNTUK HP */
+    @media (max-width: 600px) {
     .header-container {
-        display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
-        flex-wrap: wrap;
-        padding: 10px 20px;
-    }
-    .judul-header {
-        flex: 1;
         text-align: center;
     }
     .logo-header {
-        height: 120px;
+        margin: 10px 0;
     }
+    .judul-header {
+        order: -1; /* supaya teks tampil di atas logo */
+    }
+    .image-container {
+        text-align: center;
+        margin: 20px 0;
+    }
+    .image-container img {
+        max-width: 60%;
+        height: auto;
+        border-radius: 8px;
+        border: 3px solid #0d1b2a;
+        display: flex;
+        margin: 0 auto;
+    }
+    .video-container {
+        text-align: center;
+        margin: 20px 0;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(13, 27, 42, 0.1);
+        position: relative;
+    }
+
+    header, footer {
+      background-color: #0a1f44; /* Biru dongker */
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
     }
   </style>
 </head>
 <body>
-  <header>
+<header>
   <div class="header-container">
     <img src="logo1.png" alt="Logo Kiri" class="logo-header">
     <div class="judul-header">
-    <h1>Profil Anggota Kelompok Pengembang</h1>
-    <p>Program Studi Pendidikan Matematika</p>
-      </div>
+        <h1>Profil Anggota Kelompok</h1>
+        <p>Program Studi Pendidikan Matematika</p>
+    </div>
     <img src="logo2.png" alt="Logo Kanan" class="logo-header">
   </div>
-  </header>
-
+</header>
+  
   <main>
     <div class="blok-foto">
       <img src="Wulan.png" width="200" alt="Gambar">
