@@ -8,11 +8,28 @@
       font-family: Arial, sans-serif;
       max-width: 800px;
       margin: auto;
-      padding: 20px;
+      padding: 0 20px 50px;
       background: #f8f9fa;
       color: #333;
     }
-    h2 { text-align: center; color: #0a1f44; }
+    header, footer {
+      background-color: #0a1f44;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+    h1, h2 {
+      margin: 0;
+    }
+    .kontainer-info {
+      display: flex;
+      justify-content: space-between;
+      background: #e9ecef;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-weight: bold;
+    }
     .soal {
       background: #fff;
       padding: 15px;
@@ -28,13 +45,7 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-    }
-    #timer {
-      font-size: 18px;
-      font-weight: bold;
-      color: red;
-      text-align: right;
-      margin-bottom: 20px;
+      margin-top: 10px;
     }
     .feedback {
       margin-top: 10px;
@@ -42,17 +53,32 @@
     }
     .benar { color: green; }
     .salah { color: red; }
+    #kuisForm { display: none; }
+    #mulaiBtn { display: block; margin: 20px auto; }
   </style>
 </head>
 <body>
 
-<h2>Kuis Geografi Kelas 12</h2>
-<div id="timer">Sisa waktu: 30:00</div>
+<header>
+  <h1>Kuis Interaktif Geografi</h1>
+  <p>Kelas 12 - Materi Lingkungan dan Geosfer</p>
+</header>
+
+<button id="mulaiBtn" onclick="mulaiKuis()">Mulai Kuis</button>
+
+<div id="kontainer-info" class="kontainer-info" style="display: none;">
+  <div id="timer">Waktu: 30:00</div>
+  <div id="skor">Skor: 0</div>
+</div>
 
 <form id="kuisForm">
   <div id="kontenSoal"></div>
   <button type="button" onclick="periksaJawaban()">Kirim Jawaban</button>
 </form>
+
+<footer>
+  <p>&copy; 2025 Geografi Interaktif - SMA Nusantara</p>
+</footer>
 
 <script>
 const soalData = [
@@ -118,6 +144,17 @@ const soalData = [
   }
 ];
 
+let waktu = 1800; // 30 menit
+let timerInterval;
+
+function mulaiKuis() {
+  document.getElementById("kuisForm").style.display = "block";
+  document.getElementById("mulaiBtn").style.display = "none";
+  document.getElementById("kontainer-info").style.display = "flex";
+  tampilkanSoal();
+  mulaiTimer();
+}
+
 function tampilkanSoal() {
   const konten = document.getElementById("kontenSoal");
   soalData.forEach((soal, index) => {
@@ -125,13 +162,26 @@ function tampilkanSoal() {
     div.className = "soal";
     div.innerHTML = `
       <p><strong>${soal.pertanyaan}</strong></p>
-      ${soal.pilihan.map((p, i) => `
+      ${soal.pilihan.map((p) => `
         <label><input type="radio" name="soal${index}" value="${p.charAt(0)}"> ${p}</label><br>
       `).join("")}
       <div class="feedback" id="feedback${index}"></div>
     `;
     konten.appendChild(div);
   });
+}
+
+function mulaiTimer() {
+  timerInterval = setInterval(() => {
+    const menit = Math.floor(waktu / 60);
+    const detik = waktu % 60;
+    document.getElementById("timer").innerText = `Waktu: ${menit.toString().padStart(2, '0')}:${detik.toString().padStart(2, '0')}`;
+    if (waktu <= 0) {
+      clearInterval(timerInterval);
+      periksaJawaban();
+    }
+    waktu--;
+  }, 1000);
 }
 
 function periksaJawaban() {
@@ -151,22 +201,8 @@ function periksaJawaban() {
     }
   });
   clearInterval(timerInterval);
-  document.getElementById("timer").innerHTML += `<br><strong>Skor Akhir: ${skor} / 100</strong>`;
+  document.getElementById("skor").innerHTML = `Skor: ${skor} / 100`;
 }
-
-let waktu = 1800; // 30 menit dalam detik
-let timerInterval = setInterval(() => {
-  const menit = Math.floor(waktu / 60);
-  const detik = waktu % 60;
-  document.getElementById("timer").innerText = `Sisa waktu: ${menit.toString().padStart(2, '0')}:${detik.toString().padStart(2, '0')}`;
-  if (waktu <= 0) {
-    clearInterval(timerInterval);
-    periksaJawaban();
-  }
-  waktu--;
-}, 1000);
-
-tampilkanSoal();
 </script>
 
 </body>
