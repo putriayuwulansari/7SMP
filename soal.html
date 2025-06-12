@@ -7,176 +7,160 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #fef6f9; /* soft pink */
-      color: #0d1b2a; /* hitam/biru dongker */
+      background-color: #fef2f5; /* soft pink */
+      color: #0d1b2a; /* biru dongker */
       margin: 0;
       padding: 0;
     }
 
     header, footer {
-      background-color: #0d1b2a; /* biru dongker */
+      background-color: #0d1b2a;
       color: white;
       text-align: center;
-      padding: 15px;
+      padding: 15px 10px;
     }
 
     .container {
       max-width: 800px;
-      margin: auto;
+      margin: 20px auto;
+      background-color: #ffffff; /* putih */
       padding: 20px;
-      background-color: white;
-      border-radius: 8px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     .soal {
-      background-color: #fdfcff;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-left: 5px solid #f2a5b3; /* soft pink border */
-      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 10px 15px;
+      background-color: #fefcff;
+      border-radius: 8px;
+      border-left: 4px solid #0d1b2a;
     }
 
-    .info {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
+    .soal:hover {
+      background-color: #f9e6ef; /* pink terang */
+    }
+
+    label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+
+    .jawaban-benar {
+      background-color: #b2d8f3 !important; /* biru terang */
+    }
+
+    .jawaban-salah {
+      background-color: #f8c5d3 !important; /* merah muda */
+    }
+
+    .hasil-box, .timer-box {
+      border: 2px solid #0d1b2a;
       padding: 10px;
-      background-color: #e8eaf6;
-      border-radius: 5px;
-      color: #0d1b2a;
+      border-radius: 10px;
+      background-color: #ffffff;
+      margin: 10px 0;
       font-weight: bold;
+      color: #0d1b2a;
     }
 
     button {
       background-color: #0d1b2a;
       color: white;
-      padding: 10px 20px;
       border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      padding: 10px 20px;
       font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
     }
 
-    button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-
-    label.correct {
-      background-color: #d0eaff; /* biru muda */
-    }
-
-    label.wrong {
-      background-color: #ffcdd2; /* merah muda */
+    button:hover {
+      background-color: #0a1520;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h2>Kuis Interaktif Geografi Kelas 12</h2>
+    <h1>Kuis Geografi Kelas 12</h1>
   </header>
 
   <div class="container">
-    <div class="info">
-      <div>Waktu: <span id="timer">40:00</span></div>
-      <div>Skor: <span id="score">0</span></div>
-    </div>
+    <div class="timer-box" id="timer">Waktu: 40:00</div>
 
-    <form id="quizForm">
-      <div id="questions"></div>
-      <button type="button" onclick="submitQuiz()">Kirim Jawaban</button>
+    <form id="kuisForm">
+      <div class="soal">
+        <p><strong>1. Lapisan atmosfer yang berperan penting dalam menyerap radiasi UV adalah...</strong></p>
+        <label><input type="radio" name="soal1" value="a"> a. Troposfer</label>
+        <label><input type="radio" name="soal1" value="b"> b. Stratosfer</label>
+        <label><input type="radio" name="soal1" value="c"> c. Mesosfer</label>
+        <label><input type="radio" name="soal1" value="d"> d. Termosfer</label>
+      </div>
+
+      <div class="soal">
+        <p><strong>2. Proses pelapukan batuan akibat perubahan suhu disebut...</strong></p>
+        <label><input type="radio" name="soal2" value="a"> a. Pelapukan kimiawi</label>
+        <label><input type="radio" name="soal2" value="b"> b. Pelapukan organik</label>
+        <label><input type="radio" name="soal2" value="c"> c. Pelapukan mekanik</label>
+        <label><input type="radio" name="soal2" value="d"> d. Pelapukan biologis</label>
+      </div>
+
+      <!-- Tambahkan soal 3-10 di sini -->
+
+      <button type="button" onclick="cekJawaban()">Kirim Jawaban</button>
+
+      <div class="hasil-box" id="skorBox"></div>
     </form>
   </div>
 
   <footer>
-    <p>&copy; 2025 Kuis Geografi. Hak Cipta Dilindungi.</p>
+    <p>&copy; 2025 Kuis Geografi Interaktif</p>
   </footer>
 
   <script>
-    const questions = [
-      {
-        soal: "1. Fenomena El Nino menyebabkan...",
-        opsi: [
-          "Curah hujan meningkat di Indonesia",
-          "Kemarau panjang di wilayah Indonesia",
-          "Suhu permukaan laut menurun drastis",
-          "Indonesia mengalami musim dingin"
-        ],
-        jawaban: 1,
-        pembahasan: "El Nino menyebabkan perairan Indonesia lebih kering, sehingga terjadi kemarau panjang."
-      },
-      {
-        soal: "2. Lapisan atmosfer yang berperan dalam pemantulan gelombang radio adalah...",
-        opsi: [
-          "Troposfer",
-          "Stratosfer",
-          "Mesosfer",
-          "Ionosfer"
-        ],
-        jawaban: 3,
-        pembahasan: "Ionosfer mengandung partikel bermuatan listrik yang memantulkan gelombang radio."
-      },
-      // Tambahkan 8 soal lainnya di sini
-    ];
+    const jawabanBenar = {
+      soal1: "b",
+      soal2: "c",
+      // soal3: ..., soal4: ..., dll
+    };
 
-    let score = 0;
-
-    function loadQuestions() {
-      const container = document.getElementById("questions");
-      questions.forEach((q, idx) => {
-        const div = document.createElement("div");
-        div.className = "soal";
-        div.innerHTML = `
-          <p><strong>${q.soal}</strong></p>
-          ${q.opsi.map((opt, i) => `
-            <label>
-              <input type="radio" name="q${idx}" value="${i}"> ${opt}
-            </label><br>`).join("")}
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    function submitQuiz() {
-      const inputs = document.querySelectorAll("input[type=radio]");
-      inputs.forEach(i => i.disabled = true);
-
-      questions.forEach((q, idx) => {
-        const radios = document.getElementsByName("q" + idx);
-        radios.forEach((r, i) => {
-          if (parseInt(r.value) === q.jawaban) {
-            r.parentElement.classList.add("correct");
-            if (r.checked) score += 10;
-          } else if (r.checked) {
-            r.parentElement.classList.add("wrong");
-          }
-        });
-      });
-
-      document.getElementById("score").innerText = score;
-    }
-
-    function startTimer(duration, display) {
-      let timer = duration, minutes, seconds;
-      const interval = setInterval(() => {
-        minutes = Math.floor(timer / 60);
-        seconds = timer % 60;
-
-        display.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-        if (--timer < 0) {
-          clearInterval(interval);
-          submitQuiz();
+    function cekJawaban() {
+      let skor = 0;
+      for (let i = 1; i <= 2; i++) {
+        const name = `soal${i}`;
+        const jawaban = document.querySelector(`input[name='${name}']:checked`);
+        if (jawaban) {
+          const semuaOpsi = document.querySelectorAll(`input[name='${name}']`);
+          semuaOpsi.forEach(op => {
+            if (op.value === jawabanBenar[name]) {
+              op.parentElement.classList.add('jawaban-benar');
+            } else if (op.checked && op.value !== jawabanBenar[name]) {
+              op.parentElement.classList.add('jawaban-salah');
+            }
+          });
+          if (jawaban.value === jawabanBenar[name]) skor += 10;
         }
-      }, 1000);
+      }
+      document.getElementById("skorBox").textContent = `Skor Anda: ${skor}`;
     }
 
-    window.onload = function () {
-      loadQuestions();
-      const fortyMinutes = 60 * 40;
-      const display = document.getElementById("timer");
-      startTimer(fortyMinutes, display);
-    }
+    // Timer
+    let totalDetik = 40 * 60;
+    const timer = document.getElementById("timer");
+    const interval = setInterval(() => {
+      const menit = Math.floor(totalDetik / 60);
+      const detik = totalDetik % 60;
+      timer.textContent = `Waktu: ${menit.toString().padStart(2, '0')}:${detik.toString().padStart(2, '0')}`;
+      if (totalDetik <= 0) {
+        clearInterval(interval);
+        alert("Waktu habis! Jawaban akan dikirim.");
+        cekJawaban();
+      }
+      totalDetik--;
+    }, 1000);
   </script>
+
 </body>
 </html>
