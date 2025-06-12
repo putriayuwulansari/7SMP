@@ -2,179 +2,184 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kuis Geografi Kelas 12</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #fef2f5; /* soft pink */
-      color: #0d1b2a; /* biru dongker */
-      margin: 0;
-      padding: 0;
+      background-color: #f0f4f8;
+      padding: 20px;
+      color: #333;
     }
-
-    header, footer {
-      background-color: #0d1b2a;
-      color: white;
-      text-align: center;
-      padding: 15px 10px;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      background-color: #ffffff; /* putih */
+    .quiz-container {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    .soal {
+    .question {
       margin-bottom: 20px;
-      padding: 10px 15px;
-      background-color: #fefcff;
-      border-radius: 8px;
-      border-left: 4px solid #0d1b2a;
     }
-
-    .soal:hover {
-      background-color: #f9e6ef; /* pink terang */
-    }
-
-    label {
+    .options label {
       display: block;
-      margin: 8px 0;
-      cursor: pointer;
+      margin-bottom: 10px;
     }
-
-    .jawaban-benar {
-      background-color: #b2d8f3 !important; /* biru terang */
-    }
-
-    .jawaban-salah {
-      background-color: #f8c5d3 !important; /* merah muda */
-    }
-
-    .hasil-box, .timer-box {
-      border: 2px solid #0d1b2a;
-      padding: 10px;
-      border-radius: 10px;
-      background-color: #ffffff;
-      margin: 10px 0;
+    .feedback {
       font-weight: bold;
-      color: #0d1b2a;
+      margin-top: 10px;
     }
-
-    button {
-      background-color: #0d1b2a;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
+    #timer {
+      font-size: 18px;
+      font-weight: bold;
+      color: #c00;
+    }
+    #result {
+      font-size: 20px;
+      font-weight: bold;
       margin-top: 20px;
+      color: green;
     }
-
-    button:hover {
-      background-color: #0a1520;
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>Kuis Geografi Kelas 12</h1>
-  </header>
-
-  <div class="container">
-    <div class="timer-box" id="timer">Waktu: 40:00</div>
-
-    <form id="kuisForm">
-      <div class="soal">
-        <p><strong>1. Lapisan atmosfer yang berperan penting dalam menyerap radiasi UV adalah...</strong></p>
-        <label><input type="radio" name="soal1" value="a"> a. Troposfer</label>
-        <label><input type="radio" name="soal1" value="b"> b. Stratosfer</label>
-        <label><input type="radio" name="soal1" value="c"> c. Mesosfer</label>
-        <label><input type="radio" name="soal1" value="d"> d. Termosfer</label>
+  <div class="quiz-container">
+    <h2>Kuis Geografi: Dinamika Litosfer</h2>
+    <div id="timer">Sisa waktu: 30:00</div>
+    <form id="quizForm">
+      <!-- Soal 1 -->
+      <div class="question">
+        <p>1. Gempa bumi yang terjadi akibat pergerakan lempeng tektonik disebut sebagai gempa...</p>
+        <div class="options">
+          <label><input type="radio" name="q1" value="A"> A. Vulkanik</label>
+          <label><input type="radio" name="q1" value="B"> B. Tektonik</label>
+          <label><input type="radio" name="q1" value="C"> C. Runtuhan</label>
+          <label><input type="radio" name="q1" value="D"> D. Buatan</label>
+          <label><input type="radio" name="q1" value="E"> E. Magnetik</label>
+        </div>
+        <div class="feedback" id="feedback1"></div>
       </div>
 
-      <div class="soal">
-        <p><strong>2. Proses pelapukan batuan akibat perubahan suhu disebut...</strong></p>
-        <label><input type="radio" name="soal2" value="a"> a. Pelapukan kimiawi</label>
-        <label><input type="radio" name="soal2" value="b"> b. Pelapukan organik</label>
-        <label><input type="radio" name="soal2" value="c"> c. Pelapukan mekanik</label>
-        <label><input type="radio" name="soal2" value="d"> d. Pelapukan biologis</label>
+      <!-- Soal 2 -->
+      <div class="question">
+        <p>2. Material padat yang dikeluarkan saat erupsi gunung api disebut...</p>
+        <div class="options">
+          <label><input type="radio" name="q2" value="A"> A. Lava</label>
+          <label><input type="radio" name="q2" value="B"> B. Lahar</label>
+          <label><input type="radio" name="q2" value="C"> C. Debu vulkanik</label>
+          <label><input type="radio" name="q2" value="D"> D. Magma</label>
+          <label><input type="radio" name="q2" value="E"> E. Batu bara</label>
+        </div>
+        <div class="feedback" id="feedback2"></div>
       </div>
 
-      <!-- Tambahkan soal 3-10 di sini -->
-      <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
+      <!-- Soal 3 -->
+      <div class="question">
+        <p>3. Berikut ini merupakan dampak negatif gempa bumi terhadap kehidupan sosial, kecuali...</p>
+        <div class="options">
+          <label><input type="radio" name="q3" value="A"> A. Kerusakan bangunan</label>
+          <label><input type="radio" name="q3" value="B"> B. Trauma psikologis</label>
+          <label><input type="radio" name="q3" value="C"> C. Perpindahan penduduk</label>
+          <label><input type="radio" name="q3" value="D"> D. Peningkatan kualitas tanah</label>
+          <label><input type="radio" name="q3" value="E"> E. Terganggunya aktivitas ekonomi</label>
+        </div>
+        <div class="feedback" id="feedback3"></div>
+      </div>
 
-    <p>
-  Matriks: <br>
-  \( 
-  \begin{bmatrix}
-    1 & 2 \\
-    3 & 4
-  \end{bmatrix}
-  \)
-</p>
+      <!-- Soal 4 -->
+      <div class="question">
+        <p>4. Proses pelipatan dan patahan pada kerak bumi merupakan bentuk tenaga...</p>
+        <div class="options">
+          <label><input type="radio" name="q4" value="A"> A. Endogen</label>
+          <label><input type="radio" name="q4" value="B"> B. Eksogen</label>
+          <label><input type="radio" name="q4" value="C"> C. Luar angkasa</label>
+          <label><input type="radio" name="q4" value="D"> D. Antroposfer</label>
+          <label><input type="radio" name="q4" value="E"> E. Atmosfer</label>
+        </div>
+        <div class="feedback" id="feedback4"></div>
+      </div>
 
-      <button type="button" onclick="cekJawaban()">Kirim Jawaban</button>
+      <!-- Soal 5 -->
+      <div class="question">
+        <p>5. Salah satu upaya mitigasi non-struktural terhadap bencana gempa adalah...</p>
+        <div class="options">
+          <label><input type="radio" name="q5" value="A"> A. Membangun rumah tahan gempa</label>
+          <label><input type="radio" name="q5" value="B"> B. Menanam pohon di lereng gunung</label>
+          <label><input type="radio" name="q5" value="C"> C. Melakukan edukasi kebencanaan</label>
+          <label><input type="radio" name="q5" value="D"> D. Membangun tanggul penahan</label>
+          <label><input type="radio" name="q5" value="E"> E. Menggali sumur resapan</label>
+        </div>
+        <div class="feedback" id="feedback5"></div>
+      </div>
 
-      <div class="hasil-box" id="skorBox"></div>
+      <button type="button" onclick="submitQuiz()">Selesai</button>
+      <div id="result"></div>
     </form>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Kuis Geografi Interaktif</p>
-  </footer>
-
   <script>
-    const jawabanBenar = {
-      soal1: "b",
-      soal2: "c",
-      // soal3: ..., soal4: ..., dll
+    const answers = {
+      q1: 'B',
+      q2: 'C',
+      q3: 'D',
+      q4: 'A',
+      q5: 'C'
     };
 
-    function cekJawaban() {
-      let skor = 0;
-      for (let i = 1; i <= 2; i++) {
-        const name = `soal${i}`;
-        const jawaban = document.querySelector(`input[name='${name}']:checked`);
-        if (jawaban) {
-          const semuaOpsi = document.querySelectorAll(`input[name='${name}']`);
-          semuaOpsi.forEach(op => {
-            if (op.value === jawabanBenar[name]) {
-              op.parentElement.classList.add('jawaban-benar');
-            } else if (op.checked && op.value !== jawabanBenar[name]) {
-              op.parentElement.classList.add('jawaban-salah');
-            }
-          });
-          if (jawaban.value === jawabanBenar[name]) skor += 10;
+    const explanations = {
+      q1: "Gempa tektonik terjadi karena pergeseran lempeng-lempeng bumi.",
+      q2: "Debu vulkanik adalah material padat yang keluar saat erupsi gunung api.",
+      q3: "Gempa tidak berdampak positif terhadap kualitas tanah.",
+      q4: "Tenaga endogen berasal dari dalam bumi dan menyebabkan pelipatan atau patahan.",
+      q5: "Edukasi kebencanaan termasuk mitigasi non-struktural."
+    };
+
+    function submitQuiz() {
+      let score = 0;
+      for (let i = 1; i <= 5; i++) {
+        const qName = "q" + i;
+        const selected = document.querySelector(`input[name="${qName}"]:checked`);
+        const feedback = document.getElementById(`feedback${i}`);
+        if (!selected) {
+          feedback.innerHTML = "❌ Belum dijawab!";
+          feedback.style.color = "orange";
+          continue;
+        }
+        if (selected.value === answers[qName]) {
+          feedback.innerHTML = "✅ Benar! " + explanations[qName];
+          feedback.style.color = "green";
+          score++;
+        } else {
+          feedback.innerHTML = "❌ Salah. " + explanations[qName];
+          feedback.style.color = "red";
         }
       }
-      document.getElementById("skorBox").textContent = `Skor Anda: ${skor}`;
+      document.getElementById("result").innerText = `Skor akhir: ${score}/5`;
     }
 
-    // Timer
-    let totalDetik = 40 * 60;
-    const timer = document.getElementById("timer");
-    const interval = setInterval(() => {
-      const menit = Math.floor(totalDetik / 60);
-      const detik = totalDetik % 60;
-      timer.textContent = `Waktu: ${menit.toString().padStart(2, '0')}:${detik.toString().padStart(2, '0')}`;
-      if (totalDetik <= 0) {
-        clearInterval(interval);
-        alert("Waktu habis! Jawaban akan dikirim.");
-        cekJawaban();
-      }
-      totalDetik--;
-    }, 1000);
-  </script>
+    // Timer 30 menit
+    let duration = 1800;
+    const timerDisplay = document.getElementById("timer");
 
+    function updateTimer() {
+      const minutes = Math.floor(duration / 60);
+      const seconds = duration % 60;
+      timerDisplay.innerText = `Sisa waktu: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+      if (duration === 0) {
+        clearInterval(timerInterval);
+        submitQuiz();
+        alert("Waktu habis! Kuis dikumpulkan otomatis.");
+      }
+      duration--;
+    }
+
+    const timerInterval = setInterval(updateTimer, 1000);
+  </script>
 </body>
 </html>
