@@ -4,48 +4,54 @@
   <meta charset="UTF-8">
   <title>Kuis Geografi Kelas 12</title>
   <style>
+    :root {
+      --biru-dongker: #0a1f44;
+      --hitam: #1c1c1c;
+      --putih: #ffffff;
+      --soft-pink: #ffe6e6;
+    }
     body {
       font-family: Arial, sans-serif;
       max-width: 800px;
       margin: auto;
-      padding: 0 20px 50px;
-      background: #f8f9fa;
-      color: #333;
+      background: var(--soft-pink);
+      color: var(--hitam);
+      padding: 0 20px 100px;
     }
     header, footer {
-      background-color: #0a1f44;
-      color: white;
+      background-color: var(--biru-dongker);
+      color: var(--putih);
       text-align: center;
-      padding: 15px 0;
-    }
-    h1, h2 {
-      margin: 0;
+      padding: 20px 10px;
+      border-radius: 0 0 10px 10px;
     }
     .kontainer-info {
       display: flex;
       justify-content: space-between;
-      background: #e9ecef;
+      background: var(--putih);
       padding: 10px 15px;
-      border-radius: 8px;
+      border-radius: 10px;
       margin: 20px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       font-weight: bold;
     }
     .soal {
-      background: #fff;
-      padding: 15px;
+      background: var(--putih);
+      padding: 20px;
       margin-bottom: 20px;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
     }
     button {
-      background: #0a1f44;
-      color: white;
-      padding: 10px 15px;
+      background: var(--biru-dongker);
+      color: var(--putih);
+      padding: 12px 18px;
       font-size: 16px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      margin-top: 10px;
+      margin: 20px auto;
+      display: block;
     }
     .feedback {
       margin-top: 10px;
@@ -54,7 +60,46 @@
     .benar { color: green; }
     .salah { color: red; }
     #kuisForm { display: none; }
-    #mulaiBtn { display: block; margin: 20px auto; }
+    #mulaiBtn { display: block; margin: 30px auto; }
+
+    /* Tambahkan jarak dari tombol ke footer */
+    .jarak-bawah {
+      margin-bottom: 60px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .kontainer-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      button {
+        width: 100%;
+      }
+      input[type="radio"]:checked + label {
+  font-weight: bold;
+}
+
+.benar-radio {
+  background-color: #0a1f44; /* biru dongker */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.salah-radio {
+  background-color: #d62828; /* merah terang */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+    }
   </style>
 </head>
 <body>
@@ -73,7 +118,7 @@
 
 <form id="kuisForm">
   <div id="kontenSoal"></div>
-  <button type="button" onclick="periksaJawaban()">Kirim Jawaban</button>
+  <button type="button" class="jarak-bawah" onclick="periksaJawaban()">Kirim Jawaban</button>
 </form>
 
 <footer>
@@ -187,19 +232,31 @@ function mulaiTimer() {
 function periksaJawaban() {
   let skor = 0;
   soalData.forEach((soal, index) => {
-    const jawaban = document.querySelector(`input[name="soal${index}"]:checked`);
+    const radios = document.querySelectorAll(`input[name="soal${index}"]`);
     const feedback = document.getElementById(`feedback${index}`);
-    if (jawaban) {
-      if (jawaban.value === soal.jawaban) {
-        skor += 10;
-        feedback.innerHTML = `<span class="benar">✔ Benar</span><br>${soal.pembahasan}`;
-      } else {
-        feedback.innerHTML = `<span class="salah">✘ Salah</span><br>${soal.pembahasan}`;
+    let jawabanDipilih = null;
+
+    radios.forEach(radio => {
+      const label = radio.parentElement;
+      label.classList.remove("benar-radio", "salah-radio"); // Reset
+      if (radio.checked) {
+        jawabanDipilih = radio.value;
+        if (jawabanDipilih === soal.jawaban) {
+          label.classList.add("benar-radio");
+          skor += 10;
+          feedback.innerHTML = `<span class="benar">✔ Benar</span><br>${soal.pembahasan}`;
+        } else {
+          label.classList.add("salah-radio");
+          feedback.innerHTML = `<span class="salah">✘ Salah</span><br>${soal.pembahasan}`;
+        }
       }
-    } else {
+    });
+
+    if (!jawabanDipilih) {
       feedback.innerHTML = `<span class="salah">✘ Belum dijawab</span><br>${soal.pembahasan}`;
     }
   });
+
   clearInterval(timerInterval);
   document.getElementById("skor").innerHTML = `Skor: ${skor} / 100`;
 }
