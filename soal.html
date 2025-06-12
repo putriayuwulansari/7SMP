@@ -109,8 +109,6 @@
   <p>Kelas 12 - Materi Lingkungan dan Geosfer</p>
 </header>
 
-<button id="mulaiBtn" onclick="mulaiKuis()">Mulai Kuis</button>
-
 <div id="kontainer-info" class="kontainer-info" style="display: none;">
   <div id="timer">Waktu: 30:00</div>
   <div id="skor">Skor: 0</div>
@@ -191,14 +189,6 @@ const soalData = [
 
 let waktu = 1800; // 30 menit
 let timerInterval;
-
-function mulaiKuis() {
-  document.getElementById("kuisForm").style.display = "block";
-  document.getElementById("mulaiBtn").style.display = "none";
-  document.getElementById("kontainer-info").style.display = "flex";
-  tampilkanSoal();
-  mulaiTimer();
-}
 
 function tampilkanSoal() {
   const konten = document.getElementById("kontenSoal");
