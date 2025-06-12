@@ -2,105 +2,172 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Sidebar Toggle</title>
+  <title>Kuis Geografi Kelas 12</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f8f8f8;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #f8f9fa;
+      color: #333;
     }
-
-    /* Tombol buka sidebar */
-    .open-btn {
-      font-size: 20px;
-      cursor: pointer;
-      background-color: #001f3f; /* biru dongker */
+    h2 { text-align: center; color: #0a1f44; }
+    .soal {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #0a1f44;
       color: white;
       padding: 10px 15px;
+      font-size: 16px;
       border: none;
-      margin: 10px;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background-color: #001f3f;
-      overflow-x: hidden;
-      transition: 0.3s;
-      padding-top: 60px;
-    }
-
-    .sidebar a {
-      padding: 10px 20px;
-      text-decoration: none;
-      font-size: 18px;
-      color: white;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .sidebar a:hover {
-      background-color: #ffb6c1; /* soft pink */
-      color: black;
-    }
-
-    /* Tombol tutup sidebar */
-    .sidebar .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 30px;
+      border-radius: 5px;
       cursor: pointer;
     }
-
-    .content {
-      padding: 20px;
+    #timer {
+      font-size: 18px;
+      font-weight: bold;
+      color: red;
+      text-align: right;
+      margin-bottom: 20px;
     }
+    .feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .benar { color: green; }
+    .salah { color: red; }
   </style>
 </head>
 <body>
 
-  <!-- Tombol buka -->
-  <button class="open-btn" onclick="openSidebar()">☰ Menu</button>
+<h2>Kuis Geografi Kelas 12</h2>
+<div id="timer">Sisa waktu: 30:00</div>
 
-  <!-- Sidebar -->
-  <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="close-btn" onclick="closeSidebar()">×</a>
-    <a href="#beranda">Beranda</a>
-    <a href="#profil">Profil</a>
-    <a href="#galeri">Galeri</a>
-    <a href="#kontak">Kontak</a>
-  </div>
+<form id="kuisForm">
+  <div id="kontenSoal"></div>
+  <button type="button" onclick="periksaJawaban()">Kirim Jawaban</button>
+</form>
 
-  <!-- Isi konten -->
-  <div class="content">
-    <h1 id="beranda">Beranda</h1>
-    <p>Selamat datang di website kami.</p>
+<script>
+const soalData = [
+  {
+    pertanyaan: "1. Fenomena El Nino dapat menyebabkan...",
+    pilihan: ["a. Curah hujan meningkat di Indonesia", "b. Suhu laut menurun", "c. Kekeringan panjang di Indonesia", "d. Angin muson barat menguat"],
+    jawaban: "c",
+    pembahasan: "El Nino menyebabkan pemanasan laut Pasifik dan berdampak pada berkurangnya curah hujan di Indonesia, memicu kekeringan."
+  },
+  {
+    pertanyaan: "2. Letak geografis Indonesia memberikan dampak penting berupa...",
+    pilihan: ["a. Kekayaan budaya yang homogen", "b. Musim gugur panjang", "c. Jalur perdagangan strategis", "d. Satu zona waktu saja"],
+    jawaban: "c",
+    pembahasan: "Letak Indonesia di antara dua benua dan dua samudra menjadikannya jalur perdagangan internasional."
+  },
+  {
+    pertanyaan: "3. Lapisan atmosfer tempat terjadinya cuaca adalah...",
+    pilihan: ["a. Stratosfer", "b. Termosfer", "c. Troposfer", "d. Mesosfer"],
+    jawaban: "c",
+    pembahasan: "Cuaca terjadi di lapisan troposfer, lapisan paling bawah atmosfer."
+  },
+  {
+    pertanyaan: "4. Gunung api yang terbentuk karena tumbukan lempeng adalah...",
+    pilihan: ["a. Gunung api shield", "b. Gunung api strato", "c. Gunung api maar", "d. Gunung api kubah"],
+    jawaban: "b",
+    pembahasan: "Gunung api strato terbentuk di zona subduksi akibat tumbukan lempeng."
+  },
+  {
+    pertanyaan: "5. Wilayah yang memiliki dua musim adalah wilayah beriklim...",
+    pilihan: ["a. Tropis", "b. Sedang", "c. Kutub", "d. Gurun"],
+    jawaban: "a",
+    pembahasan: "Wilayah tropis seperti Indonesia memiliki dua musim: kemarau dan penghujan."
+  },
+  {
+    pertanyaan: "6. Ciri utama peta topografi adalah...",
+    pilihan: ["a. Menunjukkan curah hujan", "b. Memuat informasi batas negara", "c. Menampilkan kontur ketinggian", "d. Menyajikan suhu udara"],
+    jawaban: "c",
+    pembahasan: "Peta topografi menggunakan garis kontur untuk menunjukkan tinggi rendah permukaan bumi."
+  },
+  {
+    pertanyaan: "7. Kota megapolitan adalah kota yang memiliki...",
+    pilihan: ["a. Jumlah penduduk < 1 juta", "b. Gabungan beberapa kota besar", "c. Pusat pemerintahan desa", "d. Kota dengan penduduk jarang"],
+    jawaban: "b",
+    pembahasan: "Kota megapolitan adalah hasil dari gabungan beberapa kota metropolitan."
+  },
+  {
+    pertanyaan: "8. Delta sungai terbentuk karena...",
+    pilihan: ["a. Erosi batuan keras", "b. Sedimentasi di muara sungai", "c. Aktivitas tektonik", "d. Pelapukan kimia"],
+    jawaban: "b",
+    pembahasan: "Delta terbentuk karena endapan (sedimentasi) material yang terbawa aliran sungai ke muara."
+  },
+  {
+    pertanyaan: "9. Lempeng Indo-Australia menunjam ke bawah lempeng Eurasia di Indonesia bagian...",
+    pilihan: ["a. Timur", "b. Tengah", "c. Barat", "d. Utara"],
+    jawaban: "c",
+    pembahasan: "Di bagian barat Indonesia (Sumatra, Jawa), lempeng Indo-Australia menunjam ke bawah lempeng Eurasia."
+  },
+  {
+    pertanyaan: "10. Urbanisasi berlebihan dapat menimbulkan masalah...",
+    pilihan: ["a. Ketersediaan lapangan kerja", "b. Pertumbuhan desa", "c. Overpopulasi kota", "d. Peningkatan pertanian"],
+    jawaban: "c",
+    pembahasan: "Urbanisasi yang tak terkendali menyebabkan overpopulasi, pengangguran, dan kemacetan di kota."
+  }
+];
 
-    <h1 id="profil">Profil</h1>
-    <p>Ini adalah bagian profil.</p>
+function tampilkanSoal() {
+  const konten = document.getElementById("kontenSoal");
+  soalData.forEach((soal, index) => {
+    const div = document.createElement("div");
+    div.className = "soal";
+    div.innerHTML = `
+      <p><strong>${soal.pertanyaan}</strong></p>
+      ${soal.pilihan.map((p, i) => `
+        <label><input type="radio" name="soal${index}" value="${p.charAt(0)}"> ${p}</label><br>
+      `).join("")}
+      <div class="feedback" id="feedback${index}"></div>
+    `;
+    konten.appendChild(div);
+  });
+}
 
-    <h1 id="galeri">Galeri</h1>
-    <p>Beberapa foto akan tampil di sini.</p>
-
-    <h1 id="kontak">Kontak</h1>
-    <p>Hubungi kami di email@example.com</p>
-  </div>
-
-  <script>
-    function openSidebar() {
-      document.getElementById("mySidebar").style.width = "250px";
+function periksaJawaban() {
+  let skor = 0;
+  soalData.forEach((soal, index) => {
+    const jawaban = document.querySelector(`input[name="soal${index}"]:checked`);
+    const feedback = document.getElementById(`feedback${index}`);
+    if (jawaban) {
+      if (jawaban.value === soal.jawaban) {
+        skor += 10;
+        feedback.innerHTML = `<span class="benar">✔ Benar</span><br>${soal.pembahasan}`;
+      } else {
+        feedback.innerHTML = `<span class="salah">✘ Salah</span><br>${soal.pembahasan}`;
+      }
+    } else {
+      feedback.innerHTML = `<span class="salah">✘ Belum dijawab</span><br>${soal.pembahasan}`;
     }
+  });
+  clearInterval(timerInterval);
+  document.getElementById("timer").innerHTML += `<br><strong>Skor Akhir: ${skor} / 100</strong>`;
+}
 
-    function closeSidebar() {
-      document.getElementById("mySidebar").style.width = "0";
-    }
-  </script>
+let waktu = 1800; // 30 menit dalam detik
+let timerInterval = setInterval(() => {
+  const menit = Math.floor(waktu / 60);
+  const detik = waktu % 60;
+  document.getElementById("timer").innerText = `Sisa waktu: ${menit.toString().padStart(2, '0')}:${detik.toString().padStart(2, '0')}`;
+  if (waktu <= 0) {
+    clearInterval(timerInterval);
+    periksaJawaban();
+  }
+  waktu--;
+}, 1000);
+
+tampilkanSoal();
+</script>
 
 </body>
 </html>
